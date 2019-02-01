@@ -72,18 +72,41 @@ plt.show()
 amazon[LABELS].plot()
 plt.show()
 
-# # This formats the plots such that they appear on separate rows
+
+
+
+# This formats the plots such that they appear on separate rows
 # fig, axes = plt.subplots(nrows=2, ncols=1)
-
-# # Plot the PDF
-# df.fraction.plot(ax=axes[0], kind='hist', bins=30, normed=True, range=(0, .3))
+plt.subplot(211)
+# Plot the PDF
+usBond['Open'].plot(kind='hist',
+                    bins=30, density=True, edgecolor='black', linewidth=1.2)
 # plt.show()
 
-# # Plot the CDF
-# df.fraction.plot(ax=axes[1], kind='hist', bins=30,
-#                  normed=True, cumulative=True, range=(0, .3))
-# plt.show()
+# Plot the CDF
+plt.subplot(212)
+usBond['Open'].plot(kind='hist', bins=30, density=True, cumulative=True)
+plt.show()
 
+
+sp500A = sp500[['Adj Close']].rename(index=str, columns={'Adj Close': 'SP500'})
+print(sp500A.head())
+usBondA = usBond[['Adj Close']]
+usBondA.rename(index=str, columns={'Adj Close': 'Bond10Y'}, inplace=True)
+# usBondA.rename({'Adj Close': 'Bond10Y'}, axis='columns', inplace=True)
+print(usBondA.head())
+
+
+allclose = sp500A.join(usBondA, how='inner')
+
+print(allclose.head())
+
+returns = allclose.pct_change()
+correlation = returns['SP500'].corr(returns['Bond10Y'])
+print(f'Correlation of sp500 and UsBond10Y is {correlation}')
+
+plt.scatter(returns['SP500'], returns['Bond10Y'])
+plt.show()
 
 """ 
 df.index = pd.to_datetime(df.index)
