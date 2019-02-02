@@ -82,7 +82,7 @@ print("The autocorrelation of daily interest rate changes is %4.2f" %
 annual_data = daily_data['DGS10'].resample(rule='A').last()
 
 # Repeat above for annual data
-annual_data['diff_rates'] = annual_data.pct_change()
+annual_data['diff_rates'] = annual_data.diff()
 autocorrelation_annual = annual_data['diff_rates'].autocorr()
 print("The autocorrelation of annual interest rate changes is %4.2f" %
       (autocorrelation_annual))
