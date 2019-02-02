@@ -6,6 +6,11 @@ import statsmodels.api as sm
 import datetime
 import pandas_datareader as pdr
 
+
+from statsmodels.tsa.stattools import acf
+from statsmodels.graphics.tsaplots import plot_acf
+
+
 """ 
 B         business day frequency
 C         custom business day frequency (experimental)
@@ -54,6 +59,19 @@ print(returns.head())
 
 differ = differ.dropna()
 print(differ.head())
-differ.plot(differ['Adj Close'])
+differ['Adj Close'].plot()
+plt.show()
+
+HRB = pd.read_csv('HRB.csv', parse_dates=True, index_col='Quarter')
+HRB['Earnings'].plot()
+plt.show()
+
+print(HRB.head())
+# Compute the acf array of HRB
+acf_array = acf(HRB)
+print(acf_array)
+
+# Plot the acf function
+plot_acf(HRB)
 plt.show()
 
