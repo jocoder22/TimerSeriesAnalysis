@@ -9,6 +9,7 @@ import pandas_datareader as pdr
 from math import sqrt
 
 # https: // fred.stlouisfed.org/search?st = interest+rate
+# https://www.quantopian.com/posts/enhancing-short-term-mean-reversion-strategies-1
 path = "C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis"
 os.chdir(path)
 
