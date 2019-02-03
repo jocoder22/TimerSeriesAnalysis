@@ -14,13 +14,16 @@ from statsmodels.tsa.stattools import adfuller
 path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis'
 os.chdir(path)
 
-starttime = datetime.datetime(1997, 5, 15)
-endtime = datetime.datetime(2017, 8, 2)
+# starttime = datetime.datetime(1997, 5, 15)
+# endtime = datetime.datetime(2017, 8, 2)
 
-symbol = 'AMZN'
-AMZN = pdr.get_data_yahoo(symbol, starttime, endtime)
+# symbol = 'AMZN'
+# AMZN = pdr.get_data_yahoo(symbol, starttime, endtime)
+AMZN = pd.read_csv('AMZN.csv', parse_dates=True, index_col='Date')
 
 
+fig, axs = plt.subplots(nrows=2, ncols=2)
+ax1, ax2, ax3, ax4 = axs[0, 0], axs[1, 0], axs[0, 1], axs[1, 1]
 ################## White Noise
 
 # Simulate white noise returns
@@ -32,12 +35,15 @@ std = np.std(returns)
 print("The mean is %5.3f and the standard deviation is %5.3f" %(mean,std))
 
 # Plot returns series
-plt.plot(returns)
-plt.show()
+ax1.plot(returns)
+ax1.set_title("Simple Random Noise")
+# plt.show()
 
 # Plot autocorrelation function of white noise returns
-plot_acf(returns, lags=20)
-plt.show()
+# plt.subplot(222)
+plot_acf(returns, lags=20, ax=ax2)
+ax2.set_title('Autocorrelated White Noise')
+# plt.show()
 
 
 ############### Simulate stock prices
@@ -51,9 +57,10 @@ steps[0]=0
 P = 100 + np.cumsum(steps)
 
 # Plot the simulated stock prices
-plt.plot(P)
-plt.title("Simulated Random Walk")
-plt.show()
+# plt.subplot(223)
+ax3.plot(P)
+ax3.set_title("Simulated Random Walk")
+# plt.show()
 
 
 # Generate 500 random steps
@@ -66,15 +73,63 @@ steps[0]=1
 P = 100 * np.cumprod(steps)
 
 # Plot the simulated stock prices
-plt.plot(P)
-plt.title("Simulated Random Walk with Drift")
+# plt.subplot(224)
+ax4.plot(P)
+ax4.set_title("Simulated Random Walk with Drift")
 plt.show()
 
 
-
+############# adfuller test for random noise (null hypothesis --> this is a random noise)
 # Run the ADF test on the price series and print out the results
 results = adfuller(AMZN['Adj Close'])
 print(results)
 
 # Just print out the p-value
 print('The p-value of the test on prices is: ' + str(results[1]))
+
+
+plt.subplot(121)
+AMZN['Adj Close'].plot()
+plt.title('Amazon Adjusted Close prices')
+
+# Create a DataFrame of AMZN returns
+AMZN_ret = AMZN.pct_change()
+
+# Eliminate the NaN in the first row of returns
+AMZN_ret = AMZN_ret.dropna()
+
+# Run the ADF test on the return series and print out the p-value
+results = adfuller(AMZN_ret['Adj Close'])
+print('The p-value of the test on returns is: ' + str(results[1]))
+
+plt.subplot(122)
+AMZN_ret['Adj Close'].plot()
+plt.title('Amazon percentage change (returns)')
+plt.show()
+
+
+# Stationality 
+plt.subplot(131)
+HRB = pd.read_csv('HRB.csv', parse_dates=True, index_col='Quarter')
+HRB['Earnings'].plot()
+plt.title('HRB Earnings with seasonality')
+# plt.show()
+
+
+plt.subplot(132)
+plot_acf(HRB)
+plt.title('HRB Earnings autocorrelation')
+# Seasonally adjust quarterly earnings
+HRBsa = HRB.diff(4)
+
+# Print the first 10 rows of the seasonally adjusted series
+print(HRBsa.head(10))
+
+# Drop the NaN data in the first three three rows
+HRBsa = HRBsa.dropna()
+
+# Plot the autocorrelation function of the seasonally adjusted series
+plt.subplot(133)
+plot_acf(HRBsa)
+plt.title('HRB Earnings autocorrelation seasonally adjusted ')
+plt.show()
