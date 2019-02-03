@@ -6,6 +6,9 @@ import statsmodels.api as sm
 import datetime
 import pandas_datareader as pdr
 
+from statsmodels.tsa.stattools import acf
+from statsmodels.graphics.tsaplots import plot_acf
+
 path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis'
 os.chdir(path)
 
@@ -20,13 +23,32 @@ MSFT = MSFT.resample(rule='W').last()
 
 # Compute the percentage change of prices
 returns = MSFT.pct_change()
+returns = returns.dropna()
+print(returns.head())
 
 # Compute and print the autocorrelation of returns
 autocorrelation = returns['Adj Close'].autocorr()
 print("The autocorrelation of weekly returns is %4.2f" % (autocorrelation))
 
 
-################### From Fred: contains daily data of 10-year interest
+
+# Compute and print the autocorrelation of MSFT weekly returns
+autocorrelation = returns['Adj Close'].autocorr()
+print("The autocorrelation of weekly MSFT returns is %4.2f" %(autocorrelation))
+
+# Find the number of observations by taking the length of the returns DataFrame
+nobs = len(returns)
+print(nobs)
+# Compute the approximate confidence interval
+conf = 1.96/np.sqrt(nobs)
+print("The approximate confidence interval is +/- %4.2f" %(conf))
+
+# Plot the autocorrelation function with 95% confidence intervals and 20 lags using plot_acf
+plot_acf(returns['Adj Close'], alpha=0.05, lags=20)
+plt.show()
+
+
+################### From Fred: contains daily data of 10-year interest rate
 # https: // fred.stlouisfed.org/
 starttime = datetime.datetime(1962, 1, 1)
 endtime = datetime.datetime(2019, 1, 31)
