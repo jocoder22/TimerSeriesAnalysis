@@ -24,6 +24,8 @@ AMZN = pd.read_csv('AMZN.csv', parse_dates=True, index_col='Date')
 
 fig, axs = plt.subplots(nrows=2, ncols=2)
 ax1, ax2, ax3, ax4 = axs[0, 0], axs[1, 0], axs[0, 1], axs[1, 1]
+# plt.subplots(ax3, ax4, sharex=True)
+
 ################## White Noise
 
 # Simulate white noise returns
@@ -59,6 +61,8 @@ P = 100 + np.cumsum(steps)
 # Plot the simulated stock prices
 # plt.subplot(223)
 ax3.plot(P)
+ax3.axes.get_xaxis().set_visible(False)
+# ax3.axes.get_yaxis().set_ticks([])
 ax3.set_title("Simulated Random Walk")
 # plt.show()
 
@@ -76,11 +80,13 @@ P = 100 * np.cumprod(steps)
 # plt.subplot(224)
 ax4.plot(P)
 ax4.set_title("Simulated Random Walk with Drift")
+
 plt.show()
 
 
 ############# adfuller test for random noise (null hypothesis --> this is a random noise)
 # Run the ADF test on the price series and print out the results
+
 results = adfuller(AMZN['Adj Close'])
 print(results)
 
@@ -88,9 +94,10 @@ print(results)
 print('The p-value of the test on prices is: ' + str(results[1]))
 
 
-plt.subplot(121)
+plt.subplot(211)
 AMZN['Adj Close'].plot()
-plt.title('Amazon Adjusted Close prices')
+plt.xlabel("")
+plt.title('Amazon Adjusted Close Prices')
 
 # Create a DataFrame of AMZN returns
 AMZN_ret = AMZN.pct_change()
@@ -102,23 +109,43 @@ AMZN_ret = AMZN_ret.dropna()
 results = adfuller(AMZN_ret['Adj Close'])
 print('The p-value of the test on returns is: ' + str(results[1]))
 
-plt.subplot(122)
-AMZN_ret['Adj Close'].plot()
-plt.title('Amazon percentage change (returns)')
+plt.subplot(212)
+AMZN_ret['Adj Close'].plot(sharex=True)
+
+plt.title('Amazon Percentage Change Adjusted Close Prices (Returns)')
 plt.show()
 
 
+
+fig, (ax1, ax2, ax3) = plt.subplots(nrows=3)
+# ax1.axes.get_xaxis().set_visible(False)
+# ax1.xaxis.set_tick_params(labeltop='on')
+# ax1.xaxis.set_label_position('top')
+# put the major ticks at the middle of each cell
+# ax.set_xticks(np.arange(data.shape[1]) + 0.5, minor=False)
+# ax.set_yticks(np.arange(data.shape[0]) + 0.5, minor=False)
+
+# # want a more natural, table-like display
+# ax.invert_yaxis()
+# ax.xaxis.tick_top()
+
+# ax.set_xticklabels(column_labels, minor=False)
+# ax1.set_ylabel_text = "Joshua "
+# ax1.set_yticklabels([])
+ax1.xaxis.tick_top()
+ax2.axes.get_xaxis().set_visible(False)
 # Stationality 
-plt.subplot(131)
+# plt.subplot(131)
 HRB = pd.read_csv('HRB.csv', parse_dates=True, index_col='Quarter')
-HRB['Earnings'].plot()
-plt.title('HRB Earnings with seasonality')
+HRB['Earnings'].plot(ax=ax1)
+ax1.set_xlabel(" ")
+ax1.set_title('HRB Earnings with seasonality')
 # plt.show()
 
 
-plt.subplot(132)
-plot_acf(HRB)
-plt.title('HRB Earnings autocorrelation')
+# plt.subplot(132)
+plot_acf(HRB, ax=ax2)
+ax2.set_title('HRB Earnings autocorrelation')
 # Seasonally adjust quarterly earnings
 HRBsa = HRB.diff(4)
 
@@ -129,7 +156,7 @@ print(HRBsa.head(10))
 HRBsa = HRBsa.dropna()
 
 # Plot the autocorrelation function of the seasonally adjusted series
-plt.subplot(133)
-plot_acf(HRBsa)
-plt.title('HRB Earnings autocorrelation seasonally adjusted ')
+# plt.subplot(133)
+plot_acf(HRBsa, ax=ax3)
+ax3.set_title('HRB Earnings autocorrelation seasonally adjusted ')
 plt.show()
