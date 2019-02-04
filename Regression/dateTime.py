@@ -47,6 +47,7 @@ df = pd.DataFrame(data=data, index=df2['Data'])
 print(df.head())
 
 
+
 # Create the range of dates here
 seven_days = pd.date_range(start='2017-1-1', periods=7)
 
