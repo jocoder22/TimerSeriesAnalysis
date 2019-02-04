@@ -7,6 +7,7 @@ plt.style.use('ggplot')
 from statsmodels.tsa.arima_process import ArmaProcess
 from statsmodels.graphics.tsaplots import plot_acf
 from statsmodels.tsa.arima_model import ARMA
+from statsmodels.graphics.tsaplots import plot_pacf
 
 # Plot 1: AR parameter = +0.9
 plt.subplot(3,1,1)
