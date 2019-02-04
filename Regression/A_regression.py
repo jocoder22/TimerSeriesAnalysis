@@ -6,6 +6,7 @@ plt.style.use('ggplot')
 
 from statsmodels.tsa.arima_process import ArmaProcess
 from statsmodels.graphics.tsaplots import plot_acf
+from statsmodels.tsa.arima_model import ARMA
 
 # Plot 1: AR parameter = +0.9
 plt.subplot(3,1,1)
@@ -55,7 +56,45 @@ ax2.set_title('AR parameter = +0.3')
 # plt.show()
 
 # Plot 3: AR parameter = -0.9
-plot_acf(simulated_data_3, alpha=1, lags=20, ax=ax3)
+plot_acf(simulated_data_3, alpha=0.05, lags=20, ax=ax3)
 ax3.set_title('AR parameter = -0.9')
 plt.show()
 
+
+
+################ Fitting the models
+
+# Fit an AR(1) model to the first simulated data
+mod = ARMA(simulated_data_1, order=(1, 0))
+res = mod.fit()
+
+# Print out summary information on the fit
+print(res.summary())
+
+# Print out the estimate for the constant and for phi
+print("When the true phi=0.9, the estimate of phi (and the constant) are:")
+print(res.params)
+
+# Fit an AR(1) model to the second simulated data
+mod = ARMA(simulated_data_2, order=(1, 0))
+res = mod.fit()
+
+
+# Print out the estimate for the constant and for phi
+print("When the true phi=0.9, the estimate of phi (and the constant) are:")
+print(res.params)
+
+# Fit an AR(1) model to the third simulated data
+mod = ARMA(simulated_data_3, order=(1, 0))
+res = mod.fit()
+
+# Print out the estimate for the constant and for phi
+print("When the true phi=0.9, the estimate of phi (and the constant) are:")
+print(res.params)
+
+
+# Forecast the first AR(1) model
+mod = ARMA(simulated_data_1, order=(1, 0))
+res = mod.fit()
+res.plot_predict(start=990, end=1010)
+plt.show()
