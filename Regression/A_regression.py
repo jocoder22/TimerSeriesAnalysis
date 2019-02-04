@@ -99,3 +99,30 @@ mod = ARMA(simulated_data_1, order=(1, 0))
 res = mod.fit()
 res.plot_predict(start=990, end=1010)
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# https://pypi.org/project/iexfinance/
+# pip3 install iexfinance
+from datetime import datetime
+from iexfinance.stocks import get_historical_intraday
+date = datetime(2018, 11, 27)
+yy = pd.DataFrame(get_historical_intraday("S", date))
+yy.head()
+
+dd = get_historical_intraday("S", output_format='pandas')
+
+date = datetime(2018, 11, 27)
+
+ff = pd.DataFrame(get_historical_intraday("AAPL", date))

@@ -11,8 +11,8 @@ import pandas_datareader as pdr
 # https: // fred.stlouisfed.org/search?st = interest+rate
 # https://www.quantopian.com/posts/enhancing-short-term-mean-reversion-strategies-1
 
-# path = "C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis"
-path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis'
+path = "C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis"
+# path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis'
 os.chdir(path)
 
 symbol = 'AAPL'
@@ -21,6 +21,7 @@ endtime = datetime.datetime(2019, 1, 31)
 apple = pdr.get_data_yahoo(symbol, starttime, endtime)
 
 
+print(apple.head())
 symbol = "^GSPC"
 sp500 = pdr.get_data_yahoo(symbol, starttime, endtime)
 
