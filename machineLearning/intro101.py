@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+from librosa.display import specshow
+from librosa.core import amplitude_to_db
+from librosa.core import stft
+from sklearn.model_selection import cross_val_score
 import os
 import numpy as np
 import pandas as pd
@@ -113,3 +117,62 @@ audio_rectified = audio.apply(np.abs)
 # Plot the result
 audio_rectified.plot()
 plt.show()
+
+
+# Smooth by applying a rolling mean
+roll = int(audio.shape[0] / sfreq  * 50)
+audio_rectified_smooth = audio_rectified.rolling(roll).mean()
+
+# Plot the result
+audio_rectified_smooth.plot()
+plt.show()
+
+
+# Calculate stats
+means = np.mean(audio_rectified_smooth, axis=0)
+stds = np.std(audio_rectified_smooth, axis=0)
+maxs = np.max(audio_rectified_smooth, axis=0)
+
+# Create the X and y arrays
+label = 'nomal'
+labels = np.array(label)
+X = np.column_stack([means, stds, maxs])
+y = labels.reshape([-1, 1])
+
+# Fit the model and score on testing data
+# percent_score = cross_val_score(model, X, y, cv=5)
+# print(np.mean(percent_score))
+
+# print(X, y)
+# tempos = []
+# for col, i_audio in audio.items():
+#     tempos.append(lr.beat.tempo(i_audio.values, sr=sfreq,
+#                                 hop_length=2**6, aggregate=None))
+
+# # Convert the list to an array so you can manipulate it more easily
+# tempos = np.array(tempos)
+
+# # Calculate statistics of each tempo
+# tempos_mean = tempos.mean(axis=-1)
+# tempos_std = tempos.std(axis=-1)
+# tempos_max = tempos.max(axis=-1)
+
+audio = audio.values
+print(audio[:10])
+# tempos = lr.beat.tempo(audio, sr=sfreq,
+#                         hop_length=2**6, aggregate=None)
+
+
+# Prepare the STFT
+HOP_LENGTH = 2**4
+spec = stft(audio, hop_length=HOP_LENGTH, n_fft=2**7)
+
+
+# Convert into decibels
+spec_db = amplitude_to_db(spec)
+
+# Compare the raw audio to the spectrogram of the audio
+fig, axs = plt.subplots(2, 1, figsize=(10, 10), sharex=True)
+axs[0].plot(time, audio)
+specshow(spec_db, sr=sfreq, x_axis='time', y_axis='hz', hop_length=HOP_LENGTH)
+
