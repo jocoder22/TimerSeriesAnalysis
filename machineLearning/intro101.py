@@ -47,11 +47,28 @@ from datetime import datetime
 # plt.show()
 
 
-# Audio data using librosa
-from glob import glob
-import librosa as lr
-files = glob('C:\\Users\\Public\\Music\\Sample Music\\*.mp3')
+# # Audio data using librosa
+# from glob import glob
+# import librosa as lr
+# files = glob('C:\\Users\\Public\\Music\\Sample Music\\*.mp3')
 
-audio, sfreq = lr.load(files[1])
-print(type(audio), type(sfreq))
-print(audio.shape, sfreq.shape)
+# audio, sfreq = lr.load(files[1])
+# print(type(audio), type(sfreq))
+# print(audio.shape, sfreq.shape)
+
+
+from pydub import AudioSegment
+path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\machineLearning\\'
+os.chdir(path)
+
+src = "maky.mp3"
+src2 = "C:/Users/okigboo/Desktop/TimeSeriesAnalysis/machineLearning/maky.mp3"
+dst = "test1.wav"
+# song = AudioSegment.from_mp3(src)
+# song.export(dst, format="wav")
+
+
+import subprocess
+
+subprocess.call(['ffmpeg', '-i', src2,
+                   dst])
