@@ -48,27 +48,68 @@ from datetime import datetime
 
 
 # # Audio data using librosa
-# from glob import glob
-# import librosa as lr
-# files = glob('C:\\Users\\Public\\Music\\Sample Music\\*.mp3')
+import librosa as lr
 
-# audio, sfreq = lr.load(files[1])
-# print(type(audio), type(sfreq))
-# print(audio.shape, sfreq.shape)
+file1 = 'C:\\Users\\okigboo\Desktop\\TimeSeriesAnalysis\\machineLearning\\maky.wav'
+audio, sfreq = lr.load(file1)
+print(type(audio), type(sfreq))
+print(audio.shape)
+print(sfreq)
+
+# time = np.arange(audio.shape[0]) / sfreq
+time = np.arange(0, len(audio)) / sfreq
+print(len(time))
+
+print(audio)
+
+normal = pd.DataFrame({'time': time, 'audio': audio}).set_index('time')
+print(normal.head())
+print(normal.tail())
+
+normal.plot()
+plt.show()
+# # Plot audio over time
+# fig, ax = plt.subplots()
+# ax.plot(time, audio)
+# ax.set(xlabel='Time (s)', ylabel='Sound Amplitude')
+# plt.show()
 
 
-from pydub import AudioSegment
-path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\machineLearning\\'
-os.chdir(path)
+# from pydub import AudioSegment
+# path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\machineLearning\\'
+# os.chdir(path)
 
-src = "maky.mp3"
-src2 = "C:/Users/okigboo/Desktop/TimeSeriesAnalysis/machineLearning/maky.mp3"
-dst = "test1.wav"
-# song = AudioSegment.from_mp3(src)
-# song.export(dst, format="wav")
+# # src = "maky.mp3"
+# # src2 = "C:/Users/okigboo/Desktop/TimeSeriesAnalysis/machineLearning/maky.mp3"
+# # src2 = 'C:\\Users\\okigboo\Desktop\\TimeSeriesAnalysis\\machineLearning\\maky2.mp3'
+
+# # # dst = "test1.wav"
+# # # song = AudioSegment.from_mp3(src2)
+# # # song.export(dst, format="wav")
 
 
-import subprocess
+# # import subprocess
 
-subprocess.call(['ffmpeg', '-i', src2,
-                   dst])
+# # subprocess.call(['ffmpeg', '-i', src2,
+# #                    dst])
+
+# ticker = ['AAPl', 'FB', 'NFLX', 'V', 'XOM']
+# data = pdr.get_data_yahoo(ticker, starttime, endtime)['Adj Close']
+
+# print(data.head())
+
+# # Loop through each column, plot its values over time
+# fig, ax = plt.subplots()
+# for column in data.columns:
+#     data[column].plot(ax=ax, label=column)
+# ax.legend()
+# plt.show()
+
+
+# Rectify the audio signal
+audio = pd.Series(audio)
+audio_rectified = audio.apply(np.abs)
+
+# Plot the result
+audio_rectified.plot()
+plt.show()
