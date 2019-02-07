@@ -18,30 +18,30 @@ from sklearn.model_selection import cross_val_score
 startdate = datetime(2010,1,4)
 enddate = datetime(2015,1,31)
 
-# stocks = ['EBAY', 'YAHOY']
-# data = pdr.get_data_yahoo(stocks, startdate, enddate)['Adj Close']
-
-# # Scatterplot stocks prices
-# data.plot.scatter('EBAY', 'YAHOY')
-# plt.show()
-
-
-
-
-# data = pdr.get_data_yahoo('CHK', startdate, enddate)['Adj Close']
-# print(data.head())
-
-
-
+stocks = ['EBAY', 'YAHOY']
+data = pdr.get_data_yahoo(stocks, startdate, enddate)['Adj Close']
 
 # Scatterplot stocks prices
-# data.plot.scatter('EBAY', 'YAHOY')
-# plt.show()
+data.plot.scatter('EBAY', 'YAHOY')
+plt.show()
 
-# # Scatterplot with color relating to time
-# data.plot.scatter('EBAY', 'YAHOY', c=data.index,
-#                     cmap=plt.cm.viridis, colorbar=False)
-# plt.show()
+
+
+
+data = pdr.get_data_yahoo('CHK', startdate, enddate)['Adj Close']
+print(data.head())
+
+
+
+
+Scatterplot stocks prices
+data.plot.scatter('EBAY', 'YAHOY')
+plt.show()
+
+# Scatterplot with color relating to time
+data.plot.scatter('EBAY', 'YAHOY', c=data.index,
+                    cmap=plt.cm.viridis, colorbar=False)
+plt.show()
 # stocklist = ['HPE']
 
 stocklist = ['AAPL', 'ABT', 'AIG','AMAT', 'ARNC', 'BAC', 'BSX', 'C',  'CMCSA',
@@ -51,8 +51,15 @@ stocklist = ['AAPL', 'ABT', 'AIG','AMAT', 'ARNC', 'BAC', 'BSX', 'C',  'CMCSA',
              'QCOM', 'RF', 'SBUX', 'T', 'V', 'VZ', 'WFC', 'XOM', 'XRX', 'YAHOY']
 
 allstocks = pdr.get_data_yahoo(stocklist, startdate, enddate)['Adj Close']
-predictions_series = allstocks.isna().sum()
-print(predictions_series)
+missing_values = allstocks.isna().sum()
+pp = missing_values.index[missing_values.values > 0]
+print(missing_values)
+
+missingstocks = allstocks[list(pp)]
+missingstocks.plot()
+plt.show()
+
+
 allstocks.fillna(method='bfill', inplace=True)
 print(allstocks.head())
 
