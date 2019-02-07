@@ -21,22 +21,19 @@ enddate = datetime(2015,1,31)
 stocks = ['EBAY', 'YAHOY']
 data = pdr.get_data_yahoo(stocks, startdate, enddate)['Adj Close']
 
+# Visualize the dataset
+data.plot(legend=False)
+plt.tight_layout()
+plt.show()
+
+# Count the missing values of each time series
+missing_values = data.isna().sum()
+print(missing_values)
+
 # Scatterplot stocks prices
 data.plot.scatter('EBAY', 'YAHOY')
 plt.show()
 
-
-
-
-data = pdr.get_data_yahoo('CHK', startdate, enddate)['Adj Close']
-print(data.head())
-
-
-
-
-Scatterplot stocks prices
-data.plot.scatter('EBAY', 'YAHOY')
-plt.show()
 
 # Scatterplot with color relating to time
 data.plot.scatter('EBAY', 'YAHOY', c=data.index,

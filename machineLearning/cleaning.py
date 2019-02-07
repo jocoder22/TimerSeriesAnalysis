@@ -17,3 +17,24 @@ enddate = datetime(2015, 1, 31)
 stocks = ['FB', 'GM', 'KMI', 'YAHOY']
 close_price = pdr.get_data_yahoo(stocks, startdate, enddate)['Adj Close']
 
+# Visualize the dataset
+close_price.plot(legend=False)
+plt.tight_layout()
+plt.show()
+
+# Count the missing values of each time series
+missing_values = close_price.isna().sum()
+print(missing_values)
+
+# linear interpolations
+close_price_pol = close_price.interpolate('linear')
+
+
+# plot the interoplated values
+fig, ax = plt.subplots()
+ax = close_price_pol.plot(c='g')
+close_price.plot(c='k', ax=ax, lw=3)
+plt.show()
+
+
+
