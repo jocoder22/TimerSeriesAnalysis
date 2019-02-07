@@ -58,6 +58,7 @@ def interpolate_and_plot(prices, interpolation):
 
     # Now plot the interpolated values on top in red
     prices_interp[missing_values].plot(ax=ax, color='r', lw=3, legend=False)
+    ax.set(title=f"Interpolation using {interpolation} function")
     plt.show()
 
 
@@ -67,4 +68,8 @@ interpolate_and_plot(cprice, interpolation_type)
 
 # linear interpolation
 interpolation_type = 'linear'
+interpolate_and_plot(cprice, interpolation_type)
+
+# using quadratic function
+interpolation_type = 'quadratic'
 interpolate_and_plot(cprice, interpolation_type)
