@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
 import os
 import numpy as np
 import pandas as pd
@@ -58,6 +60,25 @@ print(NON_LABELS)
 X = allstocks.drop('AAPL', axis=1)
 y = allstocks['AAPL']
 
-scores = cross_val_score(Ridge(), X, y, cv=3)
+scores = cross_val_score(Ridge(), X, y, cv=6)
 print(scores)
 
+
+
+# Split our data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                                    train_size=.8, shuffle=False, random_state=1)
+
+# Fit our model and generate predictions
+model = Ridge()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+score = r2_score(y_test, predictions)
+print(score)
+
+
+# Visualize our predictions along with the "true" values, and print the score
+fig, ax = plt.subplots()
+ax.plot(y_test, color='k', lw=3)
+ax.plot(predictions, color='r', lw=2)
+plt.show()
