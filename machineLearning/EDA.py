@@ -51,6 +51,8 @@ stocklist = ['AAPL', 'ABT', 'AIG','AMAT', 'ARNC', 'BAC', 'BSX', 'C',  'CMCSA',
              'QCOM', 'RF', 'SBUX', 'T', 'V', 'VZ', 'WFC', 'XOM', 'XRX', 'YAHOY']
 
 allstocks = pdr.get_data_yahoo(stocklist, startdate, enddate)['Adj Close']
+predictions_series = allstocks.isna().sum()
+print(predictions_series)
 allstocks.fillna(method='bfill', inplace=True)
 print(allstocks.head())
 
@@ -78,7 +80,18 @@ print(score)
 
 
 # Visualize our predictions along with the "true" values, and print the score
-fig, ax = plt.subplots()
-ax.plot(y_test, color='k', lw=3)
-ax.plot(predictions, color='r', lw=2)
+# convert prediction, np arrays to pandas Series
+predictions_series = pd.Series(predictions, index=y_test.index)
+plt.subplot(1,1,1)
+y_test.plot(color='k', lw=3, label="Actual Prices")
+predictions_series.plot(color='r', lw=2, label="Predicted Prices")
+plt.title("Actual and Predicted Prices")
+plt.legend()
 plt.show()
+
+# fig, ax = plt.subplots()
+# ax.plot(y_test, color='k', lw=3, label="Actual Prices")
+# ax.plot(predictions_series, color='r', lw=2, label="Predicted Prices")
+# ax.set(title=" Actual and Predicted Prices")
+# plt.legend()
+# plt.show()
