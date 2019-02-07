@@ -61,6 +61,10 @@ def interpolate_and_plot(prices, interpolation):
     plt.show()
 
 
+# using latest non-missing values
 interpolation_type = 'zero'
 interpolate_and_plot(cprice, interpolation_type)
 
+# linear interpolation
+interpolation_type = 'linear'
+interpolate_and_plot(cprice, interpolation_type)
