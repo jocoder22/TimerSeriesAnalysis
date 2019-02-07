@@ -112,20 +112,21 @@ plt.show()
 
 # # Rectify the audio signal
 audio = pd.Series(audio)
-# audio_rectified = audio.apply(np.abs)
+audio_rectified = audio.apply(np.abs)
 
-# # Plot the result
-# audio_rectified.plot()
-# plt.show()
+# Plot the result
+audio_rectified.plot()
+plt.show()
 
 
-# # Smooth by applying a rolling mean
-# roll = int(audio.shape[0] / sfreq  * 50)
-# audio_rectified_smooth = audio_rectified.rolling(roll).mean()
+# Smooth by applying a rolling mean
+# roll = int(np.sqrt(audio.shape[0]))
+roll = int(audio.shape[0] / sfreq  * 90)
+audio_rectified_smooth = audio_rectified.rolling(roll).mean()
 
-# # Plot the result
-# audio_rectified_smooth.plot()
-# plt.show()
+# Plot the result
+audio_rectified_smooth.plot()
+plt.show()
 
 
 # # Calculate stats
