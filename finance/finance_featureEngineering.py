@@ -11,6 +11,7 @@ from statsmodels.tsa.arima_model import ARMA
 from statsmodels.graphics.tsaplots import plot_pacf
 
 # https://www.lfd.uci.edu/~gohlke/pythonlibs/
+# http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/
 import talib
 
 stocksname = ['LNG']
