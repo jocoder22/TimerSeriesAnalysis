@@ -10,7 +10,8 @@ from statsmodels.graphics.tsaplots import plot_acf
 from statsmodels.tsa.arima_model import ARMA
 from statsmodels.graphics.tsaplots import plot_pacf
 
-# import talib
+# https://www.lfd.uci.edu/~gohlke/pythonlibs/
+import talib
 
 stocksname = ['LNG']
 stocksname2 = ['SPY']
@@ -37,14 +38,23 @@ feature_names = ['5d_close_pct']  # a list of the feature names for later
 for n in [14, 30, 50, 200]:
 
     # Create the moving average indicator and divide by Adj_Close
-    # lng_df['ma{}'.format(n)] = talib.SMA(lng_df['Adj_Close'].values,
-    #                                   timeperiod=n) / lng_df['Adj_Close']
+    lng_df['ma{}'.format(n)] = talib.SMA(lng_df['Adj_Close'].values,
+                                      timeperiod=n) / lng_df['Adj_Close']
     # Create the RSI indicator
-    lng_df[f'rsi{n}'] = lng_df['Adj_Close'].rolling(n).mean()
-    spy_df[f'ma{n}'] = spy_df['Adj_Close'].rolling(n).mean()
+    lng_df[f'rsi{n}'] = talib.RSI(lng_df['Adj_Close'].values, timeperiod=n) 
+    lng_df[f'rm{n}'] = lng_df['Adj_Close'].rolling(n).mean()
 
-    # Add rsi and moving average to the feature name list
-    feature_names.extend([f'ma{n}', f'rsi{n}'])
+    # Create the moving average indicator and divide by Adj_Close
+    spy_df['ma{}'.format(n)] = talib.SMA(spy_df['Adj_Close'].values,
+                                      timeperiod=n) / lng_df['Adj_Close']
+    # Create the RSI indicator
+    spy_df[f'rsi{n}'] = talib.RSI(spy_df['Adj_Close'].values, timeperiod=n) 
+    spy_df[f'rm{n}'] = spy_df['Adj_Close'].rolling(n).mean()
+
+
+    # Add rsi. rollingmean and moving average to the feature name list
+    feature_names.extend([f'ma{n}', f'rsi{n}', f'rm{n}'])
+
 
 print(feature_names)
 

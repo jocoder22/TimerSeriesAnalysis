@@ -54,24 +54,25 @@ from datetime import datetime
 # # Audio data using librosa
 import librosa as lr
 
-file1 = 'C:\\Users\\okigboo\Desktop\\TimeSeriesAnalysis\\machineLearning\\maky.wav'
-audio, sfreq = lr.load(file1)
-print(type(audio), type(sfreq))
-print(audio.shape)
-print(sfreq)
+# # file1 = 'C:\\Users\\okigboo\Desktop\\TimeSeriesAnalysis\\machineLearning\\maky.wav'
+# file1 = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\maky.wav'
+# audio, sfreq = lr.load(file1)
+# print(type(audio), type(sfreq))
+# print(audio.shape)
+# print(sfreq)
 
-# time = np.arange(audio.shape[0]) / sfreq
-time = np.arange(0, len(audio)) / sfreq
-print(len(time))
+# # time = np.arange(audio.shape[0]) / sfreq
+# time = np.arange(0, len(audio)) / sfreq
+# print(len(time))
 
-print(audio)
+# print(audio)
 
-normal = pd.DataFrame({'time': time, 'audio': audio}).set_index('time')
-print(normal.head())
-print(normal.tail())
+# normal = pd.DataFrame({'time': time, 'audio': audio}).set_index('time')
+# print(normal.head())
+# print(normal.tail())
 
-normal.plot()
-plt.show()
+# normal.plot()
+# plt.show()
 # # Plot audio over time
 # fig, ax = plt.subplots()
 # ax.plot(time, audio)
@@ -79,23 +80,41 @@ plt.show()
 # plt.show()
 
 
-# from pydub import AudioSegment
+from pydub import AudioSegment
 # path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\machineLearning\\'
+# path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\'
 # os.chdir(path)
 
-# # src = "maky.mp3"
-# # src2 = "C:/Users/okigboo/Desktop/TimeSeriesAnalysis/machineLearning/maky.mp3"
-# # src2 = 'C:\\Users\\okigboo\Desktop\\TimeSeriesAnalysis\\machineLearning\\maky2.mp3'
+# src = "C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\maky2.mp3"
+# dst = "C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\test1.wav"
 
-# # # dst = "test1.wav"
-# # # song = AudioSegment.from_mp3(src2)
-# # # song.export(dst, format="wav")
+src = "C:/Users/Jose/Desktop/TimerSeriesAnalysis/machineLearning/maky2.mp3"
+dst = "C:/Users/Jose/Desktop/TimerSeriesAnalysis/machineLearning/test1.wav"
+
+# song = AudioSegment.from_mp3("C:/Users/Jose/Desktop/TimerSeriesAnalysis/machineLearning/maky2.mp3")
+# song.export("C:/Users/Jose/Desktop/TimerSeriesAnalysis/machineLearning/test1.wav", format="wav")
 
 
-# # import subprocess
 
-# # subprocess.call(['ffmpeg', '-i', src2,
-# #                    dst])
+
+
+
+
+import pydub
+sound = pydub.AudioSegment.from_mp3("C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\maky2.mp3")
+# sound.export("D:/example/apple.wav", format="wav")
+
+
+
+
+
+
+
+
+# import subprocess
+
+# subprocess.call(['ffmpeg', '-i', src,
+#                    dst])
 
 # ticker = ['AAPl', 'FB', 'NFLX', 'V', 'XOM']
 # data = pdr.get_data_yahoo(ticker, starttime, endtime)['Adj Close']
