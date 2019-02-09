@@ -55,30 +55,30 @@ plt.show()
 # # Audio data using librosa
 import librosa as lr
 
-# # file1 = 'C:\\Users\\okigboo\Desktop\\TimeSeriesAnalysis\\machineLearning\\maky.wav'
-# file1 = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\maky.wav'
-# audio, sfreq = lr.load(file1)
-# print(type(audio), type(sfreq))
-# print(audio.shape)
-# print(sfreq)
+# file1 = 'C:\\Users\\okigboo\Desktop\\TimeSeriesAnalysis\\machineLearning\\maky.wav'
+file1 = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\maky.wav'
+audio, sfreq = lr.load(file1)
+print(type(audio), type(sfreq))
+print(audio.shape)
+print(sfreq)
 
-# # time = np.arange(audio.shape[0]) / sfreq
-# time = np.arange(0, len(audio)) / sfreq
-# print(len(time))
+# time = np.arange(audio.shape[0]) / sfreq
+time = np.arange(0, len(audio)) / sfreq
+print(len(time))
 
-# print(audio)
+print(audio)
 
-# normal = pd.DataFrame({'time': time, 'audio': audio}).set_index('time')
-# print(normal.head())
-# print(normal.tail())
+normal = pd.DataFrame({'time': time, 'audio': audio}).set_index('time')
+print(normal.head())
+print(normal.tail())
 
-# normal.plot()
-# plt.show()
-# # Plot audio over time
-# fig, ax = plt.subplots()
-# ax.plot(time, audio)
-# ax.set(xlabel='Time (s)', ylabel='Sound Amplitude')
-# plt.show()
+normal.plot()
+plt.show()
+# Plot audio over time
+fig, ax = plt.subplots()
+ax.plot(time, audio)
+ax.set(xlabel='Time (s)', ylabel='Sound Amplitude')
+plt.show()
 
 
 from pydub import AudioSegment
