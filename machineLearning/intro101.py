@@ -101,9 +101,9 @@ dst = "C:/Users/Jose/Desktop/TimerSeriesAnalysis/machineLearning/test1.wav"
 
 
 
-import pydub
-sound = pydub.AudioSegment.from_mp3("C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\maky2.mp3")
-# sound.export("D:/example/apple.wav", format="wav")
+# import pydub
+# sound = pydub.AudioSegment.from_mp3("C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\machineLearning\\maky2.mp3")
+# # sound.export("D:/example/apple.wav", format="wav")
 
 
 
@@ -112,10 +112,10 @@ sound = pydub.AudioSegment.from_mp3("C:\\Users\\Jose\\Desktop\\TimerSeriesAnalys
 
 
 
-# import subprocess
+import subprocess
 
-# subprocess.call(['ffmpeg', '-i', src,
-#                    dst])
+subprocess.call(['ffmpeg', '-i', src,
+                   dst])
 
 # ticker = ['AAPl', 'FB', 'NFLX', 'V', 'XOM']
 # data = pdr.get_data_yahoo(ticker, starttime, endtime)['Adj Close']
