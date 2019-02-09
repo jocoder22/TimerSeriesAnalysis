@@ -143,6 +143,9 @@ print(results.summary())
 # Features with p <= 0.05 are typically considered significantly different from 0
 print(results.pvalues)
 
+# Make predictions from our model for train and test sets
+train_predictions = results.predict(train_features)
+test_predictions = results.predict(test_features)
 
 # Scatter the predictions vs the targets with 80% transparency
 plt.scatter(train_predictions, train_targets, alpha=0.2, color='b', label='train')
