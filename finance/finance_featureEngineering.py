@@ -12,6 +12,7 @@ from statsmodels.graphics.tsaplots import plot_pacf
 
 # https://www.lfd.uci.edu/~gohlke/pythonlibs/
 # http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/
+# http://codetheory.in/how-to-convert-a-video-with-python-and-ffmpeg/
 import talib
 
 stocksname = ['LNG']
