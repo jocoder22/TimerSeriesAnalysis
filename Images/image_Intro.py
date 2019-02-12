@@ -3,8 +3,10 @@ import imageio
 import visvis as vv
 import matplotlib.pyplot as plt
 
+
 im = imageio.imread('imageio:chelsea.png')
 vv.imshow(im)
+
 
 im = imageio.imread('https://www.google.com/photos/about/static/images/hero.jpg')
 im2 = imageio.imread('https://www.google.com/photos/about/static/images/hero.jpg')
