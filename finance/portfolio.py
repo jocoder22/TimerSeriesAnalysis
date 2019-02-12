@@ -6,7 +6,7 @@ from sklearn import datasets
 # plt.style.use('ggplot')
 import pandas_datareader as pdr
 from datetime import datetime
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor
 
 
 path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\finance'
@@ -162,8 +162,7 @@ test_targets = targets[train_size:]
 
 # Fit the model and check scores on train and test
 # fit a randomforest tree model
-rfr = RandomForestClassifier(criterion='gini', n_estimators=500,
-                                 random_state=1, n_jobs=2)
+rfr = RandomForestRegressor(n_estimators=300, random_state=42)
 rfr.fit(train_features, train_targets)
 print(rfr.score(train_features, train_targets))
 print(rfr.score(test_features, test_targets))
