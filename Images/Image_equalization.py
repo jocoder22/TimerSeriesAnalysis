@@ -25,18 +25,19 @@ bones = np.where(boneMask, im, 0)
 skin = np.where(skinMask, im, 0)
 
 
-bonedilate = ndi.binary_dilation(boneMask, iterations=5)
-boneclosed = ndi.binary_closing(boneMask, iterations=5)
+# bonedilate = ndi.binary_dilation(boneMask, iterations=5)
+# boneclosed = ndi.binary_closing(boneMask, iterations=5)
+
 plt.imshow(bones, cmap='gray')
 plt.axis('off')
 plt.show()
 
 
-fig, axes = plt.subplots(1, 3)
-axes[0].imshow(bones)
-axes[1].imshow(bonedilate)
-axes[2].imshow(boneclosed)
-format_and_render_plot()
+# fig, axes = plt.subplots(1, 3)
+# axes[0].imshow(bones)
+# axes[1].imshow(bonedilate)
+# axes[2].imshow(boneclosed)
+# format_and_render_plot()
 
 
 plt.imshow(skin, cmap='gray')
