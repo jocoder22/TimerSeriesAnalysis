@@ -14,14 +14,22 @@ def format_and_render_plot():
 
 
 ############# works for 2 D images
-path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
-path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
+# path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
+# path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
+path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\hand.jpg'
 im = imageio.imread(path)
-plt.imshow(im)
+
+bones = np.where(im > 64, im, 0)
+plt.imshow(bones, cmap='gray')
 plt.axis('off')
 plt.show()
 
 
+plt.imshow(im[:,:,0])
+plt.axis('off')
+plt.show()
+
+im = im[:, :, 0]
 weights = [[[0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
             [0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
             [0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
@@ -33,10 +41,10 @@ weights = [[[0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
             [0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
             [0.235, 0.235, 0.235, 0.235, 0.235, 0.235]]]
 
-weights = [[[0.234,  0.234],
-            [0.234,  0.234]],
-           [[0.234,  0.234],
-           [0.234,  0.234]]]
+weights = [[0.234,  0.234],
+           [0.234,  0.234],
+           [0.234,  0.234],
+           [0.234,  0.234]]
 
 
 # Convolve the image with the filter
