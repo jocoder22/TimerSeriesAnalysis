@@ -14,9 +14,11 @@ def format_and_render_plot():
 
 
 ############# works for 2 D images
-path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
+path3 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
 path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
+path = "C:\\Users\\Jose\\Pictures\\Public\\images2.jpg"
 im = imageio.imread(path)
+print(im.shape)
 plt.imshow(im)
 plt.axis('off')
 plt.show()
@@ -101,7 +103,7 @@ plt.show()
 
 
 
-
+################# 
 im = imageio.imread(path)
 print('Data type:', im.dtype)
 print('Min. value:', im.min())
@@ -144,12 +146,25 @@ format_and_render_plot()
 
 
 # Apply Sobel filter along both axes
+
+print(im.shape)
 sobel_ax0 = ndi.sobel(im, axis=0)
 sobel_ax1 = ndi.sobel(im, axis=1)
 
+
+weights = [[[+2, 0, -1], [+1, 0, -2], [+2, 0, -1]],
+            [[+1, 0, 1], [+1, 0, -2], [0, 0, 0]],
+            [[+2, 0, -1], [+1, 0, -2], [+1, 0, -1]]]
+
+
+# Convolve "im" with filter weights
+edges = ndi.convolve(im, weights)
+
+edges = ndi.convolve(im, weights)
 # Calculate edge magnitude 
-edges = np.sqrt(np.square(sobel_ax0) + np.square(sobel_ax1))
+# edges =  np.sqrt(np.square(sobel_ax0) + np.square(sobel_ax1))
 
 # Plot edge magnitude
-plt.imshow(edges, cmap='gray', vmax=75)
+plt.imshow(edges, cmap='gray')
+plt.colorbar()
 format_and_render_plot()
