@@ -5,26 +5,13 @@ import scipy.ndimage as ndi
 import matplotlib.pyplot as plt
 
 
-# def format_and_render_plot():
-#     '''Custom function to simplify common formatting operations for exercises. Operations include: 
-#     1. Turning off axis grids.
-#     2. Calling `plt.tight_layout` to improve subplot spacing.
-#     3. Calling `plt.show()` to render plot.'''
-#     fig = plt.gcf()
-#     fig.axes[0].axis('off')
-#     plt.tight_layout()
-#     plt.show()
-
-
 def format_and_render_plot():
-    '''Custom function to simplify common formatting operations for exercises. Operations include: 
-    1. Turning off axis grids.
-    2. Calling `plt.tight_layout` to improve subplot spacing.
-    3. Calling `plt.show()` to render plot.'''
     fig = plt.gcf()
     for ax in fig.axes:
         ax.legend(loc='center right')
+        ax.axis('off')
     plt.show()
+
 
 ############# works for 2 D images
 path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
