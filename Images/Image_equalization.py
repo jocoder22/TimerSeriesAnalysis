@@ -19,11 +19,18 @@ def format_and_render_plot():
 path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\hand.jpg'
 im = imageio.imread(path)
 
-bones = np.where(im > 64, im, 0)
+skinMask = (im >= 45) & (im < 145)
+boneMask = im >= 45
+bones = np.where(boneMask, im, 0)
+skin = np.where(skinMask, im, 0)
 plt.imshow(bones, cmap='gray')
 plt.axis('off')
 plt.show()
 
+
+plt.imshow(skin, cmap='gray')
+plt.axis('off')
+plt.show()
 
 plt.imshow(im[:,:,0])
 plt.axis('off')
