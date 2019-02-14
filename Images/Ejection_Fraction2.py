@@ -8,7 +8,23 @@ import imageio as img
 import scipy.ndimage as ndi
 
 
-path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\video2.mp4'
+def ef_print(val):
+    if val < 1.0 :
+        val = val * 100.0
+ 
+    if val > 75.0:
+        print('The Ejection Fraction is High: Hyperdynamic Heart')
+    elif val > 55.0:
+        print('The Ejection Fraction is Normal')
+    elif val > 45.0:
+        print('The Ejection Fraction is Mildly Abnormal')
+    elif val > 35.0:
+        print('The Ejection Fraction is Moderately Abnormal')
+    else:
+        print('The Ejection Fraction is severely Abnormal')
+
+
+path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\video1.mp4'
 reader = img.get_reader(path)
 timing = []
 
@@ -20,8 +36,8 @@ for i, im in enumerate(reader):
     mask = ndi.binary_closing(maskselect)
 
     labels, nlabels = ndi.label(mask)
-    # lv = labels[500, 700]
-    lv = labels[400, 500]
+    lv = labels[500, 700]
+    # lv = labels[300, 300]
 
     # lvMask = np.where(labels == lv, im, 0)
     # lmean = ndi.mean(im, labels, index=lv)
@@ -55,3 +71,6 @@ vol = max(timing) - min(timing)
 frac = vol / max(timing)
 print(f'Est. ejection volume (mm^3): {vol}')
 print(f'Est. ejection fraction: {frac*100:.02f}%')
+
+
+ef_print(frac)
