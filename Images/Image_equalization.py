@@ -14,6 +14,7 @@ def format_and_render_plot():
 
 
 ############# works for 2 D images
+<<<<<<< HEAD
 # path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
 # path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
 path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\hand.jpg'
@@ -29,6 +30,14 @@ skin = np.where(skinMask, im, 0)
 # boneclosed = ndi.binary_closing(boneMask, iterations=5)
 
 plt.imshow(bones, cmap='gray')
+=======
+path3 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
+path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
+path = "C:\\Users\\Jose\\Pictures\\Public\\images2.jpg"
+im = imageio.imread(path)
+print(im.shape)
+plt.imshow(im)
+>>>>>>> 994e0af523940ef5be9e80635f2a1920f0e113f1
 plt.axis('off')
 plt.show()
 
@@ -128,7 +137,7 @@ plt.show()
 
 
 
-
+################# 
 im = imageio.imread(path)
 print('Data type:', im.dtype)
 print('Min. value:', im.min())
@@ -167,4 +176,29 @@ hist = ndi.histogram(mask_skin, min=1, max=255, bins=255)
 fig, axes = plt.subplots(2, 1)
 axes[0].imshow(im_bone)
 axes[1].plot(hist)
+format_and_render_plot()
+
+
+# Apply Sobel filter along both axes
+
+print(im.shape)
+sobel_ax0 = ndi.sobel(im, axis=0)
+sobel_ax1 = ndi.sobel(im, axis=1)
+
+
+weights = [[[+2, 0, -1], [+1, 0, -2], [+2, 0, -1]],
+            [[+1, 0, 1], [+1, 0, -2], [0, 0, 0]],
+            [[+2, 0, -1], [+1, 0, -2], [+1, 0, -1]]]
+
+
+# Convolve "im" with filter weights
+edges = ndi.convolve(im, weights)
+
+edges = ndi.convolve(im, weights)
+# Calculate edge magnitude 
+# edges =  np.sqrt(np.square(sobel_ax0) + np.square(sobel_ax1))
+
+# Plot edge magnitude
+plt.imshow(edges, cmap='gray')
+plt.colorbar()
 format_and_render_plot()
