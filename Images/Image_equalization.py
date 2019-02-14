@@ -14,7 +14,6 @@ def format_and_render_plot():
 
 
 ############# works for 2 D images
-<<<<<<< HEAD
 # path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
 # path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
 path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\hand.jpg'
@@ -30,14 +29,6 @@ skin = np.where(skinMask, im, 0)
 # boneclosed = ndi.binary_closing(boneMask, iterations=5)
 
 plt.imshow(bones, cmap='gray')
-=======
-path3 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
-path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
-path = "C:\\Users\\Jose\\Pictures\\Public\\images2.jpg"
-im = imageio.imread(path)
-print(im.shape)
-plt.imshow(im)
->>>>>>> 994e0af523940ef5be9e80635f2a1920f0e113f1
 plt.axis('off')
 plt.show()
 
