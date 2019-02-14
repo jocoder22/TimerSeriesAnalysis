@@ -29,6 +29,7 @@ plt.show()
 print('#############')
 print(type(im))
 
+print(im.meta.dpi)
 
 imt = im[:,:,1]
 print(imt.min())
@@ -89,9 +90,11 @@ plt.show()
 
 
 
-# Over the left venticular area
-plt.imshow(imt, cmap='gray')
+# Overlay the left venticular area
+cent = ndi.center_of_mass(imt, labels, index=5)
 plt.imshow(lvMask, cmap='rainbow')
+plt.imshow(imt, cmap='gray')
+plt.scatter(cent[1], cent[0])
 plt.show()
 
 # for i in range(nlabels):
