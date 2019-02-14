@@ -8,19 +8,20 @@ import imageio as img
 import scipy.ndimage as ndi
 
 
-path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\video1.mp4'
+path = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\video2.mp4'
 reader = img.get_reader(path)
 timing = []
 
 
 for i, im in enumerate(reader):
     im = im[:,:,1]
-    imgfilter = ndi.gaussian_filter(im, sigma=1)
+    imgfilter = ndi.gaussian_filter(im, sigma=0.5)
     maskselect = np.where(imgfilter > 150, 1, 0)
     mask = ndi.binary_closing(maskselect)
 
     labels, nlabels = ndi.label(mask)
-    lv = labels[500, 700]
+    # lv = labels[500, 700]
+    lv = labels[400, 500]
 
     # lvMask = np.where(labels == lv, im, 0)
     # lmean = ndi.mean(im, labels, index=lv)
