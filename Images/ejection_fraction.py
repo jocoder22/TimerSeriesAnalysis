@@ -29,6 +29,7 @@ plt.show()
 print('#############')
 print(type(im))
 
+
 imt = im[:,:,1]
 print(imt.min())
 print(imt.max())
@@ -40,6 +41,21 @@ mask = ndi.binary_closing(maskselect)
 # Objects labels
 labels, nlabels = ndi.label(mask)
 print(f'number of lables  = {nlabels}')
+nnlabel = np.arange(1, nlabels+1)
+print(ndi.labeled_comprehension(imt, labels, nnlabel, ndi.mean,
+                                float, True))
+
+
+hist1 = ndi.histogram(imt, 0, 255, 256, labels=labels , index=[4, 5, 6])
+print(len(hist1))
+
+
+# Plot the hist, if near normally distributed, the segmentation is doing well
+plt.plot(hist1[0], label="Other Area")
+plt.plot(hist1[1], label="Left Ventricle")
+plt.plot(hist1[2], label="Right Ventricle")
+plt.legend()
+plt.show()
 
 # select specific pixel: left ventricular pixel
 lv = labels[500, 700]
@@ -70,6 +86,7 @@ lvbox = ndi.find_objects(lvMask2)
 boxes_lv = imt[lvbox[0]]
 plt.imshow(boxes_lv, cmap='rainbow')
 plt.show()
+
 
 
 # Over the left venticular area
