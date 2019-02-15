@@ -31,10 +31,14 @@ url = 'https://stacks.stanford.edu/file/druid:py883nd2578/NJ-clean.csv.gz'
 #     print(list(reader))
 
 df = pd.read_csv('NJ_cleaned.csv', nrows=5)
-df3 = pd.DataFrame()
+
+tts = []
 for chunk in pd.read_csv('NJ_cleaned.csv', chunksize=100000):
-    temp = pd.DataFrame(chunk)
-    df3.append(temp, ignore_index=True)
+    chunky = pd.DataFrame(chunk)
+    tts.append(chunk)
+df3 = pd.concat(tts)
+
+print(df3.shape)
 print(df3.columns)
 
 
