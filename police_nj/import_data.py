@@ -30,8 +30,12 @@ url = 'https://stacks.stanford.edu/file/druid:py883nd2578/NJ-clean.csv.gz'
 #     reader = csv.reader(file)
 #     print(list(reader))
 
-# df = pd.read_csv('NJ_cleaned.csv')
-# print(df.columns)
+df = pd.read_csv('NJ_cleaned.csv', nrows=5)
+df3 = pd.DataFrame()
+for chunk in pd.read_csv('NJ_cleaned.csv', chunksize=100000):
+    temp = pd.DataFrame(chunk)
+    df3.append(temp, ignore_index=True)
+print(df3.columns)
 
 
 url2 = 'https://assets.datacamp.com/production/repositories/1497/datasets/62bd9feef451860db02d26553613a299721882e8/police.csv'
@@ -48,3 +52,12 @@ print(w.columns)
 print(RI.info())
 print(RI.shape)
 print(RI.isnull().sum()) # counts the number of missing values in each columns
+
+
+# Drop the 'county_name' and 'state' columns
+RI.drop(['county_name', 'state'], axis='columns', inplace=True)
+
+
+df5 = pd.DataFrame([[1, 2], [3, 4]], columns=list('AB'))
+df6 = pd.DataFrame([[5, 6], [7, 8]], columns=list('AB'))
+df5.append(df6)
