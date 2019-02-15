@@ -47,3 +47,4 @@ print(w.columns)
 
 print(RI.info())
 print(RI.shape)
+print(RI.isnull().sum()) # counts the number of missing values in each columns
