@@ -18,12 +18,37 @@ path3 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
 path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
 path = "C:\\Users\\Jose\\Pictures\\Public\\images3.jpg"
 im = imageio.imread(path)
-print(im.shape)
-plt.imshow(im)
+
+skinMask = (im >= 45) & (im < 145)
+boneMask = im >= 45
+bones = np.where(boneMask, im, 0)
+skin = np.where(skinMask, im, 0)
+
+
+# bonedilate = ndi.binary_dilation(boneMask, iterations=5)
+# boneclosed = ndi.binary_closing(boneMask, iterations=5)
+
+plt.imshow(bones, cmap='gray')
 plt.axis('off')
 plt.show()
 
 
+# fig, axes = plt.subplots(1, 3)
+# axes[0].imshow(bones)
+# axes[1].imshow(bonedilate)
+# axes[2].imshow(boneclosed)
+# format_and_render_plot()
+
+
+plt.imshow(skin, cmap='gray')
+plt.axis('off')
+plt.show()
+
+plt.imshow(im[:,:,0])
+plt.axis('off')
+plt.show()
+
+im = im[:, :, 0]
 weights = [[[0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
             [0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
             [0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
@@ -35,10 +60,10 @@ weights = [[[0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
             [0.235, 0.235, 0.235, 0.235, 0.235, 0.235],
             [0.235, 0.235, 0.235, 0.235, 0.235, 0.235]]]
 
-weights = [[[0.234,  0.234],
-            [0.234,  0.234]],
-           [[0.234,  0.234],
-           [0.234,  0.234]]]
+weights = [[0.234,  0.234],
+           [0.234,  0.234],
+           [0.234,  0.234],
+           [0.234,  0.234]]
 
 
 # Convolve the image with the filter
@@ -50,7 +75,7 @@ axes[0].imshow(im)
 axes[1].imshow(im_filt)
 format_and_render_plot()
 
-hist = ndi.histogram(im, min=0, max=255, bins=256)
+hist = ndi.histogram(bones, min=0, max=255, bins=256)
 
 print(hist.shape)
 plt.plot(hist)
@@ -61,7 +86,7 @@ cdf = hist.cumsum() / hist.sum()
 plt.plot(cdf)
 plt.show()
 
-Im_equal = cdf[im] * 255
+Im_equal = cdf[bones] * 255
 
 print('#######################')
 print(im.shape)
