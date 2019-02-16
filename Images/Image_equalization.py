@@ -16,7 +16,7 @@ def format_and_render_plot():
 ############# works for 2 D images
 path3 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\foot.jpg'
 path2 = 'C:\\Users\\Public\\Pictures\\Sample Pictures\\Hydrangeas.jpg'
-path = "C:\\Users\\Jose\\Pictures\\Public\\images2.jpg"
+path = "C:\\Users\\Jose\\Pictures\\Public\\images3.jpg"
 im = imageio.imread(path)
 print(im.shape)
 plt.imshow(im)
@@ -146,19 +146,13 @@ format_and_render_plot()
 
 
 # Apply Sobel filter along both axes
-
+im = im[:,:,1]
 print(im.shape)
 sobel_ax0 = ndi.sobel(im, axis=0)
 sobel_ax1 = ndi.sobel(im, axis=1)
 
 
-weights = [[[+2, 0, -1], [+1, 0, -2], [+2, 0, -1]],
-            [[+1, 0, 1], [+1, 0, -2], [0, 0, 0]],
-            [[+2, 0, -1], [+1, 0, -2], [+1, 0, -1]]]
-
-
-# Convolve "im" with filter weights
-edges = ndi.convolve(im, weights)
+weights = [[+1, 0, -1], [+1, 0, -1], [+1, 0, -1]]
 
 edges = ndi.convolve(im, weights)
 # Calculate edge magnitude 
