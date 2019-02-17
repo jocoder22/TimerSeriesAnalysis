@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from zipfile import ZipFile
 from io import BytesIO
 import matplotlib.pyplot as plt
@@ -33,24 +34,17 @@ with open(requests.get(url).content, 'rb') as mydata:
 # Create file path: file_path
 url_1 = 'https://stacks.stanford.edu/file/druid:py883nd2578/NJ-clean.csv.gz'
 url = 'https://stacks.stanford.edu/file/druid:py883nd2578/WY-clean.csv.gz'
-""" 
+
 filename = url.split('/')[-1]
 with open(filename, "wb") as f:
     r = requests.get(url)
     f.write(r.content)
 
 
-# # with gzip.open(filename, mode="rt") as f:
-# with gzip.open("NJ-clean.csv.gz", "rt", newline="") as file:
-#     reader = csv.reader(file)
-#     print(list(reader))
-
-df = pd.read_csv('NJ_cleaned.csv', nrows=5)
-
 tts = []
 for chunk in pd.read_csv('NJ_cleaned.csv', chunksize=100000):
-    chunky = pd.DataFrame(chunk)
     tts.append(chunk)
+    
 df3 = pd.concat(tts)
 
 del tts
