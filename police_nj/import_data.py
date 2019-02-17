@@ -21,7 +21,7 @@ url_1 = 'https://stacks.stanford.edu/file/druid:py883nd2578/NJ-clean.csv.gz'
 url = 'https://stacks.stanford.edu/file/druid:py883nd2578/WY-clean.csv.gz'
 
 # Creating a gzip or gz files
-with open('Data.csv', 'rb') as infile:
+with open('Data-wy.csv', 'rb') as infile:
     with gzip.open('data.csv.gz', 'wb') as outfile:
         shutil.copyfileobj(infile, outfile)
 
@@ -29,10 +29,6 @@ with open('Data.csv', 'rb') as infile:
 # Reading gzip or gz files
 with gzip.open('data.csv.gz', 'rb') as gzfile:
     df = pd.read_csv(gzfile)
-
-
-with open(requests.get(url).content, 'rb') as mydata:
-    df3 = pd.read_csv(mydata)
 
 
 
@@ -64,6 +60,8 @@ filename = 'RI_' + url2.split('/')[-1]
 RI.to_csv(filename, index=False)
 print(RI.shape)
 print(RI.columns)
+ 
+
  
 url3 = 'https://assets.datacamp.com/production/repositories/1497/datasets/02f3fb2d4416d3f6626e1117688e0386784e8e55/weather.csv'
 w = pd.read_csv(url3, sep=',')

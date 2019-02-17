@@ -53,6 +53,10 @@ with open(filename, "wb") as f:
         wy = pd.read_csv(gzfile)
         wy.to_csv('Data-wy.csv', index=False)
 
+try:
+    os.remove(filename)
+except OSError:
+    pass
 
 find_per_missing(wy)
 print(wy.head())
@@ -99,7 +103,8 @@ wy.drop(['stop_date', 'stop_time'], axis='columns', inplace=True)
 print(wy[['violation', 'driver_age']].tail())
 print(wy.tail())
 
-wy.to_csv('cleaned_wy.csv', index=False)
+# save the cleaned data for analysis
+wy.to_csv('cleaned_wy.csv')
 
 
 
