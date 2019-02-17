@@ -10,9 +10,21 @@ import requests
 import shutil
 
 
+
 # path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\police_nj\\'
 path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\police_nj\\'
 os.chdir(path)
+
+
+# Creating a gzip or gz files
+with open('Data.csv', 'rb') as infile:
+    with gzip.open('data.csv.gz', 'wb') as outfile:
+        shutil.copyfileobj(infile, outfile)
+
+
+# Reading gzip or gz files
+with gzip.open('data.csv.gz', 'rb') as gzfile:
+    df = pd.read_csv(gzfile)
 
 
 # Create file path: file_path
