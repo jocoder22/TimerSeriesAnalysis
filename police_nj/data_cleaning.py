@@ -41,7 +41,19 @@ print(os.getcwd())
 path = "C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\police_nj\\"
 os.chdir(path)
 
-wy = pd.read_csv('Data-wy.csv') 
+
+url = 'https://stacks.stanford.edu/file/druid:py883nd2578/WY-clean.csv.gz'
+
+# Download, read, and form dataframe
+filename = url.split('/')[-1]
+with open(filename, "wb") as f:
+    r = requests.get(url)
+    f.write(r.content)
+    with gzip.open(filename, 'rb') as gzfile:
+        wy = pd.read_csv(gzfile)
+        wy.to_csv('Data-wy.csv', index=False)
+
+
 find_per_missing(wy)
 print(wy.head())
 print(wy.info())
@@ -86,4 +98,18 @@ wy.drop(['stop_date', 'stop_time'], axis='columns', inplace=True)
 # Examine the data types of the DataFrame
 print(wy[['violation', 'driver_age']].tail())
 print(wy.tail())
+
+wy.to_csv('cleaned_wy.csv', index=False)
+
+
+
+wy2 = pd.read_csv('Data-wy2.csv', parse_dates={'date':['stop_date', 'stop_time']})
+time_format = '%Y-%m-%d %H:%M'
+wy2['date'] = pd.to_datetime(wy2.date, format=time_format) 
+print(wy2.info())
+
+print(wy2.head())
+
+
+
 
