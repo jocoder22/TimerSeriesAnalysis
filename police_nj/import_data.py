@@ -60,7 +60,8 @@ print(df3.columns)
 
 url2 = 'https://assets.datacamp.com/production/repositories/1497/datasets/62bd9feef451860db02d26553613a299721882e8/police.csv'
 RI =  pd.read_csv(url2, sep=',')
-RI.to_csv('Data.csv', index=False)
+filename = 'RI_' + url2.split('/')[-1]
+RI.to_csv(filename, index=False)
 print(RI.shape)
 print(RI.columns)
  
