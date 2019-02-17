@@ -27,6 +27,9 @@ with gzip.open('data.csv.gz', 'rb') as gzfile:
     df = pd.read_csv(gzfile)
 
 
+with open(requests.get(url).content, 'rb') as mydata:
+    df3 = pd.read_csv(mydata)
+
 # Create file path: file_path
 url = 'https://stacks.stanford.edu/file/druid:py883nd2578/NJ-clean.csv.gz'
 
@@ -49,6 +52,8 @@ for chunk in pd.read_csv('NJ_cleaned.csv', chunksize=100000):
     chunky = pd.DataFrame(chunk)
     tts.append(chunk)
 df3 = pd.concat(tts)
+
+del tts
 
 print(df3.shape)
 print(df3.columns)
