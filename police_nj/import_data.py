@@ -31,8 +31,8 @@ with open(requests.get(url).content, 'rb') as mydata:
     df3 = pd.read_csv(mydata)
 
 # Create file path: file_path
-url = 'https://stacks.stanford.edu/file/druid:py883nd2578/NJ-clean.csv.gz'
-
+url_1 = 'https://stacks.stanford.edu/file/druid:py883nd2578/NJ-clean.csv.gz'
+url = 'https://stacks.stanford.edu/file/druid:py883nd2578/WY-clean.csv.gz'
 """ 
 filename = url.split('/')[-1]
 with open(filename, "wb") as f:
