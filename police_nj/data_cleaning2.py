@@ -7,6 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import requests
 from collections import defaultdict
+import pickle
 plt.style.use('ggplot')
 
 
@@ -78,11 +79,16 @@ df.index.rename('stop_datetime', inplace=True)
 
 # drop using index column
 # df.dropna(subset=df.index.name, inplace=True)
-df.drop(list(df.columns[0:8]), axis=1, inplace=True)
-df.drop(['search_type_raw', 'search_type'], axis=1, inplace=True)
+df.drop(list(df.columns[0:9]), axis=1, inplace=True)
+df.drop(['search_type_raw', 'search_type', 'driver_age_raw', 'driver_race_raw'], 
+        axis=1, inplace=True)
 
 print(df.info())
 print(df.head())
 print(df.tail())
 
 df.to_csv('clean_RI.csv')
+
+with open('clean_RI.pickle', 'wb') as f:
+    # Pickle the 'data' dictionary using the highest protocol available.
+    pickle.dump(df, f, pickle.HIGHEST_PROTOCOL)
