@@ -87,7 +87,7 @@ print(df.info())
 print(df.head())
 print(df.tail())
 
-# df.to_csv('clean_RI.csv')
+# df.to_csv('clean_RI.csv')  ### file here is very large
 # save file as pickled file to save space
 with open('clean_RI.pickle', 'wb') as f:
     # Pickle the 'data' dictionary using the highest protocol available.
