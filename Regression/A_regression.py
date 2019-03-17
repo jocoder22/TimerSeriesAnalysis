@@ -9,6 +9,7 @@ from statsmodels.graphics.tsaplots import plot_acf
 from statsmodels.tsa.arima_model import ARMA
 from statsmodels.graphics.tsaplots import plot_pacf
 
+sp = '\n\n'
 # Plot 1: AR parameter = +0.9
 plt.subplot(3,1,1)
 ar1 = np.array([1, -0.9])
@@ -119,10 +120,14 @@ from datetime import datetime
 from iexfinance.stocks import get_historical_intraday
 date = datetime(2018, 11, 27)
 yy = pd.DataFrame(get_historical_intraday("S", date))
-yy.head()
+print(yy.head())
 
+
+# output_format: pandas will index the pandas dataframe using the minutes of the date
 dd = get_historical_intraday("S", output_format='pandas')
+print(dd.head(), dd.info(), sep=sp)
 
-date = datetime(2018, 11, 27)
 
 ff = pd.DataFrame(get_historical_intraday("AAPL", date))
+ff['date'] = ff['date'].astype('datetime64[ns]')
+print(ff.head(20))

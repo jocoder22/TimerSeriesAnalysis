@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import pandas_datareader as pdr
 from datetime import datetime
 import seaborn as sns
+# Import the statsmodels.api library with the alias sm
+import statsmodels.api as sm
 from statsmodels.tsa.arima_process import ArmaProcess
 from statsmodels.graphics.tsaplots import plot_acf
 from statsmodels.tsa.arima_model import ARMA
@@ -45,24 +47,33 @@ feature_names = ['5d_close_pct']  # a list of the feature names for later
 
 # Create moving averages and rsi for timeperiods of 14, 30, 50, and 200
 for n in [14, 30, 50, 200]:
+    for name in [lng_df, spy_df]:
+        # Create the moving average indicator and divide by Adj_Close
+        name['ma{}'.format(n)] = talib.SMA(name['Adj_Close'].values,
+                                        timeperiod=n) / name['Adj_Close']
+        # Create the RSI indicator
+        name[f'rsi{n}'] = talib.RSI(name['Adj_Close'].values, timeperiod=n) 
+        name[f'rm{n}'] = name['Adj_Close'].rolling(n).mean()
 
-    # Create the moving average indicator and divide by Adj_Close
-    lng_df['ma{}'.format(n)] = talib.SMA(lng_df['Adj_Close'].values,
-                                      timeperiod=n) / lng_df['Adj_Close']
-    # Create the RSI indicator
-    lng_df[f'rsi{n}'] = talib.RSI(lng_df['Adj_Close'].values, timeperiod=n) 
-    lng_df[f'rm{n}'] = lng_df['Adj_Close'].rolling(n).mean()
+        feature_names.extend([f'ma{n}', f'rsi{n}', f'rm{n}'])
 
-    # Create the moving average indicator and divide by Adj_Close
-    spy_df['ma{}'.format(n)] = talib.SMA(spy_df['Adj_Close'].values,
-                                      timeperiod=n) / lng_df['Adj_Close']
-    # Create the RSI indicator
-    spy_df[f'rsi{n}'] = talib.RSI(spy_df['Adj_Close'].values, timeperiod=n) 
-    spy_df[f'rm{n}'] = spy_df['Adj_Close'].rolling(n).mean()
+    # # Create the moving average indicator and divide by Adj_Close
+    # lng_df['ma{}'.format(n)] = talib.SMA(lng_df['Adj_Close'].values,
+    #                                   timeperiod=n) / lng_df['Adj_Close']
+    # # Create the RSI indicator
+    # lng_df[f'rsi{n}'] = talib.RSI(lng_df['Adj_Close'].values, timeperiod=n) 
+    # lng_df[f'rm{n}'] = lng_df['Adj_Close'].rolling(n).mean()
+
+    # # Create the moving average indicator and divide by Adj_Close
+    # spy_df['ma{}'.format(n)] = talib.SMA(spy_df['Adj_Close'].values,
+    #                                   timeperiod=n) / lng_df['Adj_Close']
+    # # Create the RSI indicator
+    # spy_df[f'rsi{n}'] = talib.RSI(spy_df['Adj_Close'].values, timeperiod=n) 
+    # spy_df[f'rm{n}'] = spy_df['Adj_Close'].rolling(n).mean()
 
 
-    # Add rsi. rollingmean and moving average to the feature name list
-    feature_names.extend([f'ma{n}', f'rsi{n}', f'rm{n}'])
+    # # Add rsi. rollingmean and moving average to the feature name list
+    # feature_names.extend([f'ma{n}', f'rsi{n}', f'rm{n}'])
 
 
 print(feature_names)
@@ -97,7 +108,7 @@ print(corrm)
 
 #  Plot heatmap of correlation matrix
 sns.heatmap(corrm, annot=True)
-plt.yticks(rotation=0); plt.xticks(rotation=90)  # fix ticklabel directions
+plt.yticks(rotation=0); plt.xticks(rotation=0)  # fix ticklabel directions
 plt.tight_layout()  # fits plot area to the plot, "tightly"
 plt.show()  # show the plot
 plt.clf()  # clear the plot area
@@ -119,8 +130,7 @@ plt.show()
 
 
 
-# Import the statsmodels.api library with the alias sm
-import statsmodels.api as sm
+
 
 # Add a constant to the features
 linear_features = sm.add_constant(features)
