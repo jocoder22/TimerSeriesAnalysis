@@ -18,3 +18,17 @@ print(tomorrow)
 # convert tiemstamp to date using fromtimestamp()
 timestamp = date.fromtimestamp(1554611045)
 print("Date =", timestamp)
+
+
+# working with datetime (year, month, day, hour, minutes, seconds, nanosecods)
+mydate = datetime(2019, 12, 24, 18, 51, 58, 380342)
+print("year =", mydate.year)
+print("month =", mydate.month)
+print("hour =", mydate.hour)
+print("minute =", mydate.minute)
+print("timestamp =", mydate.timestamp(), end=sp)
+
+# mainpulating date
+# with timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+maydate = date(2018, 5, 15)
+print(maydate, maydate + timedelta(days=1), sep=sp)
