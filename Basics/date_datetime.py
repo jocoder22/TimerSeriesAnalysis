@@ -80,3 +80,15 @@ while date.today() > stdate:
 print(intradata.head(), intradata.columns, n,  sep=sp)
 print(intradata.shape, intradata.info(), sep=sp)
 
+
+tday = date.today()
+print(tday.strftime("%A %d. %B %Y"))
+print(tday.strftime("%y %m %d"))
+print(tday.strftime("%Y %m %d"))
+tp = tday.timetuple()
+ic = tday.isocalendar()
+print(tp, ic, sep=sp, end=sp)
+for indx, item in enumerate(tp):
+    print(idx, item)
+
+
