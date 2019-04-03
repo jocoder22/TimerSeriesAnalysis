@@ -67,6 +67,13 @@ limitday = 91
 stdate = date.today() - timedelta(days=limitday)
 print(stdate)
 
+
+path = r'C:\Users\Jose\Documents\Intradays'
+os.chdir(path)
+
+
+dattt = date.today()
+datt2 = dattt.strftime("%d_%b_%Y")
 print(date.today() > stdate)
 while date.today() > stdate:
     startdate = stdate + timedelta(days=1)
@@ -75,8 +82,9 @@ while date.today() > stdate:
     df2['Day'] = n
     # df2.index.set_names('Datetime', inplace=True)
     df2.index.rename('Datetime', inplace=True)
-    intradata = pd.concat([intradata, df2], axis=0, sort=False)
+    intradata = pd.concat([intradata, df2], axis=0)
     stdate = startdate
+intradata.to_csv(f'intraday_{datt2}.csv')
 print(intradata.head(), intradata.columns, n,  sep=sp)
 print(intradata.shape, intradata.info(), sep=sp)
 
@@ -90,5 +98,4 @@ ic = tday.isocalendar()
 print(tp, ic, sep=sp, end=sp)
 for idx, item in enumerate(tp):
     print(idx, item)
-
 
