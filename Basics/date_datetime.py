@@ -88,7 +88,7 @@ print(tday.strftime("%Y %m %d"))
 tp = tday.timetuple()
 ic = tday.isocalendar()
 print(tp, ic, sep=sp, end=sp)
-for indx, item in enumerate(tp):
+for idx, item in enumerate(tp):
     print(idx, item)
 
 
