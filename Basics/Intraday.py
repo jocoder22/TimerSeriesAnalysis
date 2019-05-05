@@ -27,7 +27,7 @@ folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon']
 symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN']
 
 intradata = pd.DataFrame()
-limitday = 91
+limitday = 61
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
 
