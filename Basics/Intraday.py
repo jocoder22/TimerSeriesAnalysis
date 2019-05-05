@@ -10,8 +10,6 @@ from datetime import date
 from datetime import datetime
 from datetime import timedelta
 import time
-time.sleep(1.3) # seconds
-
 
 from iexfinance.stocks import get_historical_intraday, get_historical_data
 
