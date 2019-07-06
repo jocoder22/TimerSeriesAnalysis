@@ -11,12 +11,18 @@ from datetime import datetime
 from datetime import timedelta
 import time
 
-from iexfinance.stocks import get_historical_intraday, get_historical_data
+from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 
 
 sp = '\n\n'
 path = r'C:\Users\Jose\Documents\Intradays'
 
+
+ttt = "holderbfsearch"
+
+aapl = Stock("AAPL", token=ttt)
+
+print(aapl.get_price())
 
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
 # symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
@@ -36,13 +42,13 @@ for idx in range(len(symbols)):
     n = 0
     while date.today() > stdate:
         startdate = stdate + timedelta(days=1)
-        df2 = get_historical_intraday(symbols[idx], startdate, output_format='pandas')
+        df2 = get_historical_intraday(symbols[idx], startdate, token=ttt, output_format='pandas')
         n += 1
         df2['Day'] = n
         df2.index.rename('Datetime', inplace=True)
         intradata = pd.concat([intradata, df2], axis=0)
         stdate = startdate
-        time.sleep(0.8) # seconds
+        time.sleep(1.8) # seconds
     # saving data
     savedir = os.path.join(os.getcwd(), folders[idx])
     if not os.path.isdir(savedir):
