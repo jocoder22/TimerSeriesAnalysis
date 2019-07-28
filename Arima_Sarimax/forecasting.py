@@ -103,3 +103,49 @@ plt.legend()
 plt.show()
 
 
+
+
+# using one-step ahead forecast
+# model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
+mymodel = SARIMAX(apple['Close'],
+    order=(0, 1, 0))
+#     seasonal_order=(0, 1, 0, 365))
+#     enforce_stationarity=True,
+#     enforce_invertibility=False)
+
+N = 125
+next_day = apple.index[-1] + timedelta(days=1)
+forecast_index = pd.date_range(start=next_day, freq='B', periods=N)
+
+model = mymodel.fit()
+# make forecast
+# forecast = model.get_forecast(steps=N)
+forecast = model.forecast(steps=N)
+
+
+# form dataframe with the new dates
+result = pd.DataFrame(list(zip(list(forecast_index),list(forecast))),
+        columns=['Date','ForecastPrice']).set_index('Date')
+
+
+# plot the apple data
+plt.plot(apple.index, apple['Close'], label='observed')
+
+# plot your mean prediction
+plt.plot(result.index, result['ForecastPrice'], color='r', label='Forecast')
+
+# # shade the area between your confidence limits
+# plt.fill_between(result.index, lower_limits_forecast, 
+#          upper_limits_forecast, color='pink')
+
+# set labels, legends and show plot
+plt.xlabel('Date')
+plt.ylabel('apple Stock Price - Close USD')
+plt.legend()
+plt.show()
+
+
+
+
+
+
