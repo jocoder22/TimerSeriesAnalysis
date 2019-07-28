@@ -97,3 +97,15 @@ mae0 = np.mean(np.abs(results.resid))
 # Print mean absolute error
 print(f'Mean absolute erorr for 0,0,0: {mae0}', end='\n\n')
 
+
+
+# create sarimax models with order=(2,1,2)
+model = SARIMAX(apple['Close'], order=(2,1,2))
+results = model.fit()
+
+# Calculate the mean absolute error from residuals
+mae1 = np.mean(np.abs(results.resid))
+
+# Print mean absolute error
+print(f'Mean absolute erorr for 2,0,2: {mae1}')
+
