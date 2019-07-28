@@ -67,3 +67,39 @@ plt.ylabel('apple Stock Price - Close USD')
 plt.legend()
 plt.show()
 
+
+
+# using dynamic predictions
+model_dynamic = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
+
+# make in-sample prediction
+prediction_dynamic = model_dynamic.get_prediction(start=-125, dynamic=True)
+
+# Extract prediction mean
+mean_prediction_dynamic = prediction_dynamic.predicted_mean
+
+# Get confidence intervals of  predictions
+confidence_intervals_dynamic = prediction_dynamic.conf_int()
+
+# Select lower and upper confidence limits
+lower_limits_dynamic = confidence_intervals_dynamic.loc[:,'lower Close']
+upper_limits_dynamic = confidence_intervals_dynamic.loc[:,'upper Close']
+
+
+# plot the apple data
+plt.plot(apple.index, apple['Close'], label='observed')
+
+# plot your mean prediction
+plt.plot(mean_prediction_dynamic.index, mean_prediction_dynamic, color='r', label='prediction')
+
+# shade the area between your confidence limits
+plt.fill_between(mean_prediction_dynamic.index, lower_limits_dynamic, 
+         upper_limits_dynamic, color='pink')
+
+# set labels, legends and show plot
+plt.xlabel('Date')
+plt.ylabel('apple Stock Price - Close USD')
+plt.legend()
+plt.show()
+
+
