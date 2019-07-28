@@ -21,3 +21,25 @@ starttime = datetime(2006, 1, 1)
 today = date.today()
 apple = pdr.get_data_yahoo(symbol, starttime, today)
 
+
+print(apple.head())
+
+# There is upward trend in the apple close as show by the plot
+fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
+apple.Close.plot(ax=ax1)
+apple.Volume.plot(ax=ax2)
+plt.show()
+
+# let's perform statistical test: adfuller test
+### this shows that there is trend 
+result = adfuller(apple['Close'])
+print(f'Test Statistic: {result[0]}\nP-value: {result[1]}\nCritical Values: {result[4]}')
+
+
+# do one lag differencing
+result = adfuller(apple['Close'].diff().dropna())
+print(f'Test Statistic: {result[0]}\nP-value: {result[1]}\nCritical Values: {result[4]}')
+
+# plot the one lag differencing
+apple['Close'].diff().dropna().plot()
+plt.show()
