@@ -109,3 +109,19 @@ mae1 = np.mean(np.abs(results.resid))
 # Print mean absolute error
 print(f'Mean absolute erorr for 2,0,2: {mae1}')
 
+
+
+# Instantiate the model
+data = apple.loc[:,['Volume', 'Open']]
+model = ARMA(apple['Close1d'], order=(0,0),exog=data)
+
+# Fit the model
+results = model.fit()
+
+# Calculate the mean absolute error from residuals
+mae2 = np.mean(np.abs(results.resid))
+
+# Print mean absolute error
+print(f'Mean absolute erorr for 0,0,0: {mae0}', end='\n\n')
+print(f'Mean absolute erorr for 2,0,2: {mae1}',end=sp)
+print(f'Mean absolute erorr for ARMA 0,0: {mae2}')
