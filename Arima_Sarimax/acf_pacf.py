@@ -86,3 +86,14 @@ print(griddataframe.sort_values('AIC'), end='\n\n')
 # Print griddataframe in order of increasing BIC
 print(griddataframe.sort_values('BIC'))
 
+
+# create sarimax models with order=(0,1,0)
+model = SARIMAX(apple['Close'], order=(0,1,0))
+results = model.fit()
+
+# Calculate the mean absolute error from residuals
+mae0 = np.mean(np.abs(results.resid))
+
+# Print mean absolute error
+print(f'Mean absolute erorr for 0,0,0: {mae0}', end='\n\n')
+
