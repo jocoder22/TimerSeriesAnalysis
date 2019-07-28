@@ -65,7 +65,7 @@ for p in range(4):
       
         try:
             # create and fit ARMA(p,q) model
-            model = SARIMAX(apple['Close'], order=(p,1,q))
+            model = SARIMAX(apple['Close'], order=(p,1,q), trend='c')
             results = model.fit()
             
             # Print order and results
