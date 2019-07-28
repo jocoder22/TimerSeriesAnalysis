@@ -43,3 +43,14 @@ print(f'Test Statistic: {result[0]}\nP-value: {result[1]}\nCritical Values: {res
 # plot the one lag differencing
 apple['Close'].diff().dropna().plot()
 plt.show()
+
+# plot the acf and pacf
+apple['Close1d'] = apple['Close'].diff()
+apple.dropna(inplace=True)
+print(apple.head())
+fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
+plot_acf(apple['Close1d'], lags=10, zero=False, ax=ax1)
+plot_pacf(apple['Close1d'], lags=10, zero=False, ax=ax2)
+
+plt.show()
+
