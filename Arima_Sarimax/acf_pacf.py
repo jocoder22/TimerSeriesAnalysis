@@ -54,3 +54,35 @@ plot_pacf(apple['Close1d'], lags=10, zero=False, ax=ax2)
 
 plt.show()
 
+
+# do grid search for parameters
+# Loop over p values from 0-3
+gridlist = []
+
+for p in range(4):
+    # Loop over q values from 0-2
+    for q in range(4):
+      
+        try:
+            # create and fit ARMA(p,q) model
+            model = SARIMAX(apple['Close'], order=(p,1,q))
+            results = model.fit()
+            
+            # Print order and results
+            gridlist.append((p,q, results.aic, results.bic))
+            
+        except:
+            gridlist.append((p,q, None, None))
+
+# Construct DataFrame from gridlist
+griddataframe = pd.DataFrame(gridlist, 
+                        columns=['p', 'q', 'AIC', 'BIC'])
+
+print(griddataframe, end=sp)
+
+# Print griddataframe in order of increasing AIC
+print(griddataframe.sort_values('AIC'), end='\n\n')
+
+# Print griddataframe in order of increasing BIC
+print(griddataframe.sort_values('BIC'))
+
