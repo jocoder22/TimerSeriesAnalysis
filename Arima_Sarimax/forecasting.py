@@ -149,3 +149,49 @@ plt.show()
 
 
 
+
+
+prediction2 = model.get_forecast(steps=45)
+
+# Extract forecast mean
+mean_forecast = prediction2.predicted_mean
+
+# form dataframe with the new dates
+forecast_df = pd.DataFrame(list(zip(list(forecast_index),list(mean_forecast))),
+        columns=['Date','ForecastPrice']).set_index('Date')
+
+
+print(forecast_df, sep=sp)
+# # Get confidence intervals of  forecast and remove the index
+# confidence_intervals_forecast = prediction2.conf_int().reset_index()
+
+# print(confidence_intervals_forecast)
+# # concatenate the forecast confidence intervals
+# result = pd.concat([forecast_df, confidence_intervals_forecast], axis=1).set_index('Date')
+
+# # Select lower and upper confidence limits
+# lower_limits_forecast = result.loc[:,'lower Close']
+# upper_limits_forecast = result.loc[:,'upper Close']
+
+
+
+
+# print(result.head())
+
+# plot the apple data
+plt.plot(apple.index, apple['Close'], label='observed')
+
+# plot your mean prediction
+plt.plot(forecast_df.index, forecast_df['ForecastPrice'], color='r', label='Forecast')
+
+# shade the area between your confidence limits
+# plt.fill_between(result.index, lower_limits_forecast, 
+#          upper_limits_forecast, color='pink')
+
+# set labels, legends and show plot
+plt.xlabel('Date')
+plt.ylabel('apple Stock Price - Close USD')
+plt.legend()
+plt.show()
+
+
