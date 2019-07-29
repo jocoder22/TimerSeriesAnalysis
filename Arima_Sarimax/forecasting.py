@@ -123,6 +123,12 @@ model = mymodel.fit()
 # forecast = model.get_forecast(steps=N)
 forecast = model.forecast(steps=N)
 
+# Get confidence intervals of  predictions
+confidence_intervals = forecast.conf_int()
+
+# Select lower and upper confidence limits
+lower_limits_forecast = confidence_intervals.loc[:,'lower Close']
+upper_limits_forecast = confidence_intervals.loc[:,'upper Close']
 
 # form dataframe with the new dates
 result = pd.DataFrame(list(zip(list(forecast_index),list(forecast))),
@@ -136,8 +142,8 @@ plt.plot(apple.index, apple['Close'], label='observed')
 plt.plot(result.index, result['ForecastPrice'], color='r', label='Forecast')
 
 # # shade the area between your confidence limits
-# plt.fill_between(result.index, lower_limits_forecast, 
-#          upper_limits_forecast, color='pink')
+plt.fill_between(result.index, lower_limits_forecast, 
+         upper_limits_forecast, color='pink')
 
 # set labels, legends and show plot
 plt.xlabel('Date')
