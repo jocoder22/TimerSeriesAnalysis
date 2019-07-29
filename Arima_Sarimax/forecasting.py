@@ -110,7 +110,7 @@ plt.show()
 # model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
 mymodel = SARIMAX(apple['Close'],
     order=(0, 1, 0),
-    seasonal_order=(0, 1, 0, 7),
+    seasonal_order=(0, 1, 0, 90),
     enforce_stationarity=True,
     enforce_invertibility=False)
 
