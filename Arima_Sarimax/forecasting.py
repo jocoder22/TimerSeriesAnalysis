@@ -30,7 +30,8 @@ apple.dropna(inplace=True)
 
 print(apple.head(), len(apple), sep=sp)
 
-
+apple['Close'].plot()
+plt.show()
 # using one-step predictions
 model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
 # results = model.fit()
@@ -108,12 +109,12 @@ plt.show()
 # using one-step ahead forecast
 # model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
 mymodel = SARIMAX(apple['Close'],
-    order=(0, 1, 0))
-#     seasonal_order=(0, 1, 0, 365))
-#     enforce_stationarity=True,
-#     enforce_invertibility=False)
+    order=(0, 1, 0),
+    seasonal_order=(0, 1, 0, 7),
+    enforce_stationarity=True,
+    enforce_invertibility=False)
 
-N = 125
+N = 250
 next_day = apple.index[-1] + timedelta(days=1)
 forecast_index = pd.date_range(start=next_day, freq='B', periods=N)
 
@@ -150,28 +151,33 @@ plt.show()
 
 
 
-
-prediction2 = model.get_forecast(steps=45)
+# Making forecast
+prediction2 = model.get_forecast(steps=N)
 
 # Extract forecast mean
 mean_forecast = prediction2.predicted_mean
 
 # form dataframe with the new dates
 forecast_df = pd.DataFrame(list(zip(list(forecast_index),list(mean_forecast))),
-        columns=['Date','ForecastPrice']).set_index('Date')
+        columns=['Date','ForecastPrice'])
 
 
 print(forecast_df, sep=sp)
-# # Get confidence intervals of  forecast and remove the index
-# confidence_intervals_forecast = prediction2.conf_int().reset_index()
+# Get confidence intervals of  forecast and remove the index
+confidence_intervals_forecast = prediction2.conf_int().reset_index(drop=True)
+confidence_intervals_forecast['mp'] = confidence_intervals_forecast.mean(axis=1)
+print(confidence_intervals_forecast.head(), end=sp)
 
 # print(confidence_intervals_forecast)
 # # concatenate the forecast confidence intervals
-# result = pd.concat([forecast_df, confidence_intervals_forecast], axis=1).set_index('Date')
+result = pd.concat([forecast_df, confidence_intervals_forecast], axis=1).set_index('Date')
+
+# result['mp'] = result.loc[:,['lower Close', 'upper Close']].mean(axis=1)
+print(result.head(), result.index, sep=sp, end=sp)
 
 # # Select lower and upper confidence limits
-# lower_limits_forecast = result.loc[:,'lower Close']
-# upper_limits_forecast = result.loc[:,'upper Close']
+lower_limits_forecast = result.loc[:,'lower Close']
+upper_limits_forecast = result.loc[:,'upper Close']
 
 
 
@@ -182,11 +188,11 @@ print(forecast_df, sep=sp)
 plt.plot(apple.index, apple['Close'], label='observed')
 
 # plot your mean prediction
-plt.plot(forecast_df.index, forecast_df['ForecastPrice'], color='r', label='Forecast')
+plt.plot(result.index, result['ForecastPrice'], color='r', label='Forecast')
 
 # shade the area between your confidence limits
-# plt.fill_between(result.index, lower_limits_forecast, 
-#          upper_limits_forecast, color='pink')
+plt.fill_between(result.index, lower_limits_forecast, 
+         upper_limits_forecast, color='pink')
 
 # set labels, legends and show plot
 plt.xlabel('Date')
