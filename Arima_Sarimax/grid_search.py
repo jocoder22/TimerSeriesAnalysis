@@ -43,3 +43,17 @@ for p in range(4):
         except:
             gridlist.append((p,q, None, None, None))
 
+# Construct DataFrame from gridlist
+griddataframe = pd.DataFrame(gridlist, 
+                        columns=['p', 'q', 'AIC', 'BIC', 'MAE'])
+
+print(griddataframe, end=sp)
+
+# Print griddataframe in order of increasing AIC
+print('Based on AIC:', griddataframe.sort_values('AIC').head(1), end=sp, sep='\n')
+
+# Print griddataframe in order of increasing BIC
+print('Based on BIC:\n', griddataframe.sort_values('BIC').head(1), end=sp)
+
+# Print griddataframe in order of increasing MAE
+print('Based on MAE:\n', griddataframe.sort_values('MAE').head(1), end=sp)
