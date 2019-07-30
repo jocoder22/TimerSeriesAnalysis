@@ -21,21 +21,22 @@ apple = pdr.get_data_yahoo(symbol, starttime, today)
 
 print(apple.head())
 
-# do grid search for parameters
 
+
+# do grid search for parameters
 gridlist = []
 
 # Loop over p values from 0-3
 for p in range(4):
 
-    # Loop over q values from 0-2
+    # Loop over q values from 0-3
     for q in range(4):
 
         # Loop over for the trend values
         for t in ['n','c','t','ct']:
 
             try:
-                # create and fit ARMA(p,q) model
+                # create and fit SARIMA(p,1,q) model
                 model = SARIMAX(apple['Close'], order=(p,1,q), trend=t)
                 results = model.fit()
                 
@@ -62,5 +63,8 @@ print('Based on BIC:\n', griddataframe.sort_values('BIC').head(1), end=sp)
 
 # Print griddataframe in order of increasing MAE
 print('Based on MAE:\n', griddataframe.sort_values('MAE').head(1), end=sp)
+
+
+
 
 
