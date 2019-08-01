@@ -16,3 +16,16 @@ import statsmodels.api as sm
 
 import warnings
 warnings.filterwarnings("ignore")
+
+
+
+sp = '\n\n'
+
+symbol = 'AMZN'
+starttime = datetime(2006, 1, 1)
+today = date.today()
+apple = pdr.get_data_yahoo(symbol, starttime, today)
+
+# one lag differencing to make our data stationary
+apple['Close1d'] = apple['Close'].diff()
+apple.dropna(inplace=True)
