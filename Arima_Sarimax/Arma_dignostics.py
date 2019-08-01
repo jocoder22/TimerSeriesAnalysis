@@ -26,6 +26,12 @@ starttime = datetime(2006, 1, 1)
 today = date.today()
 apple = pdr.get_data_yahoo(symbol, starttime, today)
 
-# one lag differencing to make our data stationary
-apple['Close1d'] = apple['Close'].diff()
-apple.dropna(inplace=True)
+
+# using one-step ahead forecast
+# model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
+mymodel = SARIMAX(apple['Close'],
+    order=(0, 1, 0),
+    seasonal_order=(0, 1, 0, 90),
+    enforce_stationarity=True,
+    enforce_invertibility=False)
+
