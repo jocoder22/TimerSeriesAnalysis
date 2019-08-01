@@ -37,5 +37,8 @@ model = SARIMAX(apple['Close'],
 
 results = model.fit()
 
+results.plot_diagnostics()
+plt.show()
+
 print(results)
 
