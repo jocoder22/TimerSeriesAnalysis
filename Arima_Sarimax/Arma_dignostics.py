@@ -28,6 +28,11 @@ apple = pdr.get_data_yahoo(symbol, starttime, today)
 
 logid = np.log(apple['Close'])
 
+# Add seasonal decomposition
+decomp_seasons = seasonal_decompose(apple['Close'], freq=90)
+decomp_seasons.plot()
+plt.show()
+
 # using one-step ahead forecast
 # model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
 model = SARIMAX(logid, trend='c',
