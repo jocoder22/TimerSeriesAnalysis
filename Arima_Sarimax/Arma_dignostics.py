@@ -81,8 +81,8 @@ plt.show()
 # using one-step ahead forecast
 # model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
 model = SARIMAX(apple.loc['2016':,['Close']], trend='n',
-    order=(2, 1, 2),
-    seasonal_order=(0, 1, 1, 17),
+    order=(0, 1, 0),
+    seasonal_order=(0, 1, 1, 18),
     enforce_stationarity=True,
     enforce_invertibility=False)
 
