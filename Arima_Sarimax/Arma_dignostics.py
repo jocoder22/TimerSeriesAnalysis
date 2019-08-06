@@ -35,8 +35,6 @@ plt.show()
 
 
 
-
-
 # Seasonality check
 apple22 = apple['Close'].diff().diff(17).dropna()
 
