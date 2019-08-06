@@ -27,16 +27,18 @@ today = date.today()
 apple = pdr.get_data_yahoo(symbol, starttime, today)
 
 logid = np.log(apple['Close'])
+season_x = 18
 
 # Add seasonal decomposition
-decomp_seasons = seasonal_decompose(apple.loc['2016':,['Close']], freq=17)
+decomp_seasons = seasonal_decompose(apple.loc['2016':,['Close']], freq=season_x)
 decomp_seasons.plot()
 plt.show()
 
 
 
 # Seasonality check
-apple22 = apple['Close'].diff().diff(17).dropna()
+
+apple22 = apple['Close'].diff().diff(season_x).dropna()
 
 fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
 plot_acf(apple22, lags=16, zero=False, ax=ax1)
@@ -44,7 +46,7 @@ plot_pacf(apple22, lags=16, zero=False, ax=ax2)
 plt.title('Show Seasonality')
 plt.show()
 
-lags = [17*a for a in range(1,6)]
+lags = [season_x*a for a in range(1,6)]
 
 fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
 plot_acf(apple22, lags=lags, zero=False, ax=ax1)
