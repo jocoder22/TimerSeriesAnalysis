@@ -56,7 +56,10 @@ plt.show()
 
 
 
+# Select year 2016 and beyond only
 apple = apple.loc['2016':,['Close']]
+
+
 # Subtract the rolling mean
 apple_2 = apple - apple.rolling(15).mean()
 
