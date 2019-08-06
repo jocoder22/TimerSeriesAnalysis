@@ -18,11 +18,11 @@ sp = '\n\n'
 path = r'C:\Users\Jose\Documents\Intradays'
 
 
-ttt = "holderbfsearch"
+# ttt = "holderbfsearch"
 
-aapl = Stock("AAPL", token=ttt)
+# aapl = Stock("AAPL", token=ttt)
 
-print(aapl.get_price())
+# print(aapl.get_price())
 
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
 # symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
@@ -55,8 +55,9 @@ for idx in range(len(symbols)):
         os.makedirs(savedir)
     os.chdir(savedir)
     intradata.to_csv(f'intraday_{datt2}.csv')
+    print(f'This is for {folders[idx]}', end=sp)
     print(intradata.head(), intradata.columns, n,  sep=sp, end=sp)
-    print(intradata.shape, intradata.info(), sep=sp)
+    print(intradata.shape, intradata.info(), sep=sp, end=sp)
 
 
 

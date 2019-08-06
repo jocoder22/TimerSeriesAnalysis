@@ -29,17 +29,58 @@ apple = pdr.get_data_yahoo(symbol, starttime, today)
 logid = np.log(apple['Close'])
 
 # Add seasonal decomposition
-decomp_seasons = seasonal_decompose(apple['Close'], freq=90)
+decomp_seasons = seasonal_decompose(apple.loc['2016':,['Close']], freq=17)
 decomp_seasons.plot()
+plt.show()
+
+
+
+
+
+# Seasonality check
+apple22 = apple['Close'].diff().diff(17).dropna()
+
+fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
+plot_acf(apple22, lags=16, zero=False, ax=ax1)
+plot_pacf(apple22, lags=16, zero=False, ax=ax2)
+plt.title('Show Seasonality')
+plt.show()
+
+lags = [17*a for a in range(1,6)]
+
+fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
+plot_acf(apple22, lags=lags, zero=False, ax=ax1)
+plot_pacf(apple22, lags=lags, zero=False, ax=ax2)
+plt.title('Show Seasonality2')
+plt.show()
+
+
+
+apple = apple.loc['2016':,['Close']]
+# Subtract the rolling mean
+apple_2 = apple - apple.rolling(15).mean()
+
+# Drop the NaN values
+apple_2 = apple_2.dropna()
+
+# Create figure and subplots
+fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
+
+# Plot the ACF and PACF
+plot_acf(apple_2['Close'], lags=75, zero=False, ax=ax1)
+plot_pacf(apple_2['Close'], lags=75, zero=False, ax=ax2)
+
+plt.title('Rolling Means')
+# Show figure
 plt.show()
 
 # using one-step ahead forecast
 # model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
-model = SARIMAX(logid, trend='c',
-    order=(0, 1, 0))
-    # seasonal_order=(0, 1, 0, 90),
-    # enforce_stationarity=True,
-    # enforce_invertibility=False)
+model = SARIMAX(apple.loc['2016':,['Close']], trend='n',
+    order=(2, 1, 2),
+    seasonal_order=(0, 1, 1, 17),
+    enforce_stationarity=True,
+    enforce_invertibility=False)
 
 results = model.fit()
 residuals = results.resid

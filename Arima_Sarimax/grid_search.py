@@ -37,7 +37,7 @@ for p in range(4):
 
             try:
                 # create and fit SARIMA(p,1,q) model
-                model = SARIMAX(apple['Close'], order=(p,1,q), trend=t)
+                model = SARIMAX(apple.loc['2016':,['Close']], order=(p,1,q), trend=t)
                 results = model.fit()
                 
                 # Calculate the mean absolute error from residuals
