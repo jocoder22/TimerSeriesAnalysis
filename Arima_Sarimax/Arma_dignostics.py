@@ -48,6 +48,7 @@ plt.show()
 
 lags = [season_x*a for a in range(1,6)]
 
+# plot the seasonal lags
 fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
 plot_acf(apple22, lags=lags, zero=False, ax=ax1)
 plot_pacf(apple22, lags=lags, zero=False, ax=ax2)
