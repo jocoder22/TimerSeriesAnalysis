@@ -62,7 +62,7 @@ apple = apple.loc['2016':,['Close']]
 
 
 # Subtract the rolling mean
-apple_2 = apple - apple.rolling(15).mean()
+apple_2 = apple - apple.rolling(26).mean()
 
 # Drop the NaN values
 apple_2 = apple_2.dropna()
