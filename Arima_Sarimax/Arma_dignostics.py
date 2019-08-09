@@ -37,9 +37,7 @@ plt.show()
 
 
 # Seasonality check
-
 apple22 = apple['Close'].diff().diff(season_x).dropna()
-
 fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
 plot_acf(apple22, lags=16, zero=False, ax=ax1)
 plot_pacf(apple22, lags=16, zero=False, ax=ax2)
@@ -77,6 +75,7 @@ plot_pacf(apple_2['Close'], lags=75, zero=False, ax=ax2)
 plt.title('Rolling Means')
 # Show figure
 plt.show()
+
 
 # using one-step ahead forecast
 # model = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
