@@ -27,7 +27,7 @@ today = date.today()
 apple = pdr.get_data_yahoo(symbol, starttime, today)
 
 logid = np.log(apple['Close'])
-season_x = 18
+season_x = 24
 
 # Add seasonal decomposition
 decomp_seasons = seasonal_decompose(apple.loc['2016':,['Close']], freq=season_x)
