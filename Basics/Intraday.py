@@ -14,7 +14,8 @@ import time
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 
 
-sp = '\n\n'
+sp = {'sep': '\n\n', 'end': '\n\n'}
+
 path = r'C:\Users\Jose\Documents\Intradays'
 
 
@@ -29,6 +30,8 @@ ttt = "holderbfsearch"
 
 folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon']
 symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN']
+
+
 
 intradata = pd.DataFrame()
 limitday = 61
@@ -55,9 +58,9 @@ for idx in range(len(symbols)):
         os.makedirs(savedir)
     os.chdir(savedir)
     intradata.to_csv(f'intraday_{datt2}.csv')
-    print(f'This is for {folders[idx]}', end=sp)
-    print(intradata.head(), intradata.columns, n,  sep=sp, end=sp)
-    print(intradata.shape, intradata.info(), sep=sp, end=sp)
+    print(f'This is for {folders[idx]}', **sp)
+    print(intradata.head(), intradata.columns, n, **sp)
+    print(intradata.shape, intradata.info(), **sp)
 
 
 
