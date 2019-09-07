@@ -18,7 +18,7 @@ sp = '\n\n'
 path = r'C:\Users\Jose\Documents\Intradays'
 
 
-# ttt = "holderbfsearch"
+ttt = "holderbfsearch"
 
 # aapl = Stock("AAPL", token=ttt)
 
