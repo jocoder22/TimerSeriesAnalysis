@@ -13,17 +13,23 @@ import time
 
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 
+import sys
+
+pathtk = r"D:\PPP"
+sys.path.insert(0, pathtk)
+
+import bfsearch
+
 
 sp = {'sep': '\n\n', 'end': '\n\n'}
 
-path = r'C:\Users\Jose\Documents\Intradays'
+path = r"D:\Intradays"
 
+ttt = bfsearch.token
 
-ttt = "holderbfsearch"
+# aapl = Stock("AAPL", output_format='pandas', token=ttt)
 
-# aapl = Stock("AAPL", token=ttt)
-
-# print(aapl.get_price())
+# print(aapl.get_historical_prices())
 
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
 # symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
@@ -61,6 +67,4 @@ for idx in range(len(symbols)):
     print(f'This is for {folders[idx]}', **sp)
     print(intradata.head(), intradata.columns, n, **sp)
     print(intradata.shape, intradata.info(), **sp)
-
-
 
