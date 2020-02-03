@@ -8,7 +8,7 @@ import pandas_datareader as pdr
 import seaborn as sns
 import pandas_datareader.data as wb
 
-path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\TS_data_manipulation'
+path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\TimeSeries_data_manipulation'
 os.chdir(path)
 
 
