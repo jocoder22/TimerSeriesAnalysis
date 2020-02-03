@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 import os
 import numpy as np
 import pandas as pd
@@ -13,19 +14,17 @@ import time
 
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 
-import sys
 
 pathtk = r"D:\PPP"
 sys.path.insert(0, pathtk)
 
-import bfsearch
-
+import wewebs
 
 sp = {'sep': '\n\n', 'end': '\n\n'}
 
 path = r"D:\Intradays"
 
-ttt = bfsearch.token
+ttt = wewebs.token
 
 # aapl = Stock("AAPL", output_format='pandas', token=ttt)
 
@@ -34,8 +33,8 @@ ttt = bfsearch.token
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
 # symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
 
-folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon']
-symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN']
+folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup']
+symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C']
 
 
 
@@ -55,7 +54,7 @@ for idx in range(len(symbols)):
         n += 1
         df2['Day'] = n
         df2.index.rename('Datetime', inplace=True)
-        intradata = pd.concat([intradata, df2], axis=0)
+        intradata = pd.concat([intradata, df2], axis=0, sort=True)
         stdate = startdate
         time.sleep(1.8) # seconds
     # saving data

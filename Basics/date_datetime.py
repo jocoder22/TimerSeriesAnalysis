@@ -63,32 +63,32 @@ print(today1, today2, sep=sp)
 # df = get_historical_data(stocksname, startdate, enddate, output_format='pandas')
 # print(df.shape)
 
-# n = 0
-# intradata = pd.DataFrame()
-# limitday = 91
-# stdate = date.today() - timedelta(days=limitday)
-# print(stdate)
+n = 0
+intradata = pd.DataFrame()
+limitday = 91
+stdate = date.today() - timedelta(days=limitday)
+print(stdate)
 
 
-# path = r'C:\Users\Jose\Documents\Intradays'
-# os.chdir(path)
+path = r'C:\Users\Jose\Documents\Intradays'
+os.chdir(path)
 
 
-# dattt = date.today()
-# datt2 = dattt.strftime("%d_%b_%Y")
-# print(date.today() > stdate)
-# while date.today() > stdate:
-#     startdate = stdate + timedelta(days=1)
-#     df2 = get_historical_intraday(stocksname, startdate, output_format='pandas')
-#     n += 1
-#     df2['Day'] = n
-#     # df2.index.set_names('Datetime', inplace=True)
-#     df2.index.rename('Datetime', inplace=True)
-#     intradata = pd.concat([intradata, df2], axis=0)
-#     stdate = startdate
-# intradata.to_csv(f'intraday_{datt2}.csv')
-# print(intradata.head(), intradata.columns, n,  sep=sp)
-# print(intradata.shape, intradata.info(), sep=sp)
+dattt = date.today()
+datt2 = dattt.strftime("%d_%b_%Y")
+print(date.today() > stdate)
+while date.today() > stdate:
+    startdate = stdate + timedelta(days=1)
+    df2 = get_historical_intraday(stocksname, startdate, output_format='pandas')
+    n += 1
+    df2['Day'] = n
+    # df2.index.set_names('Datetime', inplace=True)
+    df2.index.rename('Datetime', inplace=True)
+    intradata = pd.concat([intradata, df2], axis=0)
+    stdate = startdate
+intradata.to_csv(f'intraday_{datt2}.csv')
+print(intradata.head(), intradata.columns, n,  sep=sp)
+print(intradata.shape, intradata.info(), sep=sp)
 
 
 # tday = date.today()
