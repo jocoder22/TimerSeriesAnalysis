@@ -11,7 +11,6 @@ import pandas_datareader.data as wb
 path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\TimeSeries_data_manipulation'
 os.chdir(path)
 
-
 ticker = ['RIO', 'ILMN', 'CPRT', 'EL', 'AMZN', 'PAA', 'GS', 'AMGN', 'MA', 'TEF', 'AAPL', 'UPS']
 
 starttime = datetime.datetime(2010, 1, 4)
