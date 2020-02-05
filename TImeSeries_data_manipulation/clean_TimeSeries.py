@@ -31,3 +31,25 @@ for idx, elem in enumerate(tickers):
     else:
         amazon = pd.DataFrame(pdr.get_data_yahoo(elem, starttime, endtime)['Adj Close'])
         
+
+        
+indexes = dates = pd.date_range('2000-01-01', '2016-12-31')
+all_stocks = pd.DataFrame(index = indexes)
+
+# google = pd.DataFrame(google)
+
+for idx, data in enumerate([google, apple, amazon]):
+    data.rename(columns = {"Adj Close": names[idx]}, inplace=True)
+    
+# all_stocks = pd.concat([google, apple, amazon, all_stocks], axis=1)
+# all_stocks = pd.concat([google, apple, amazon, all_stocks], axis=1, join="inner")
+all_stocks = pd.concat([google, apple, amazon, all_stocks], axis=1).reindex(all_stocks.index) 
+print(google.head(), apple.head, amazon.head(), all_stocks, sep="\n\n")
+
+
+all_stocks.dropna(axis=0, inplace=True)
+
+print(all_stocks.count(), all_stocks.head(), sep="\n\n")
+
+
+all_stocks.mean()
