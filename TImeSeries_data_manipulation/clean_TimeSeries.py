@@ -60,3 +60,11 @@ all_stocks.median()
 all_stocks.std()
 # Print the correlation between stocks
 all_stocks.corr()
+
+
+
+print(all_stocks.index)
+rollingMean = all_stocks.rolling(50).mean()
+# We plot the Google stock data
+plt.plot(all_stocks['google'])
+
