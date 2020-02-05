@@ -53,3 +53,10 @@ print(all_stocks.count(), all_stocks.head(), sep="\n\n")
 
 
 all_stocks.mean()
+
+# Print the median stock price for each stock
+all_stocks.median()
+# Print the standard deviation of the stock price for each stock  
+all_stocks.std()
+# Print the correlation between stocks
+all_stocks.corr()
