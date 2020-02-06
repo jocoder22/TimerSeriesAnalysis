@@ -8,7 +8,8 @@ import pandas_datareader as pdr
 import seaborn as sns
 import pandas_datareader.data as wb
 
-path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\TimeSeries_data_manipulation'
+# path = 'C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis\\TimeSeries_data_manipulation'
+path = "D:\TimerSeriesAnalysis\TimeSeries_data_manipulation"
 os.chdir(path)
 
 ticker = ['RIO', 'ILMN', 'CPRT', 'EL', 'AMZN', 'PAA', 'GS', 'AMGN', 'MA', 'TEF', 'AAPL', 'UPS']
