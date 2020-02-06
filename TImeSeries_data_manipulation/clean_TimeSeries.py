@@ -68,6 +68,7 @@ rollingMean = all_stocks.rolling(50).mean()
 # We plot the Google stock data
 plt.plot(all_stocks['google'])
 
+
 # We plot the rolling mean ontop of our Google stock data
 plt.plot(rollingMean)
 plt.legend(['Google Stock Price', 'Rolling Mean'])
