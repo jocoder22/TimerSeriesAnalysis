@@ -73,8 +73,6 @@ amazon[LABELS].plot()
 plt.show()
 
 
-
-
 # This formats the plots such that they appear on separate rows
 # fig, axes = plt.subplots(nrows=2, ncols=1)
 plt.subplot(211)
