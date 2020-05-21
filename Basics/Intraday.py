@@ -31,7 +31,6 @@ ttt = wewebs.token
 folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup']
 symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C']
 
-
 intradata = pd.DataFrame()
 limitday = 61
 dattt = date.today()
