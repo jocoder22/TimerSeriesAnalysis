@@ -27,7 +27,6 @@ print(apple.head())
 print(dowJones.head())
 print(usBond.head())
 
-
 amazon = pd.read_csv('AMZN.csv', parse_dates=True, index_col='Date')
 print(amazon.head())
 print(len(amazon))
@@ -80,14 +79,12 @@ plt.subplot(212)
 usBond['Open'].plot(kind='hist', bins=30, density=True, cumulative=True)
 plt.show()
 
-
 sp500A = sp500[['Adj Close']].rename(index=str, columns={'Adj Close': 'SP500'})
 print(sp500A.head())
 usBondA = usBond[['Adj Close']]
 usBondA.rename(index=str, columns={'Adj Close': 'Bond10Y'}, inplace=True)
 # usBondA.rename({'Adj Close': 'Bond10Y'}, axis='columns', inplace=True)
 print(usBondA.head())
-
 
 allclose = sp500A.join(usBondA, how='inner')
 
