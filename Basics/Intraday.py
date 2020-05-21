@@ -14,7 +14,6 @@ import time
 
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 
-
 pathtk = r"D:\PPP"
 sys.path.insert(0, pathtk)
 
@@ -35,7 +34,6 @@ ttt = wewebs.token
 
 folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup']
 symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C']
-
 
 
 intradata = pd.DataFrame()
@@ -66,4 +64,3 @@ for idx in range(len(symbols)):
     print(f'This is for {folders[idx]}', **sp)
     print(intradata.head(), intradata.columns, n, **sp)
     print(intradata.shape, intradata.info(), **sp)
-
