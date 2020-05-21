@@ -20,15 +20,11 @@ sys.path.insert(0, pathtk)
 import wewebs
 
 sp = {'sep': '\n\n', 'end': '\n\n'}
-
 path = r"D:\Intradays"
-
 ttt = wewebs.token
 
 # aapl = Stock("AAPL", output_format='pandas', token=ttt)
-
 # print(aapl.get_historical_prices())
-
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
 # symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
 
