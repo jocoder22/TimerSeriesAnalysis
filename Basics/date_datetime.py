@@ -10,7 +10,6 @@ from datetime import date
 from datetime import datetime
 from datetime import timedelta
 
-
 from iexfinance.stocks import get_historical_intraday, get_historical_data
 
 sp = '\n\n'
@@ -18,8 +17,6 @@ sp = '\n\n'
 today1 = datetime.now()  # give to nanoseconds:  2019-03-17 17:44:21.574530
 today2 = date.today()  # give only the day: 2019-03-17
 print(today1, today2, sep=sp) 
-
-
 
 # # Creating date
 # tomorrow = date(2019, 4, 18)
@@ -54,9 +51,6 @@ print(today1, today2, sep=sp)
 # # get the intraday stock for last 90 days
 # date = datetime(2018, 11, 27)
 
-
-
-
 # stocksname ='AAL'
 # startdate = datetime(2014, 1, 1)
 # enddate = datetime(2019, 3, 16)
@@ -69,10 +63,8 @@ limitday = 91
 stdate = date.today() - timedelta(days=limitday)
 print(stdate)
 
-
 path = r'C:\Users\Jose\Documents\Intradays'
 os.chdir(path)
-
 
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
@@ -100,5 +92,3 @@ print(intradata.shape, intradata.info(), sep=sp)
 # print(tp, ic, sep=sp, end=sp)
 # for idx, item in enumerate(tp):
 #     print(idx, item)
-
-
