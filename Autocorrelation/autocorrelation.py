@@ -45,7 +45,6 @@ print("The approximate confidence interval is +/- %4.2f" %(conf))
 plot_acf(returns['Adj Close'], alpha=0.05, lags=20)
 plt.show()
 
-
 ################### From Fred: contains daily data of 10-year interest rate
 # https: // fred.stlouisfed.org/
 starttime = datetime.datetime(1962, 1, 1)
@@ -68,4 +67,3 @@ annual_data['diff_rates'] = annual_data.diff()
 autocorrelation_annual = annual_data['diff_rates'].autocorr()
 print("The autocorrelation of annual interest rate changes is %4.2f" %
       (autocorrelation_annual))
-
