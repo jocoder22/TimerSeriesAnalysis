@@ -63,7 +63,6 @@ ax3.set_title('AR parameter = -0.9')
 plt.show()
 
 ################ Fitting the models
-
 # Fit an AR(1) model to the first simulated data
 mod = ARMA(simulated_data_1, order=(1, 0))
 res = mod.fit()
@@ -79,7 +78,6 @@ print(res.params)
 mod = ARMA(simulated_data_2, order=(1, 0))
 res = mod.fit()
 
-
 # Print out the estimate for the constant and for phi
 print("When the true phi=0.9, the estimate of phi (and the constant) are:")
 print(res.params)
@@ -91,7 +89,6 @@ res = mod.fit()
 # Print out the estimate for the constant and for phi
 print("When the true phi=0.9, the estimate of phi (and the constant) are:")
 print(res.params)
-
 
 # Forecast the first AR(1) model
 mod = ARMA(simulated_data_1, order=(1, 0))
@@ -106,7 +103,6 @@ from iexfinance.stocks import get_historical_intraday
 date = datetime(2018, 11, 27)
 yy = pd.DataFrame(get_historical_intraday("S", date))
 print(yy.head())
-
 
 # output_format: pandas will index the pandas dataframe using the minutes of the date
 dd = get_historical_intraday("S", output_format='pandas')
