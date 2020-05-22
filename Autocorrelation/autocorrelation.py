@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import datetime
 import pandas_datareader as pdr
-
 from statsmodels.tsa.stattools import acf
 from statsmodels.graphics.tsaplots import plot_acf
 
