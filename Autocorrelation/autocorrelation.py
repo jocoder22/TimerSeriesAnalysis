@@ -30,8 +30,6 @@ print(returns.head())
 autocorrelation = returns['Adj Close'].autocorr()
 print("The autocorrelation of weekly returns is %4.2f" % (autocorrelation))
 
-
-
 # Compute and print the autocorrelation of MSFT weekly returns
 autocorrelation = returns['Adj Close'].autocorr()
 print("The autocorrelation of weekly MSFT returns is %4.2f" %(autocorrelation))
