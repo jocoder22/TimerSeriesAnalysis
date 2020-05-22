@@ -62,8 +62,6 @@ plot_acf(simulated_data_3, alpha=0.05, lags=20, ax=ax3)
 ax3.set_title('AR parameter = -0.9')
 plt.show()
 
-
-
 ################ Fitting the models
 
 # Fit an AR(1) model to the first simulated data
