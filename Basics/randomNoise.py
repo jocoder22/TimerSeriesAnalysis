@@ -110,7 +110,6 @@ plt.title('Amazon Percentage Change Adjusted Close Prices (Returns)')
 plt.show()
 
 
-
 fig, (ax1, ax2, ax3) = plt.subplots(nrows=3)
 # ax1.axes.get_xaxis().set_visible(False)
 # ax1.xaxis.set_tick_params(labeltop='on')
@@ -135,7 +134,6 @@ HRB['Earnings'].plot(ax=ax1)
 ax1.set_xlabel(" ")
 ax1.set_title('HRB Earnings with seasonality')
 # plt.show()
-
 
 # plt.subplot(132)
 plot_acf(HRB, ax=ax2)
