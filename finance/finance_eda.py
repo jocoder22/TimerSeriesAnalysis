@@ -10,10 +10,11 @@ from statsmodels.graphics.tsaplots import plot_acf
 from statsmodels.tsa.arima_model import ARMA
 from statsmodels.graphics.tsaplots import plot_pacf
 
-stocksname = ['LNG', 'SPY']
 
+stocksname = ['LNG', 'SPY']
 startdate = datetime(2016, 4, 15)
 enddate = datetime(2018, 4, 10)
+
 
 stock = pdr.get_data_yahoo(stocksname, startdate, enddate)[['Adj Close', 'Volume']]
 lng_df = stock.loc[:, (slice(None), 'LNG')]
