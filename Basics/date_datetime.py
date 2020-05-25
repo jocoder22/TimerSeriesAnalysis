@@ -10,7 +10,6 @@ from datetime import date
 from datetime import datetime
 from datetime import timedelta
 
-
 from iexfinance.stocks import get_historical_intraday, get_historical_data
 
 sp = '\n\n'
@@ -18,8 +17,6 @@ sp = '\n\n'
 today1 = datetime.now()  # give to nanoseconds:  2019-03-17 17:44:21.574530
 today2 = date.today()  # give only the day: 2019-03-17
 print(today1, today2, sep=sp) 
-
-
 
 # # Creating date
 # tomorrow = date(2019, 4, 18)
@@ -30,7 +27,6 @@ print(today1, today2, sep=sp)
 # # convert tiemstamp to date using fromtimestamp()
 # timestamp = date.fromtimestamp(1554611045)
 # print("Date =", timestamp)
-
 
 # # working with datetime (year, month, day, hour, minutes, seconds, nanosecods)
 # mydate = datetime(2019, 12, 24, 18, 51, 58, 380342)
@@ -50,12 +46,8 @@ print(today1, today2, sep=sp)
 # # date.isoweekday() : Monday is 1 and Sunday is 7
 # print(maydate.isoweekday(), end=sp)
 
-
 # # get the intraday stock for last 90 days
 # date = datetime(2018, 11, 27)
-
-
-
 
 # stocksname ='AAL'
 # startdate = datetime(2014, 1, 1)
@@ -69,10 +61,8 @@ limitday = 91
 stdate = date.today() - timedelta(days=limitday)
 print(stdate)
 
-
 path = r'C:\Users\Jose\Documents\Intradays'
 os.chdir(path)
-
 
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
@@ -90,7 +80,6 @@ intradata.to_csv(f'intraday_{datt2}.csv')
 print(intradata.head(), intradata.columns, n,  sep=sp)
 print(intradata.shape, intradata.info(), sep=sp)
 
-
 # tday = date.today()
 # print(tday.strftime("%A %d. %B %Y"))
 # print(tday.strftime("%y %m %d"))
@@ -100,5 +89,3 @@ print(intradata.shape, intradata.info(), sep=sp)
 # print(tp, ic, sep=sp, end=sp)
 # for idx, item in enumerate(tp):
 #     print(idx, item)
-
-

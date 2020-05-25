@@ -14,29 +14,22 @@ import time
 
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 
-
 pathtk = r"D:\PPP"
 sys.path.insert(0, pathtk)
 
 import wewebs
 
 sp = {'sep': '\n\n', 'end': '\n\n'}
-
 path = r"D:\Intradays"
-
 ttt = wewebs.token
 
 # aapl = Stock("AAPL", output_format='pandas', token=ttt)
-
 # print(aapl.get_historical_prices())
-
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
 # symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
 
 folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup', 'Walmat', 'Target']
 symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT']
-
-
 
 intradata = pd.DataFrame()
 limitday = 61
@@ -66,4 +59,3 @@ for idx in range(len(symbols)):
     print(f'This is for {folders[idx]}', **sp)
     print(intradata.head(), intradata.columns, n, **sp)
     print(intradata.shape, intradata.info(), **sp)
-

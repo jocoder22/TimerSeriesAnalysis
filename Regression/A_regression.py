@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -62,10 +63,7 @@ plot_acf(simulated_data_3, alpha=0.05, lags=20, ax=ax3)
 ax3.set_title('AR parameter = -0.9')
 plt.show()
 
-
-
 ################ Fitting the models
-
 # Fit an AR(1) model to the first simulated data
 mod = ARMA(simulated_data_1, order=(1, 0))
 res = mod.fit()
@@ -81,7 +79,6 @@ print(res.params)
 mod = ARMA(simulated_data_2, order=(1, 0))
 res = mod.fit()
 
-
 # Print out the estimate for the constant and for phi
 print("When the true phi=0.9, the estimate of phi (and the constant) are:")
 print(res.params)
@@ -94,25 +91,11 @@ res = mod.fit()
 print("When the true phi=0.9, the estimate of phi (and the constant) are:")
 print(res.params)
 
-
 # Forecast the first AR(1) model
 mod = ARMA(simulated_data_1, order=(1, 0))
 res = mod.fit()
 res.plot_predict(start=990, end=1010)
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # https://pypi.org/project/iexfinance/
 # pip3 install iexfinance
@@ -122,11 +105,9 @@ date = datetime(2018, 11, 27)
 yy = pd.DataFrame(get_historical_intraday("S", date))
 print(yy.head())
 
-
 # output_format: pandas will index the pandas dataframe using the minutes of the date
 dd = get_historical_intraday("S", output_format='pandas')
 print(dd.head(), dd.tail(), dd.info(), sep=sp)
-
 
 ff = pd.DataFrame(get_historical_intraday("AAPL", date))
 ff['date'] = ff['date'].astype('datetime64[ns]')

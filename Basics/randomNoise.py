@@ -6,7 +6,6 @@ import statsmodels.api as sm
 import datetime
 import pandas_datareader as pdr
 
-
 from statsmodels.tsa.stattools import acf
 from statsmodels.graphics.tsaplots import plot_acf
 from statsmodels.tsa.stattools import adfuller
@@ -21,13 +20,11 @@ os.chdir(path)
 # AMZN = pdr.get_data_yahoo(symbol, starttime, endtime)
 AMZN = pd.read_csv('AMZN.csv', parse_dates=True, index_col='Date')
 
-
 fig, axs = plt.subplots(nrows=2, ncols=2)
 ax1, ax2, ax3, ax4 = axs[0, 0], axs[1, 0], axs[0, 1], axs[1, 1]
 # plt.subplots(ax3, ax4, sharex=True)
 
 ################## White Noise
-
 # Simulate white noise returns
 returns = np.random.normal(loc=0.02, scale=0.05, size=1000)
 
@@ -47,7 +44,6 @@ plot_acf(returns, lags=20, ax=ax2)
 ax2.set_title('Autocorrelated White Noise')
 # plt.show()
 
-
 ############### Simulate stock prices
 # Generate 500 random steps with mean=0 and standard deviation=1
 steps = np.random.normal(loc=0, scale=1, size=500)
@@ -66,7 +62,6 @@ ax3.axes.get_xaxis().set_visible(False)
 ax3.set_title("Simulated Random Walk")
 # plt.show()
 
-
 # Generate 500 random steps
 steps = np.random.normal(loc=0.001, scale=0.01, size=500) + 1
 
@@ -80,7 +75,6 @@ P = 100 * np.cumprod(steps)
 # plt.subplot(224)
 ax4.plot(P)
 ax4.set_title("Simulated Random Walk with Drift")
-
 plt.show()
 
 
@@ -116,7 +110,6 @@ plt.title('Amazon Percentage Change Adjusted Close Prices (Returns)')
 plt.show()
 
 
-
 fig, (ax1, ax2, ax3) = plt.subplots(nrows=3)
 # ax1.axes.get_xaxis().set_visible(False)
 # ax1.xaxis.set_tick_params(labeltop='on')
@@ -141,7 +134,6 @@ HRB['Earnings'].plot(ax=ax1)
 ax1.set_xlabel(" ")
 ax1.set_title('HRB Earnings with seasonality')
 # plt.show()
-
 
 # plt.subplot(132)
 plot_acf(HRB, ax=ax2)

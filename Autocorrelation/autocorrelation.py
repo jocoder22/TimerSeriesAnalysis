@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import datetime
 import pandas_datareader as pdr
-
 from statsmodels.tsa.stattools import acf
 from statsmodels.graphics.tsaplots import plot_acf
 
@@ -30,8 +29,6 @@ print(returns.head())
 autocorrelation = returns['Adj Close'].autocorr()
 print("The autocorrelation of weekly returns is %4.2f" % (autocorrelation))
 
-
-
 # Compute and print the autocorrelation of MSFT weekly returns
 autocorrelation = returns['Adj Close'].autocorr()
 print("The autocorrelation of weekly MSFT returns is %4.2f" %(autocorrelation))
@@ -46,7 +43,6 @@ print("The approximate confidence interval is +/- %4.2f" %(conf))
 # Plot the autocorrelation function with 95% confidence intervals and 20 lags using plot_acf
 plot_acf(returns['Adj Close'], alpha=0.05, lags=20)
 plt.show()
-
 
 ################### From Fred: contains daily data of 10-year interest rate
 # https: // fred.stlouisfed.org/
@@ -70,4 +66,3 @@ annual_data['diff_rates'] = annual_data.diff()
 autocorrelation_annual = annual_data['diff_rates'].autocorr()
 print("The autocorrelation of annual interest rate changes is %4.2f" %
       (autocorrelation_annual))
-
