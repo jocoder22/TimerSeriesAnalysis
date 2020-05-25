@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 import datetime
 import pandas_datareader as pdr
 
-path = "C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis"
+# path = "C:\\Users\\okigboo\\Desktop\\TimeSeriesAnalysis"
+path = r"D:\TimerSeriesAnalysis"
 os.chdir(path)
 
 symbol = 'AAPL'
