@@ -28,7 +28,6 @@ print(today1, today2, sep=sp)
 # timestamp = date.fromtimestamp(1554611045)
 # print("Date =", timestamp)
 
-
 # # working with datetime (year, month, day, hour, minutes, seconds, nanosecods)
 # mydate = datetime(2019, 12, 24, 18, 51, 58, 380342)
 # print("year =", mydate.year)
@@ -46,7 +45,6 @@ print(today1, today2, sep=sp)
 # print(maydate.weekday(), end=sp)
 # # date.isoweekday() : Monday is 1 and Sunday is 7
 # print(maydate.isoweekday(), end=sp)
-
 
 # # get the intraday stock for last 90 days
 # date = datetime(2018, 11, 27)
@@ -81,7 +79,6 @@ while date.today() > stdate:
 intradata.to_csv(f'intraday_{datt2}.csv')
 print(intradata.head(), intradata.columns, n,  sep=sp)
 print(intradata.shape, intradata.info(), sep=sp)
-
 
 # tday = date.today()
 # print(tday.strftime("%A %d. %B %Y"))
