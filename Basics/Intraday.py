@@ -13,6 +13,7 @@ from datetime import timedelta
 import time
 
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
+from printdescribe import print2
 
 pathtk = r"D:\PPP"
 sys.path.insert(0, pathtk)
@@ -28,8 +29,11 @@ ttt = wewebs.token
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
 # symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
 
-folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup', 'Walmat', 'Target']
-symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT']
+# folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup', 'Walmat', 'Target']
+# symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT']
+
+folders = ['JPMorgan', 'Citigroup', 'Walmat', 'Target']
+symbols = ['JPM', 'C', 'WMT', 'TGT']
 
 intradata = pd.DataFrame()
 limitday = 61
@@ -56,6 +60,6 @@ for idx in range(len(symbols)):
         os.makedirs(savedir)
     os.chdir(savedir)
     intradata.to_csv(f'intraday_{datt2}.csv')
-    print(f'This is for {folders[idx]}', **sp)
-    print(intradata.head(), intradata.columns, n, **sp)
-    print(intradata.shape, intradata.info(), **sp)
+    print2(f'This is for {folders[idx]}')
+    print2(intradata.head(), intradata.columns, n)
+    print2(intradata.shape, intradata.info())
