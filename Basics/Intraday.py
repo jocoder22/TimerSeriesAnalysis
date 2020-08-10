@@ -29,11 +29,11 @@ ttt = wewebs.token
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
 # symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
 
-# folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup', 'Walmat', 'Target']
-# symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT']
+folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup', 'Walmat', 'Target']
+symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT']
 
-folders = ['JPMorgan', 'Citigroup', 'Walmat', 'Target']
-symbols = ['JPM', 'C', 'WMT', 'TGT']
+# folders = ['JPMorgan', 'Citigroup', 'Walmat', 'Target']
+# symbols = ['JPM', 'C', 'WMT', 'TGT']
 
 intradata = pd.DataFrame()
 limitday = 61
