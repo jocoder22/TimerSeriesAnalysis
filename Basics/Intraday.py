@@ -21,16 +21,19 @@ sys.path.insert(0, pathtk)
 import wewebs
 
 sp = {'sep': '\n\n', 'end': '\n\n'}
-path = r"D:\Intradays"
+# path = r"D:\Intradays"
+path = r"C:\Users\HP\Documents\intraday"
 ttt = wewebs.token
 
+# Site for stoch symbols
+#  https://iextrading.com/trading/eligible-symbols/
 # aapl = Stock("AAPL", output_format='pandas', token=ttt)
 # print(aapl.get_historical_prices())
-# folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil', 'Amazon', 'Apple', 'MicroSoft', 'Google']
-# symbols = ['^GSPC', '^DJI', '^IXIC', '^RUT', 'CL=F', 'AMZN', 'AAPL', 'MSFT', 'GOOGL']
+folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil']
+symbols = [ '^RUT', 'CL=F', '^GSPC', '^DJI', '^IXIC']
 
-folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup', 'Walmat', 'Target']
-symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT']
+# folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup', 'Walmat', 'Target']
+# symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT']
 
 # folders = ['JPMorgan', 'Citigroup', 'Walmat', 'Target']
 # symbols = ['JPM', 'C', 'WMT', 'TGT']
