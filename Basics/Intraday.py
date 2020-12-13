@@ -63,6 +63,7 @@ for idx in range(len(symbols)):
         intradata = pd.concat([intradata, df2], axis=0, sort=True)
         stdate = startdate
         time.sleep(1.8) # seconds
+        
     # saving data
     savedir = os.path.join(os.getcwd(), folders[idx])
     if not os.path.isdir(savedir):
