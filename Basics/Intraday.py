@@ -43,6 +43,7 @@ symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'W
 # folders = ['JPMorgan', 'Citigroup', 'Walmat', 'Target']
 # symbols = ['JPM', 'C', 'WMT', 'TGT']
 
+
 intradata = pd.DataFrame()
 limitday = 80
 dattt = date.today()
