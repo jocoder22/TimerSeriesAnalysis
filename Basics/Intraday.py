@@ -22,24 +22,29 @@ import wewebs
 
 sp = {'sep': '\n\n', 'end': '\n\n'}
 # path = r"D:\Intradays"
-path = r"C:\Users\HP\Documents\intraday"
+path = r"D:\Intradays"
+# path = r"C:\Users\HP\Documents\intraday"
 ttt = wewebs.token
 
 # Site for stoch symbols
 #  https://iextrading.com/trading/eligible-symbols/
 # aapl = Stock("AAPL", output_format='pandas', token=ttt)
 # print(aapl.get_historical_prices())
-folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil']
-symbols = [ '^RUT', 'CL=F', '^GSPC', '^DJI', '^IXIC']
+# folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil']
+# symbols = [ '^RUT', 'CL=F', '^GSPC', '^DJI', '^IXIC']
 
-# folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 'Citigroup', 'Walmat', 'Target']
-# symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT']
+folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
+            'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
+            "Cvs", "AT_T", "CocaCola", "Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
+            "ExpWorld", "HomeDepot"]
+symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
+            'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD' ]
 
 # folders = ['JPMorgan', 'Citigroup', 'Walmat', 'Target']
 # symbols = ['JPM', 'C', 'WMT', 'TGT']
 
 intradata = pd.DataFrame()
-limitday = 61
+limitday = 80
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
 
