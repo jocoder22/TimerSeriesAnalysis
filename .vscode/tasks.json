@@ -1,15 +1,58 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
+    // 
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "echo",
+            "label": "pythonRunner",
             "type": "shell",
             "command": "python",
-            "args": ["'${file}'"]
-            
-            
-        }
+            "args": ["'${file}'"],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+
+        {
+            "label": "autopep8 current file",
+            "type": "process",
+            "command": "${config:python.pythonPath}",
+            "args": ["-m", "autopep8", "-i", "${file}"]
+          }
     ]
 }
+
+
+
+
+// // Place your key bindings in this file to override the defaults
+// keybindings.json 
+
+
+
+// [
+//     {
+//         "key": "ctrl+alt+z",
+//         "command": "workbench.action.tasks.runTask",
+//         "args": "pythonRunner"
+//       },
+
+//       {
+//         "key": "ctrl+alt+8",
+//         "command": "workbench.action.tasks.runTask",
+//         "args": "autopep8 current file"
+//       },
+
+//       {
+//         "key": "ctrl+f5",
+//         "command": "workbench.action.reloadWindow",
+//         "when": "editorTextFocus"
+//       }
+  
+// ]
