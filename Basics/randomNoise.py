@@ -24,9 +24,11 @@ fig, axs = plt.subplots(nrows=2, ncols=2)
 ax1, ax2, ax3, ax4 = axs[0, 0], axs[1, 0], axs[0, 1], axs[1, 1]
 # plt.subplots(ax3, ax4, sharex=True)
 
+
 ################## White Noise
 # Simulate white noise returns
 returns = np.random.normal(loc=0.02, scale=0.05, size=1000)
+
 
 # Print out the mean and standard deviation of returns
 mean = np.mean(returns)
