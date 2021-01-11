@@ -35,19 +35,19 @@ ttt = wewebs.token
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil']
 # symbols = [ '^RUT', 'CL=F', '^GSPC', '^DJI', '^IXIC']
 
-
-folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
-            'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
-            "Cvs", "AT_T", "CocaCola", "Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
-            "ExpWorld", "HomeDepot"]
-symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
-            'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD' ]
-
-# 
-
-# folders = ["AdvancedMicroDevices", "Twilio",
+# **
+# folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
+#             'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
+#             "Cvs", "AT_T", "CocaCola", "Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
 #             "ExpWorld", "HomeDepot"]
-# symbols = [ 'AMD', 'TWLO', 'EXPI', 'HD']c
+# symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
+#             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD' ]
+# **
+# # 
+
+folders = ["Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
+            "ExpWorld", "HomeDepot"]
+symbols = [ 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD']
 
 
 intradata = pd.DataFrame()
