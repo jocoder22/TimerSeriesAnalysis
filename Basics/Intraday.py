@@ -42,7 +42,7 @@ ttt = wewebs.token
 #             "ExpWorld", "HomeDepot", "Ford", "PVH", "Twitter", "Salesforce"]
 # symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
 #             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
-                'F', 'PVH', 'TWTR', 'CRM']
+#               'F', 'PVH', 'TWTR', 'CRM']
 # **
 # # 
 
