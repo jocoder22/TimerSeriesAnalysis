@@ -46,9 +46,8 @@ ttt = wewebs.token
 # **
 # # 
 
-folders = ["Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
-            "ExpWorld", "HomeDepot"]
-symbols = [ 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD']
+folders = ["Ford", "PVH", "Twitter", "Salesforce"]
+symbols = [ 'F', 'PVH', 'TWTR', 'CRM']
 
 
 intradata = pd.DataFrame()
