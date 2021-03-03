@@ -23,18 +23,26 @@ else:
     # Use split to get the part of the line that you require
     res = res.decode().split('location="')[1].strip().split('"')[0]
     print (res)
+ 
+
+import os
+os.popen('tail -n 1000 filepath').read()
+
+
     
  with open('filename.txt', 'rb') as f:
     f.seek(-2, os.SEEK_END)
     while f.read(1) != b'\n':
         f.seek(-2, os.SEEK_CUR)
     last_line = f.readline().decode()
-    
+   
+  
  with open('filename.txt') as f:
     for line in f:
         pass
     last_line = line
-    
+ 
+
 import csv
 
 lis = list(csv.reader(open(inputFile)))
