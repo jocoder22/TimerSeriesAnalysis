@@ -9,4 +9,29 @@ with open('C:/captons/', 'rw') as f:
   
 with open('filename.txt', 'r') as f:
     last_line = f_read.readlines()[-1]
+    
+    
+from subprocess import Popen, PIPE
+f = 'yourfilename.txt'
+# Get the last line from the file
+p = Popen(['tail','-1',f],shell=False, stderr=PIPE, stdout=PIPE)
+res,err = p.communicate()
+if err:
+    print (err.decode())
+else:
+    # Use split to get the part of the line that you require
+    res = res.decode().split('location="')[1].strip().split('"')[0]
+    print (res)
+    
+ with open('filename.txt', 'rb') as f:
+    f.seek(-2, os.SEEK_END)
+    while f.read(1) != b'\n':
+        f.seek(-2, os.SEEK_CUR)
+    last_line = f.readline().decode()
+    
+ with open('filename.txt') as f:
+    for line in f:
+        pass
+    last_line = line
+    
 
