@@ -49,3 +49,9 @@ import csv
 lis = list(csv.reader(open(inputFile)))
 print lis[-1] # prints final line as a list of strings
 
+
+
+
+entries = os.listdir('my_directory/')
+for entry in entries:
+  print(entry)
