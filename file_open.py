@@ -51,7 +51,13 @@ print lis[-1] # prints final line as a list of strings
 
 
 
-
+# os.listdir() is old, don't use it
 entries = os.listdir('my_directory/')
 for entry in entries:
   print(entry)
+  
+
+# os.scandir() and os.path are newer! use them
+with os.scandir('my_directory/') as entries:
+    for entry in entries:
+        print(entry.name)  
