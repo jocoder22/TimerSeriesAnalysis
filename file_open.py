@@ -7,9 +7,10 @@ with open('C:/captons/', 'rw') as f:
   data = f.read()
   # data = f.read(-5)
   # data2 = f.readline()
-  
+ 
+
 with open('filename.txt', 'r') as f:
-    last_line = f_read.readlines()[-1]
+    last_line = f.readlines()[-1]
     
     
 from subprocess import Popen, PIPE
