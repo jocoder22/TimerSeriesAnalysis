@@ -34,4 +34,8 @@ else:
         pass
     last_line = line
     
+import csv
+
+lis = list(csv.reader(open(inputFile)))
+print lis[-1] # prints final line as a list of strings
 
