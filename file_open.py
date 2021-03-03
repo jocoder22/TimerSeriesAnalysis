@@ -58,6 +58,7 @@ for entry in entries:
   
 
 # os.scandir() and os.path are newer! use them
+# os.scandir() returns an posix.ScandirIterator object, which is an iterator
 with os.scandir('my_directory/') as entries:
     for entry in entries:
         print(entry.name)  
