@@ -5,6 +5,7 @@ import os
 
 with open('C:/captons/', 'rw') as f:
   data = f.read()
+  # data = f.read(-5)
   # data2 = f.readline()
   
 with open('filename.txt', 'r') as f:
