@@ -150,9 +150,49 @@ def print_all_files(path):
   
   
 ################################# getting file attributes ###############################################
-################ uses .stat() and it submethods - st_size() and st_mtime ################################
-################# st_mtime is second since the last epoch ###############################################
+################ uses .stat() and it submethods - st_size and st_mtime attributes #######################
+################# st_mtime is floating seconds since the last epoch #####################################
+with os.scandir('my_directory/') as dir_contents:
+  for entry in dir_contents:
+    info = entry.stat()
+    print(info.st_mtime)
 
+
+current_dir = Path('my_directory')
+for path in current_dir.iterdir():
+     info = path.stat()
+     print(info.st_mtime)
+      
+# for path in current_dir.iterdir().stat():
+#      print(path.st_mtime)  
+
+
+from datetime import datetime
+from os import scandir
+
+def convert_date(timestamp):
+    d = datetime.utcfromtimestamp(timestamp)
+    formated_date = d.strftime('%d %b %Y')
+    return formated_date
+
+def get_files():
+    dir_entries = scandir('my_directory/')
+    for entry in dir_entries:
+        if entry.is_file():
+            info = entry.stat()
+            print(f'{entry.name}\t Last Modified: {convert_date(info.st_mtime)}')
+ 
+
+def get_files2(path):
+    """Print name and attributes of all files in given path and subdirs."""
+    for entry in os.scandir(path):
+        if entry.is_dir(follow_symlinks=False):
+            get_files2(entry.path)   
+        else:
+            info = entry.stat()
+            print(f'{entry.name}\t Last Modified: {convert_date(info.st_mtime)}\t Size: {info.st_size}')
+            
+            
 ################################# creating directory #####################################################
 # if directory or path already exists, mkdir() raises a FileExistsError:
 import os
