@@ -83,3 +83,9 @@ os.mkdir('example_directory/')
 # pathlib module
 p = Path('example_directory/')
 p.mkdir()
+
+# can use try-except to catch the error
+try:
+    p.mkdir()
+except FileExistsError as e:
+    print(e)
