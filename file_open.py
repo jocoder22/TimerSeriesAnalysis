@@ -105,7 +105,7 @@ for item in files_in_basepath:
     print(item.name)
     
 
-#####################################  List all subdirectories ##############################
+#####################################  List all subdirectories ####################################
 # List all subdirectories using os.listdir
 basepath = 'my_directory/'
 for entry in os.listdir(basepath):
@@ -120,9 +120,35 @@ with os.scandir(basepath) as entries:
             print(entry.name)
             
             
-            
-    
-################################# creating directory ################################
+ # List all subdirectory using pathlib
+basepath = Path('my_directory/')
+for entry in basepath.iterdir():
+    if entry.is_dir():
+        print(entry.name)
+        
+        
+############################################# print file name in director and subdirectories ############        
+def print_all_files(path):
+    """Print name of all files in given path and subdirs."""
+    for entry in os.scandir(path):
+        if entry.is_dir(follow_symlinks=False):
+            print_all_files(entry.path)
+        else:
+          print(entry.name)
+ 
+  
+ def get_tree_size(path):
+    """Return total size of files in given path and subdirs."""
+    total = 0
+    for entry in os.scandir(path):
+        if entry.is_dir(follow_symlinks=False):
+            total += get_tree_size(entry.path)
+        else:
+            total += entry.stat(follow_symlinks=False).st_size
+    return total
+  
+  
+################################# creating directory #####################################################
 # if directory or path already exists, mkdir() raises a FileExistsError:
 import os
 from pathlib import Path
