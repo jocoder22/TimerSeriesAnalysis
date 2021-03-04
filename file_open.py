@@ -148,6 +148,11 @@ def print_all_files(path):
     return total
   
   
+  
+################################# getting file attributes ###############################################
+################ uses .stat() and it submethods - st_size() and st_mtime ################################
+################# st_mtime is second since the last epoch ###############################################
+
 ################################# creating directory #####################################################
 # if directory or path already exists, mkdir() raises a FileExistsError:
 import os
