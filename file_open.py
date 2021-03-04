@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import os
 
 
@@ -71,4 +70,9 @@ for entry in entries.iterdir():
     print(entry.name)        
     
     
-# $ tree -p -i     
+# $ tree -p -i   
+
+############# creating directory ################################
+# if directory or path already exists, mkdir() raises a FileExistsError:
+import os
+os.mkdir('example_directory/')
