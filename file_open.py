@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+from pathlib import Path
 
 
 with open('C:/captons/', 'rw') as f:
@@ -63,8 +64,7 @@ with os.scandir('my_directory/') as entries:
         print(entry.name)  
 
         
-from pathlib import Path
-
+# using pathlib Path
 entries = Path('my_directory/')
 for entry in entries.iterdir():
     print(entry.name)        
@@ -89,3 +89,8 @@ try:
     p.mkdir()
 except FileExistsError as e:
     print(e)
+
+# can ignore the FileExistsError by passing the exist_ok=True 
+p.mkdir(exist_ok=True)
+
+
