@@ -75,4 +75,11 @@ for entry in entries.iterdir():
 ############# creating directory ################################
 # if directory or path already exists, mkdir() raises a FileExistsError:
 import os
+from pathlib import Path
+
+# using os module
 os.mkdir('example_directory/')
+
+# pathlib module
+p = Path('example_directory/')
+p.mkdir()
