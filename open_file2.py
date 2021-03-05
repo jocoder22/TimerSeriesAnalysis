@@ -33,6 +33,10 @@ p = Path("PythonLearning/machineLearning/AdaBoost/")
 p.mkdir(parents=True)
 
 
+#  os.makedirs() and Path.mkdir() raise an OSError if the target directory already exists.
+# use exist_ok = true to avoid throwing eht OSError
+# $ tree -p -i .
+
 ############# shell command
 # $ mkdir PythonLearning
 # $ cd PythonLearning/
@@ -41,7 +45,4 @@ p.mkdir(parents=True)
 # $ touch data_{01..03}.cvs data_{01..03}_backup.cvs admin.py tests.py
 
 
-#  os.makedirs() and Path.mkdir() raise an OSError if the target directory already exists.
-# use exist_ok = true to avoid throwing eht OSError
-# $ tree -p -i .
 
