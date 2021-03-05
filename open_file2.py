@@ -25,6 +25,15 @@ p.mkdir(exist_ok=True)
 
 ############################### Making multiple directories ###############################################
 ### use os.mkdirs, ===> not the s (similar to mkdir without the s) ########################################
-os.mkdirs("PythonLearning/machineLearning/AdaBoost/")
+# The permission (owner and group users) default mode is 0o777
+os.mkdirs("PythonLearning/machineLearning/AdaBoost/", mode = 0o777)
+
+
+p = Path("PythonLearning/machineLearning/AdaBoost/")
+p.mkdir(parents=True)
+
+
+#  os.makedirs() and Path.mkdir() raise an OSError if the target directory already exists.
+# use exist_ok = true to avoid throwing eht OSError
 
 
