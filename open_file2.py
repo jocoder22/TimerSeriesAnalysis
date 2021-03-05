@@ -41,8 +41,8 @@ p.mkdir(parents=True)
 # $ mkdir PythonLearning
 # $ cd PythonLearning/
 # $ mkdir machineLearning
-# $ touch machineLearning/file1.py machineLearning/file2.py
-# $ touch data_{01..03}.cvs data_{01..03}_backup.cvs admin.py tests.py
+# $ touch machineLearning/file1.py machineLearning/file2.py machineLearning/mytext.txt
+# $ touch data_{01..03}.cvs data_{01..03}_backup.cvs text_{01..03}.txt admin.py tests.py
 
 
 
