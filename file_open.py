@@ -195,26 +195,3 @@ def get_files2(path):
             print(f'{entry.name}\t Last Modified: {convert_date(info.st_mtime)}\t Size: {info.st_size}')
             
   
-  
-################################# creating directory #####################################################
-# if directory or path already exists, mkdir() raises a FileExistsError:
-import os
-from pathlib import Path
-
-# using os module
-os.mkdir('example_directory/')
-
-# pathlib module
-p = Path('example_directory/')
-p.mkdir()
-
-# can use try-except to catch the error
-try:
-    p.mkdir()
-except FileExistsError as e:
-    print(e)
-
-# can ignore the FileExistsError by passing the exist_ok=True 
-p.mkdir(exist_ok=True)
-
-
