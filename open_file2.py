@@ -22,3 +22,9 @@ except FileExistsError as e:
 p.mkdir(exist_ok=True)
 
 
+
+############################### Making multiple directories ###############################################
+### use os.mkdirs, ===> not the s (similar to mkdir without the s) ########################################
+os.mkdirs("PythonLearning/machineLearning/AdaBoost/")
+
+
