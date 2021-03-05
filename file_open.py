@@ -103,7 +103,8 @@ basepath = Path('my_directory/')
 files_in_basepath = (entry for entry in basepath.iterdir() if entry.is_file())
 for item in files_in_basepath:
     print(item.name)
-    
+  
+  
 
 #####################################  List all subdirectories ####################################
 # List all subdirectories using os.listdir
@@ -146,6 +147,7 @@ def print_all_files(path):
         else:
             total += entry.stat(follow_symlinks=False).st_size
     return total
+  
   
   
   
@@ -192,7 +194,8 @@ def get_files2(path):
             info = entry.stat()
             print(f'{entry.name}\t Last Modified: {convert_date(info.st_mtime)}\t Size: {info.st_size}')
             
-            
+  
+  
 ################################# creating directory #####################################################
 # if directory or path already exists, mkdir() raises a FileExistsError:
 import os
