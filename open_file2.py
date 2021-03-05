@@ -84,3 +84,7 @@ for file_name in glob('*[0-9]*.txt'):
 # use recursive=True option to search subdirectory
 for file_name in glob('*[0-9]*.txt', recursive=True):
     print(file_name)
+
+# iglob() returns an iterator instead of a list 
+for file_name in iglob('*[0-9]*.txt', recursive=True):
+    print(file_name)
