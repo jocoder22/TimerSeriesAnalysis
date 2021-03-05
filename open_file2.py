@@ -92,5 +92,5 @@ for file_name in iglob('*[0-9]*.txt', recursive=True):
     
 # pathlib has glob() method for search and pattern matching with * wildcards    
 p = Path('.')
-for name in p.glob('*.p*'):
-    print(name)
+for file_name in p.glob('*.c*'):
+    print(file_name)
