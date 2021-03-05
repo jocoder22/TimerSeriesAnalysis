@@ -88,3 +88,9 @@ for file_name in glob('*[0-9]*.txt', recursive=True):
 # iglob() returns an iterator instead of a list 
 for file_name in iglob('*[0-9]*.txt', recursive=True):
     print(file_name)
+
+    
+# pathlib has glob() method for search and pattern matching with * wildcards    
+p = Path('.')
+for name in p.glob('*.p*'):
+    print(name)
