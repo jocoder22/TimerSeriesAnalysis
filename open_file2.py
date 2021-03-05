@@ -28,6 +28,7 @@ p.mkdir(exist_ok=True)
 ### use os.mkdirs, ===> not the s (similar to mkdir without the s) ########################################
 # The permission (owner and group users) default mode is 0o777
 os.mkdirs("PythonLearning/machineLearning/AdaBoost/", mode = 0o777)
+# os.mkdirs("PythonLearning3/machineLearning{1..2}"/)
 
 
 p = Path("PythonLearning/machineLearning/AdaBoost/")
@@ -45,5 +46,10 @@ p.mkdir(parents=True)
 # $ touch machineLearning/file1.py machineLearning/file2.py machineLearning/mytext.txt
 # $ touch data_{01..03}.cvs data_{01..03}_backup.cvs text_{01..03}.txt admin.py tests.py
 
-
+# $ mkdir PythonLearning2
+# $ cd PythonLearning2/
+# $ mkdir machineLearning1 machineLearning1
+# $ touch machineLearning1/file1.py machineLearning1/file2.py machineLearning1/file3.py
+# $ touch machineLearning2/file4.py machineLearning2/file5.py machineLearning2/file6.py 
+# $ touch data_{01..03}.cvs data_{01..03}_backup.cvs text_{01..03}.txt admin.py tests.py
 
