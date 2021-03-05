@@ -62,3 +62,15 @@ p.mkdir(parents=True)
 for file_name in os.listdir('PythonLearning'):
   if file_name.endswith('.txt'):
     print(file_name)
+
+    
+# Pattern Matching Using fnmatch
+for file_name in os.listdir('PythonLearning'):
+  if fnmatch(file_name, '.txt'):
+    print(file_name)
+    
+    
+# Advanced pattern Matching Using fnmatch, can use wildcards search
+for file_name in os.listdir('PythonLearning'):
+  if fnmatch(file_name, 'data_*.txt'):
+    print(file_name)    
