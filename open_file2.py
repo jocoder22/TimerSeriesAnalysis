@@ -74,3 +74,9 @@ for file_name in os.listdir('PythonLearning'):
 for file_name in os.listdir('PythonLearning'):
   if fnmatch(file_name, 'data_*.txt'):
     print(file_name)    
+
+# Filename Pattern Matching Using glob and iglob
+glob("*.csv")  # returns a lisit
+
+for file_name in glob('*[0-9]*.txt'):
+    print(file_name)
