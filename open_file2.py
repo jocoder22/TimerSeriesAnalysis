@@ -80,3 +80,7 @@ glob("*.csv")  # returns a lisit
 
 for file_name in glob('*[0-9]*.txt'):
     print(file_name)
+
+# use recursive=True option to search subdirectory
+for file_name in glob('*[0-9]*.txt', recursive=True):
+    print(file_name)
