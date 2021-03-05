@@ -9,10 +9,10 @@ from fnmatch import fnmatch
 ################################# creating directory #####################################################
 # if directory or path already exists, mkdir() raises a FileExistsError:
 # using os module
-os.mkdir('example_directory/')
+os.mkdir('PythonLearning_1/')
 
 # pathlib module
-p = Path('example_directory/')
+p = Path('PythonLearning_2/')
 p.mkdir()
 
 # can use try-except to catch the error
@@ -55,3 +55,10 @@ p.mkdir(parents=True)
 # $ touch machineLearning2/file4.py machineLearning2/file5.py machineLearning2/file6.py 
 # $ touch data_{01..03}.cvs data_{01..03}_backup.cvs text_{01..03}.txt admin.py tests.py
 
+
+
+############################################ file pattern match or searching ###############################
+# endswith() and startswith() string methods
+for file_name in os.listdir('PythonLearning'):
+  if file_name.endswith('.txt'):
+    print(file_name)
