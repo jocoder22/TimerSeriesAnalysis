@@ -67,14 +67,13 @@ for idx in range(len(symbols)):
     os.chdir(path)
     _dir = os.path.join(os.getcwd(), folders[idx])
 
-    # savedir = os.path.join(os.getcwd(), folders[idx])
     if not os.path.isdir(_dir):
         os.makedirs(_dir)
         stdate = date.today() - timedelta(days=limitday)
     else:
         stdate = get_lastdate(_dir)
 
-    # os.chdir(path)
+
     intradata = pd.DataFrame()
     n = 0
 
@@ -94,10 +93,6 @@ for idx in range(len(symbols)):
         # startdate +=  timedelta(days=1)
         time.sleep(1.8) # seconds
         
-    # saving data
-    # savedir = os.path.join(os.getcwd(), folders[idx])
-    # if not os.path.isdir(_dir):
-    #     os.makedirs(_dir)
     os.chdir(_dir)
     intradata.to_csv(f'intraday_{datt2}.csv')
     print2(f'This is for {folders[idx]}')
