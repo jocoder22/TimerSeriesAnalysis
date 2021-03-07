@@ -84,11 +84,6 @@ for idx in range(len(symbols)):
         print2(f"Downloaded {folders[idx]} Data today");
         continue
     
-    # while date.today() > stdate:
-    #     startdate = stdate + timedelta(days=1)
-    #     print2(startdate)
-    #     stdate = startdate
-
 
     while date.today() > stdate:
         startdate = stdate + timedelta(days=1)
