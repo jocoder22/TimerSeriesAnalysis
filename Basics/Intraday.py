@@ -23,6 +23,7 @@ import wewebs
 sp = {'sep': '\n\n', 'end': '\n\n'}
 # path = r"D:\Intradays"
 path = r"D:\Intradays"
+# path = r"E:\Intradays"
 # path = r"C:\Users\HP\Documents\intraday"
 ttt = wewebs.token
 
