@@ -78,8 +78,6 @@ for idx in range(len(symbols)):
     intradata = pd.DataFrame()
     n = 0
 
-    # if date.today() ==  stdate:
-    #     stdate = date.today() - timedelta(days=limitday)
     if date.today() ==  stdate:
         print2(f"Downloaded {folders[idx]} Data today");
         continue
