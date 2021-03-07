@@ -73,7 +73,6 @@ for idx in range(len(symbols)):
     else:
         stdate = get_lastdate(_dir)
 
-
     intradata = pd.DataFrame()
     n = 0
 
@@ -81,7 +80,6 @@ for idx in range(len(symbols)):
         print2(f"Downloaded {folders[idx]} Data today");
         continue
     
-
     while date.today() > stdate:
         startdate = stdate + timedelta(days=1)
         df2 = get_historical_intraday(symbols[idx], startdate, token=ttt, output_format='pandas')
