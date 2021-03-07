@@ -56,12 +56,6 @@ symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'W
             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
               'F', 'PVH', 'TWTR', 'CRM']
 """
-# os.chdir(path)
-# for idx in range(len(symbols)):
-#     _dir = os.path.join(os.getcwd(), folders[idx])
-#     print2(_dir)
-#     print2(get_lastdate(_dir))
-
 
 for idx in range(len(symbols)):
     os.chdir(path)
