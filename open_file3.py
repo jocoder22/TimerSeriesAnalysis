@@ -45,8 +45,6 @@ intradata = pd.DataFrame()
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
 
-
-
 """
 folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
             'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
