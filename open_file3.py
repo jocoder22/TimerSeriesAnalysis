@@ -16,7 +16,7 @@ sys.path.insert(0, pathtk)
 
 import wewebs
 
-sp = {'sep': '\n\n', 'end': '\n\n'}
+# sp = {'sep': '\n\n', 'end': '\n\n'}
 path = r"E:\Intradays"
 path1 = r"E:\Intradays\AdvancedMicroDevices"
 
@@ -80,7 +80,8 @@ for idx in range(len(symbols)):
         stdate = startdate
         # startdate +=  timedelta(days=1)
         time.sleep(1.8) # seconds
-        
+    
+    # saving our data
     os.chdir(_dir)
     intradata.to_csv(f'intraday_{datt2}.csv')
     print2(f'This is for {folders[idx]}')
