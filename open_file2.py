@@ -102,7 +102,7 @@ for file_name in p.glob('*.c*'):
 for dirpath, dirnames, files in os.walk('.'):
     print(f'Found directory: {dirpath}')
     for file_name in files:
-        print(file_name)
+        print(f'\t{file_name}')
     print()
     
 # print a tree digram ##
