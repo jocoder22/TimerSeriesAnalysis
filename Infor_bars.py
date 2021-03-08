@@ -15,6 +15,7 @@ def tickimbalaneT(stock, price):
   stock['bt_1'] = stock.PriceChange_Abs.shift(periods = 1)
   stock['b_t'] = stock[["bt_1", "PriceChange_Abs", "PriceChange"]].apply(lambda x: x[0] if x[2] == 0 else x[1] , axis=1)
   stock.drop(columns = ["bt_1", "PriceChange_Abs", "PriceChange"], inplace=True)
+  stock['Rtotal'] = df.b_t.cumsum()
   
 
 tickimbalaneT(df,'c')
