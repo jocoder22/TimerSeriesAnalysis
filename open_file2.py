@@ -32,7 +32,6 @@ p.mkdir(exist_ok=True)
 os.mkdirs("PythonLearning/machineLearning/AdaBoost/", mode = 0o777)
 # os.mkdirs("PythonLearning3/machineLearning{1..2}"/)
 
-
 p = Path("PythonLearning/machineLearning/AdaBoost/")
 p.mkdir(parents=True)
 
@@ -94,3 +93,24 @@ for file_name in iglob('*[0-9]*.txt', recursive=True):
 p = Path('.')
 for file_name in p.glob('*.c*'):
     print(file_name)
+
+    
+ 
+
+
+######################### do randow walk of the file system #################################################
+for dirpath, dirnames, files in os.walk('.'):
+    print(f'Found directory: {dirpath}')
+    for file_name in files:
+        print(file_name)
+    print()
+    
+# print a tree digram ##
+def showDirectoryTree(Base_directory):
+    print(f'~ {Base_directory}')
+    for path in sorted(Base_directory.rglob('*')):
+        depth = len(path.relative_to(Base_directory).parts)
+        spacer = '\t' * depth
+        print(f'{spacer} {depth}__    {path.name}')
+  
+showDirectoryTree(Path.cwd())   
