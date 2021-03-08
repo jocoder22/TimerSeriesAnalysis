@@ -69,6 +69,7 @@ for idx in range(len(symbols)):
         print2(f"Downloaded {folders[idx]} Data today");
         continue
     
+
     while date.today() > stdate:
         startdate = stdate + timedelta(days=1)
         df2 = get_historical_intraday(symbols[idx], startdate, token=ttt, output_format='pandas')
@@ -79,6 +80,7 @@ for idx in range(len(symbols)):
         stdate = startdate
         # startdate +=  timedelta(days=1)
         time.sleep(1.8) # seconds
+    
     
     # saving our data
     os.chdir(_dir)
