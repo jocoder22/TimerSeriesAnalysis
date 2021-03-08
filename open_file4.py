@@ -27,4 +27,4 @@ tf001.close()
 with TemporaryFile('w+t') as tf001:
   tf001.write('Hello Machine Learners!')
   tf001.seek(0)
-  mydata = tf001.read()
+  tf001.read()
