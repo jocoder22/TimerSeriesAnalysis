@@ -25,7 +25,7 @@ tf001.close()
 
 ### can use context manager for authomatic closing
 with TemporaryFile('w+t') as tf001:
-  tf001.write('Hello Machine Learners!')
+  tf001.write('Hello Machine Learners!') # tf001.write(b'Hello Machine Learners!') for binary
   tf001.seek(0)
   tf001.read()
 #   print(tempfile.gettempdir())
