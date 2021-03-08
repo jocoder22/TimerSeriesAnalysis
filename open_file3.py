@@ -7,7 +7,6 @@ import pandas as pd
 import datetime, time
 from datetime import datetime, timedelta, date
 
-
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 from printdescribe import print2
 
