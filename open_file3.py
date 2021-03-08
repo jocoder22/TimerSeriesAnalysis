@@ -33,7 +33,6 @@ def get_lastdate(path4):
             
     return date.fromtimestamp(max(datelist))
 
-
 # folders = ["Schrodinger", "BristolMyers"]
 # symbols = ['SDGR', 'BMY']
 
