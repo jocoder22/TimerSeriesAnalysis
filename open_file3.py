@@ -39,7 +39,6 @@ def get_lastdate(path4):
 symbols = ['BABA', 'NIO', 'AAPL', 'BMY']
 folders = ["Alibaba", "NioElectricMotor", "Apple" ,  "BristolMyers"]
 
-
 intradata = pd.DataFrame()
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
