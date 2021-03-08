@@ -9,8 +9,8 @@ from fnmatch import fnmatch
 ####################################### use tempfile module #################################################
 # 4 classes
 ## TemporaryFile, NamedTemporaryFile, TemporaryDirectory, and SpooledTemporaryFile
-## mode ar 'w+b' for binary read and write, 'w+t' for text read and write
-from tempfile import TemporaryFile, NamedTemporaryFile, TemporaryDirectory, and SpooledTemporaryFile
+## mode are 'w+b' (default) for binary read and write, 'w+t' for text read and write
+from tempfile import TemporaryFile, NamedTemporaryFile, TemporaryDirectory, SpooledTemporaryFile, gettempdir
 
 # Create a temporary file and write some data to it
 tf001 = TemporaryFile('w+t')
@@ -28,3 +28,7 @@ with TemporaryFile('w+t') as tf001:
   tf001.write('Hello Machine Learners!')
   tf001.seek(0)
   tf001.read()
+#   print(tempfile.gettempdir())
+  print(gettempdir()) # print the tempfile directory in your system
+  
+  
