@@ -53,5 +53,5 @@ with TemporaryDirectory() as tempdir:
   
   ####### using copytree(), will copy the entire directory trees and files within it #################################
   ########## create new folder, if not existing ######################################################################
-  ########### Good for backing up your folders and files 
+  ########### Good for backing up your folders and files #############################################################
   shutil.copytree("Adaboast", "Adaboast_backup")
