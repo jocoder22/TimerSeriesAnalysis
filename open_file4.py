@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import os
 from pathlib import Path
-from glob import glob
-from fnmatch import fnmatch
+from printdescribe import print2
 
 
 ################################ making and using temporary directories and files ###########################
@@ -32,3 +31,8 @@ with TemporaryFile('w+t') as tf001:
   print(gettempdir()) # print the tempfile directory in your system
   
   
+  
+########################################## create temporary directory #############################################
+with TemporaryDirectory() as tempdir:
+  print2(f'Created directory {tempdir}')
+  os.path.exist(tempdir)
