@@ -25,7 +25,6 @@ except FileExistsError as e:
 p.mkdir(exist_ok=True)
 
 
-
 ############################### Making multiple directories ###############################################
 ### use os.mkdirs, ===> not the s (similar to mkdir without the s) ########################################
 # The permission (owner and group users) default mode is 0o777
@@ -95,9 +94,6 @@ for file_name in p.glob('*.c*'):
     print(file_name)
 
     
- 
-
-
 ######################### do randow walk of the file system #################################################
 for dirpath, dirnames, files in os.walk('.'):
     print(f'Found directory: {dirpath}')
