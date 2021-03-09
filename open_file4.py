@@ -35,4 +35,7 @@ with TemporaryFile('w+t') as tf001:
 ########################################## create temporary directory #############################################
 with TemporaryDirectory() as tempdir:
   print2(f'Created directory {tempdir}')
-  os.path.exist(tempdir)
+  os.path.exists(tempdir)
+  os.path.is_dir(tempdir)
+  os.path.dirname(tempdir)
+  os.path.abspath(tempdir)
