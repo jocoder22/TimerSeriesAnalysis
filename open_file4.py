@@ -75,6 +75,21 @@ except IsADirectoryError as e: # use expect OSError as e, for os.remove()
     print(f'Error: {file_path} : {e.strerror}')
     
     
-###################### remove empty directory
-## use os.rmdir(), path.rmdir(), shutil.rmtree()
-## shutil.rmtree() will remove entire tree
+######################################################################### remove empty directory ######################
+## use os.rmdir(), path.rmdir()
+dir_path = Path("/someLearning/python_dir")
+try:
+  dir_path.rmdir()
+except OSError as e: 
+    print(f'Error: {dir_path} : {e.strerror}')
+    
+############################################ shutil.rmtree() will remove entire tree non-empty directory  ##############
+ne_dir_path = Path("/someLearning/python_dir")
+try:
+  shutil.rmtree(ne_dir_path)
+except OSError as e: 
+    print(f'Error: {ne_dir_path} : {e.strerror}')
+
+    
+    
+    
