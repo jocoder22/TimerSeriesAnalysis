@@ -38,8 +38,7 @@ with TemporaryDirectory() as tempdir:
   os.path.is_dir(tempdir)
   os.path.dirname(tempdir)
   os.path.abspath(tempdir)
-  
-  
+   
 ########################################### coping file and directory #############################################
 ########## copy single file #######################################################################################
 ######## shutil.copy2() will copy metadata, permission, attributes etc while .copy() will not ####################
@@ -47,6 +46,8 @@ src_file = "\machineLearning\Adaboast.py"
 dst_dir = "\Adaboast\"
 shutil.copy(src_file, dst_dir)
 
+  
+  
   
 ####### using copytree(), will copy the entire directory trees and files within it #################################
 ########## create new folder, if not existing ######################################################################
