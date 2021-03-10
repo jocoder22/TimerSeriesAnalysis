@@ -66,6 +66,8 @@ file_path = "python_learn.py"
 os.remove(file_path)
 os.unlink(file_path)
 
+
+## using pathlib
 file_path = Path("/someLearning/python_learn.py")
 try:
   file_path.unlink()
