@@ -74,6 +74,13 @@ try:
 except IsADirectoryError as e: # use expect OSError as e, for os.remove()
     print(f'Error: {file_path} : {e.strerror}')
     
+### using os.walk to remove multiple recursively
+for dirpath, dirnames, file_names in os.walk('.', topdown=False):
+    try:
+        os.rmdir(dirpath)
+    except OSError as e:
+      print(f'{dirpath} is a file: {e.strerror}')
+      continue
     
 ######################################################################### remove empty directory ######################
 ## use os.rmdir(), path.rmdir()
