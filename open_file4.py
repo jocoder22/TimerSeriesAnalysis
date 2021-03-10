@@ -73,3 +73,8 @@ try:
   file_path.unlink()
 except IsADirectoryError as e: # use expect OSError as e, for os.remove()
     print(f'Error: {file_path} : {e.strerror}')
+    
+    
+###################### remove empty directory
+## use os.rmdir(), path.rmdir(), shutil.rmtree()
+## shutil.rmtree() will remove entire tree
