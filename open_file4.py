@@ -56,3 +56,18 @@ shutil.copy(src_file, dst_dir)
 ########## create new folder, if not existing ######################################################################
 ########### Good for backing up your folders and files #############################################################
 shutil.copytree("Adaboast", "Adaboast_backup")
+
+
+################################ Delete files and directory ###########################################################
+# Delecting files: use os.remove() or os.unlink, works for removing single file, throws error when it's directory 
+# path.unlink does the same time
+
+file_path = "python_learn.py"
+os.remove(file_path)
+os.unlink(file_path)
+
+file_path = Path("/someLearning/python_learn.py")
+try:
+  file_path.unlink()
+except IsADirectoryError as e: # use expect OSError as e, for os.remove()
+    print(f'Error: {file_path} : {e.strerror}')
