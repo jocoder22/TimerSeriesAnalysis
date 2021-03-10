@@ -4,7 +4,6 @@ import shutil
 from pathlib import Path
 from printdescribe import print2
 
-
 ################################ making and using temporary directories and files ###########################
 ####################################### use tempfile module #################################################
 # 4 classes
@@ -32,7 +31,6 @@ with TemporaryFile('w+t') as tf001:
   print(gettempdir()) # print the tempfile directory in your system
   
   
-  
 ########################################## create temporary directory #############################################
 with TemporaryDirectory() as tempdir:
   print2(f'Created directory {tempdir}')
@@ -40,7 +38,6 @@ with TemporaryDirectory() as tempdir:
   os.path.is_dir(tempdir)
   os.path.dirname(tempdir)
   os.path.abspath(tempdir)
-  
   
   
   ########################################### coping file and directory #############################################
