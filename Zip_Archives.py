@@ -36,3 +36,16 @@ def print_all_files(path):
           print(entry.name)
  
   
+        
+########################### extract Zip file ###########################################
+######### extract one file
+with zipfile.Zipfile("machineLearning.zip", "r") as zp:
+        zp.extract("pythonLearn.py") # to current working directory
+        zp.extract("pythonLearn.py", path="machineLearning2/") # to another directory
+        
+
+############ extract all files 
+with zipfile.Zipfile("machineLearning.zip", "r") as zp:
+        zp.extractall() # to current working directory
+        zp.extractall(path="machineLearning2/") # to another directory
+                
