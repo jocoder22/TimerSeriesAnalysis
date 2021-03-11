@@ -10,13 +10,29 @@ with zipfile.Zipfile("machineLearning.zip", "r") as zp:
   
 ###### get detailed on files in zip archive ############################################
 
-def print_info()
+def print_info(path_name2):
+  file_info = zp.getinfo(path_name2)
+  print(f'File name: {file_info.filename}, File Size: {file_info.file_size}, 
+        Compression Size: {file_info.compress_size}, Last Modified Date: {file_info.date_time}")
+
 
 with zipfile.Zipfile("machineLearning.zip", "r") as zp:
   for path_name in zp.namelist():
     if path_name.is_dir():
-      
+#         continue
+        for entry in os.scandir(path_name):
+          print_info(entry)
+        
      else:
-        file_info = zp.getinfo(path_name)
-        print(f'File name: {file_info.filename}, File Size: {file_info.file_size}, 
-              Compression Size: {file_info.compress_size}, Last Modified Date: {file_info.date_time}")
+        print_info(path_name)
+
+              
+def print_all_files(path):
+    """Print name of all files in given path and subdirs."""
+    for entry in os.scandir(path):
+        if entry.is_dir(follow_symlinks=False):
+            print_all_files(entry.path)
+        else:
+          print(entry.name)
+ 
+  
