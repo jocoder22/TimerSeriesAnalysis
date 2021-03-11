@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import os
 from pathlib import Path
-
+from subprocess import Popen, PIPE
+import csv
 
 with open('C:/captons/', 'rw') as f:
   data = f.read()
@@ -13,7 +14,7 @@ with open('filename.txt', 'r') as f:
     last_line = f.readlines()[-1]
     
     
-from subprocess import Popen, PIPE
+############################################## from subprocess import Popen, PIPE
 f = 'yourfilename.txt'
 # Get the last line from the file
 p = Popen(['tail','-1',f],shell=False, stderr=PIPE, stdout=PIPE)
@@ -26,16 +27,13 @@ else:
     print (res)
  
 
-import os
 os.popen('tail -n 1000 filepath').read()
-
-
     
- with open('filename.txt', 'rb') as f:
-    f.seek(-2, os.SEEK_END)
-    while f.read(1) != b'\n':
-        f.seek(-2, os.SEEK_CUR)
-    last_line = f.readline().decode()
+with open('filename.txt', 'rb') as f:
+  f.seek(-2, os.SEEK_END)
+  while f.read(1) != b'\n':
+      f.seek(-2, os.SEEK_CUR)
+  last_line = f.readline().decode()
    
   
  with open('filename.txt') as f:
@@ -44,8 +42,8 @@ os.popen('tail -n 1000 filepath').read()
     last_line = line
  
 
-import csv
 
+######################################### import csv
 lis = list(csv.reader(open(inputFile)))
 print lis[-1] # prints final line as a list of strings
 
