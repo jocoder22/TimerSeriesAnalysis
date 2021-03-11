@@ -9,6 +9,9 @@ with zipfile.Zipfile("machineLearning.zip", "r") as zp:
 
   
 ###### get detailed on files in zip archive ############################################
+
+def print_info()
+
 with zipfile.Zipfile("machineLearning.zip", "r") as zp:
   for path_name in zp.namelist():
     if path_name.is_dir():
