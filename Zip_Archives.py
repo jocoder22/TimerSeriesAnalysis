@@ -48,4 +48,4 @@ with zipfile.Zipfile("machineLearning.zip", "r") as zp:
 with zipfile.Zipfile("machineLearning.zip", "r") as zp:
         zp.extractall() # to current working directory
         zp.extractall(path="machineLearning2/") # to another directory
-                
+        zp.extractall(path="machineLearning2/", pwd='password') # to another directory, with password protected zip
