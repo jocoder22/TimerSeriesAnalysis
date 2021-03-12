@@ -37,7 +37,7 @@ def print_all_files(path):
  
   
         
-########################### extract Zip file ###########################################
+########################### extract Zip file ##########################################################
 ######### extract one file
 with zipfile.Zipfile("machineLearning.zip", "r") as zp:
         zp.extract("pythonLearn.py") # to current working directory
@@ -49,3 +49,7 @@ with zipfile.Zipfile("machineLearning.zip", "r") as zp:
         zp.extractall() # to current working directory
         zp.extractall(path="machineLearning2/") # to another directory
         zp.extractall(path="machineLearning2/", pwd='password') # to another directory, with password protected zip
+  
+        
+################################## creating zip file ####################################################
+        
