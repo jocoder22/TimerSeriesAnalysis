@@ -52,14 +52,12 @@ with zipfile.Zipfile("machineLearning.zip", "r") as zp:
         zp.extractall(path="machineLearning2/", pwd='password') # to another directory, with password protected zip
   
         
-################################## creating zip file ####################################################
+################################## creating zip file ##############################################################
 with os.scandir('newMachineLearning/') as entries:
         with zipfile.ZipFile('newMachineLearning.zip', 'w') as zp:
           for file in entries:
               zp.write(file)
-        
-
-        
+               
 # # using pathlib Path
 # with zipfile.ZipFile('newMachineLearning.zip', 'w') as zp:
 #     for entry in Path('newMachineLearning/').iterdir():
@@ -71,4 +69,10 @@ with os.scandir('newMachineLearning/') as entries:
 # with zipfile.ZipFile('newMachineLearning.zip', 'w') as zp:
 #     for entry in entries.iterdir():
 #        zp.write(entry.name)
-#             
+             
+
+######################## adding to existing archive, use the append 'a' option #######################################
+# # using pathlib Path
+# with zipfile.ZipFile('newMachineLearning.zip', 'a') as zp:
+#     for entry in Path('newMachineLearningV2/').iterdir():
+#        zp.write(entry.name)  
