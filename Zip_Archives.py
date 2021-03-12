@@ -3,6 +3,7 @@ import os
 import shutil
 import zipfile
 from pathlib import Path
+# https://realpython.com/working-with-files-in-python/
 
 ############### reading zipfile, using context manager ################################
 with zipfile.Zipfile("machineLearning.zip", "r") as zp:
