@@ -2,6 +2,7 @@
 import os
 import shutil
 import zipfile
+from pathlib import Path
 
 ############### reading zipfile, using context manager ################################
 with zipfile.Zipfile("machineLearning.zip", "r") as zp:
@@ -52,4 +53,21 @@ with zipfile.Zipfile("machineLearning.zip", "r") as zp:
   
         
 ################################## creating zip file ####################################################
+with os.scandir('newMachineLearning/') as entries:
+        with zipfile.ZipFile('newMachineLearning.zip', 'w') as zp:
+          for file in entries:
+              zp.write(file)
         
+
+        
+# # using pathlib Path
+# with zipfile.ZipFile('newMachineLearning.zip', 'w') as zp:
+#     for entry in Path('newMachineLearning/').iterdir():
+#        zp.write(entry.name)        
+        
+# # using pathlib Path
+# entries = Path('newMachineLearning/')
+# with zipfile.ZipFile('newMachineLearning.zip', 'w') as zp:
+#     for entry in entries.iterdir():
+#        zp.write(entry.name)
+#             
