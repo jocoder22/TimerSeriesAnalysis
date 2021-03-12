@@ -64,6 +64,7 @@ with os.scandir('newMachineLearning/') as entries:
 # with zipfile.ZipFile('newMachineLearning.zip', 'w') as zp:
 #     for entry in Path('newMachineLearning/').iterdir():
 #        zp.write(entry.name)        
+ 
         
 # # using pathlib Path
 # entries = Path('newMachineLearning/')
