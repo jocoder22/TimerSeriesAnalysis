@@ -16,7 +16,8 @@ symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'W
             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
               'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY']
 
-def backUp(src, dst, symbols=symbols, folders=folders)
+def backUp(src, dst, symbols=symbols, folders=folders):
+    """    """
     for idx in range(len(symbols)):
         _src = os.path.join(src, folders[idx])
         _dst = os.path.join(dst, folders[idx])
