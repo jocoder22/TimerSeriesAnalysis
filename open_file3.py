@@ -17,7 +17,7 @@ import wewebs
 
 # sp = {'sep': '\n\n', 'end': '\n\n'}
 path = r"E:\Intradays"
-path1 = r"E:\Intradays\AdvancedMicroDevices"
+# path1 = r"E:\Intradays\AdvancedMicroDevices"
 
 ttt = wewebs.token
 limitday = 80
@@ -35,22 +35,25 @@ def get_lastdate(path4):
 # folders = ["Schrodinger", "BristolMyers"]
 # symbols = ['SDGR', 'BMY']
 
-symbols = ['BABA', 'NIO', 'AAPL', 'BMY']
-folders = ["Alibaba", "NioElectricMotor", "Apple" ,  "BristolMyers"]
+# symbols = ['BABA', 'NIO', 'AAPL', 'BMY']
+# folders = ["Alibaba", "NioElectricMotor", "Apple" ,  "BristolMyers"]
 
 intradata = pd.DataFrame()
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
 
-"""
+
 folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
             'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
             "Cvs", "AT_T", "CocaCola", "Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
-            "ExpWorld", "HomeDepot", "Ford", "PVH", "Twitter", "Salesforce"]
+            "ExpWorld", "HomeDepot", "Ford", "PVH", "Twitter", "Salesforce", 
+            "Alibaba", "NioElectricMotor", "Apple" ,  "BristolMyers"]
 symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
-              'F', 'PVH', 'TWTR', 'CRM']
-"""
+              'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY']
+
+print2(len(folders), len(symbols))
+
 
 for idx in range(len(symbols)):
     os.chdir(path)
