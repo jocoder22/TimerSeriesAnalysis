@@ -34,7 +34,6 @@ def backUp(dst, src=src, symbols=symbols, folders=folders):
                 myfile = os.path.join(_src, entry)
                 shutil.copy(f"{myfile}", f"{_dst}")
                 print(f"Copied {entry} to {_dst}")
-
             
                 if entry == os.listdir(_src)[-1]:
                     print()
