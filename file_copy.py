@@ -5,6 +5,7 @@ from pathlib import Path
 
 src = r"E:\Intradays"
 dst1 = r"C:\Users\HP\Documents\Intradays"
+dst2 = r"D:\Intradays"
 
 
 folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
@@ -32,9 +33,12 @@ def backUp(dst, src=src, symbols=symbols, folders=folders):
             else:
                 myfile = os.path.join(_src, entry)
                 shutil.copy(f"{myfile}", f"{_dst}")
-                print()
                 print(f"Copied {entry} to {_dst}")
 
+            
+                if entry == os.listdir(_src)[-1]:
+                    print()
 
-backUp()
-backUp()
+
+backUp(dst1)
+backUp(dst2)
