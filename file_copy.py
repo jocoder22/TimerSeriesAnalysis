@@ -4,7 +4,7 @@ import shutil
 from pathlib import Path
 
 src = r"E:\Intradays"
-dst = r"C:\Users\HP\Documents\Intradays"
+dst1 = r"C:\Users\HP\Documents\Intradays"
 
 
 folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
@@ -16,7 +16,8 @@ symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'W
             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
               'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY']
 
-def backUp(src, dst, symbols=symbols, folders=folders):
+
+def backUp(dst, src=src, symbols=symbols, folders=folders):
     """    """
     for idx in range(len(symbols)):
         _src = os.path.join(src, folders[idx])
@@ -33,3 +34,7 @@ def backUp(src, dst, symbols=symbols, folders=folders):
                 shutil.copy(f"{myfile}", f"{_dst}")
                 print()
                 print(f"Copied {entry} to {_dst}")
+
+
+backUp()
+backUp()
