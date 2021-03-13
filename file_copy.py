@@ -19,7 +19,8 @@ symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'W
 
 
 def backUp(dst, src=src, symbols=symbols, folders=folders):
-    """    """
+    """ This copy file not in source folder to the destination folder """
+    
     for idx in range(len(symbols)):
         _src = os.path.join(src, folders[idx])
         _dst = os.path.join(dst, folders[idx])
@@ -37,6 +38,7 @@ def backUp(dst, src=src, symbols=symbols, folders=folders):
             
                 if entry == os.listdir(_src)[-1]:
                     print()
+
 
 
 backUp(dst1)
