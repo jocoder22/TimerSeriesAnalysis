@@ -39,8 +39,6 @@ symbols = wewebs.symbols
 # print(aapl.get_historical_prices())
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil']
 # symbols = [ '^RUT', 'CL=F', '^GSPC', '^DJI', '^IXIC']
-
-
 # folders = ["Ford", "PVH", "Twitter", "Salesforce"]
 # symbols = [ 'F', 'PVH', 'TWTR', 'CRM']
 
