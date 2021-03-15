@@ -15,6 +15,10 @@ sys.path.insert(0, pathtk)
 
 int_day = r"E:\TimerSeriesAnalysis\Basics\Intraday.py"
 
+from "E:\TimerSeriesAnalysis\Basics" import Intraday
+
+
+'''
 import wewebs
 
 # sp = {'sep': '\n\n', 'end': '\n\n'}
@@ -94,4 +98,4 @@ for idx in range(len(symbols)):
     print2(intradata.head(), intradata.columns, n)
     print2(intradata.shape, intradata.info())
 
-
+'''
