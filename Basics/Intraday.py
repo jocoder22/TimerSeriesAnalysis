@@ -23,9 +23,13 @@ import wewebs
 sp = {'sep': '\n\n', 'end': '\n\n'}
 # path = r"D:\Intradays"
 path = r"D:\Intradays"
+
 # path = r"E:\Intradays"
 # path = r"C:\Users\HP\Documents\intraday"
+
 ttt = wewebs.token
+folder = wewebs.folders
+symbols = wewebs.symbols
 
 # https://iexcloud.io/cloud-login#/
 
@@ -36,16 +40,6 @@ ttt = wewebs.token
 # folders = ['S&P500','Dow30', 'Nasdaq', 'Russell2000', 'CrudeOil']
 # symbols = [ '^RUT', 'CL=F', '^GSPC', '^DJI', '^IXIC']
 
-
-folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
-            'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
-            "Cvs", "AT_T", "CocaCola", "Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
-            "ExpWorld", "HomeDepot", "Ford", "PVH", "Twitter", "Salesforce"]
-symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
-            'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
-              'F', 'PVH', 'TWTR', 'CRM']
-
-# # 
 
 # folders = ["Ford", "PVH", "Twitter", "Salesforce"]
 # symbols = [ 'F', 'PVH', 'TWTR', 'CRM']
