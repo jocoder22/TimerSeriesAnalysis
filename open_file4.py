@@ -41,7 +41,7 @@ with TemporaryDirectory() as tempdir:
   os.path.dirname(tempdir)
   os.path.abspath(tempdir)
 
-  
+
 ########################################### coping file and directory #############################################
 ########## copy single file #######################################################################################
 ######## shutil.copy2() will copy metadata, permission, attributes etc while .copy() will not ####################
@@ -78,7 +78,8 @@ for dirpath, dirnames, file_names in os.walk('.', topdown=False):
     except OSError as e:
       print(f'{dirpath} is a file: {e.strerror}')
       continue
-    
+
+
 ######################################################################### remove empty directory ######################
 ## use os.rmdir(), path.rmdir()
 dir_path = Path("/someLearning/python_dir")
@@ -94,6 +95,4 @@ try:
 except OSError as e: 
     print(f'Error: {ne_dir_path} : {e.strerror}')
 
-    
-    
-    
+
