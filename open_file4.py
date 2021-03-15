@@ -49,9 +49,6 @@ src_file = "\machineLearning\Adaboast.py"
 dst_dir = "\Adaboast\"
 shutil.copy(src_file, dst_dir)
 
-  
-  
-  
 ####### using copytree(), will copy the entire directory trees and files within it #################################
 ########## create new folder, if not existing ######################################################################
 ########### Good for backing up your folders and files #############################################################
