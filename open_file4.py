@@ -87,7 +87,8 @@ try:
   dir_path.rmdir()
 except OSError as e: 
     print(f'Error: {dir_path} : {e.strerror}')
-    
+
+
 ############################################ shutil.rmtree() will remove entire tree non-empty directory  ##############
 ne_dir_path = Path("/someLearning/python_dir")
 try:
