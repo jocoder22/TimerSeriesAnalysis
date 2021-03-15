@@ -8,18 +8,18 @@ import datetime, time
 from datetime import datetime, timedelta, date
 
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
-from printdescribe import print2
+from printdescribe import print2, changepath
+
 
 pathtk = r"E:\PPP"
 sys.path.insert(0, pathtk)
 
-int_day = r"E:\TimerSeriesAnalysis\Basics\Intraday.py"
-
-from "E:\TimerSeriesAnalysis\Basics" import Intraday
-
-
-'''
 import wewebs
+
+folder = wewebs.folders
+symbols = wewebs.symbols
+
+
 
 # sp = {'sep': '\n\n', 'end': '\n\n'}
 path = r"E:\Intradays"
@@ -98,4 +98,3 @@ for idx in range(len(symbols)):
     print2(intradata.head(), intradata.columns, n)
     print2(intradata.shape, intradata.info())
 
-'''
