@@ -19,8 +19,6 @@ import wewebs
 folder = wewebs.folders
 symbols = wewebs.symbols
 
-
-
 # sp = {'sep': '\n\n', 'end': '\n\n'}
 path = r"E:\Intradays"
 # path1 = r"E:\Intradays\AdvancedMicroDevices"
@@ -48,17 +46,6 @@ intradata = pd.DataFrame()
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
 
-
-folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
-            'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
-            "Cvs", "AT_T", "CocaCola", "Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
-            "ExpWorld", "HomeDepot", "Ford", "PVH", "Twitter", "Salesforce", 
-            "Alibaba", "NioElectricMotor", "Apple" ,  "BristolMyers"]
-symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
-            'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
-              'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY']
-
-print2(len(folders), len(symbols))
 
 
 for idx in range(len(symbols)):
