@@ -13,6 +13,8 @@ from printdescribe import print2
 pathtk = r"E:\PPP"
 sys.path.insert(0, pathtk)
 
+int_day = r"E:\TimerSeriesAnalysis\Basics\Intraday.py"
+
 import wewebs
 
 # sp = {'sep': '\n\n', 'end': '\n\n'}
