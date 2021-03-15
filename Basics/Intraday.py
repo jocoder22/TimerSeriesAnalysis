@@ -15,15 +15,14 @@ import time
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 from printdescribe import print2
 
-pathtk = r"D:\PPP"
+pathtk = r"E:\PPP"
+path = r"E:\Intradays"
 sys.path.insert(0, pathtk)
 
 import wewebs
 
 sp = {'sep': '\n\n', 'end': '\n\n'}
 # path = r"D:\Intradays"
-path = r"D:\Intradays"
-
 # path = r"E:\Intradays"
 # path = r"C:\Users\HP\Documents\intraday"
 
