@@ -2,6 +2,7 @@
 import os
 import numpy as np
 import pandas as pd
+from statsmodels.tsa.stattools import kpss
 
 # Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test (Kwiatkowski, Phillips, Schmidt, & Shin, 1992). 
 # In this test, the null hypothesis is that the data are stationary, 
@@ -15,3 +16,6 @@ import pandas as pd
 # So practically, the interpretaion of p-value is just the opposite to each other.
 
 # The test statistic should be smaller
+
+statistic, p_value, n_lags, critical_values = kpss(series, **kw)
+print(f'KPSS Result: The series is {"not " if p_value < 0.05 else ""}stationary')
