@@ -22,11 +22,10 @@ from statsmodels.tsa.stattools import kpss
 # The test statistic should be smaller
 
 startdate = datetime(2013, 2, 2)
+stock = ['AAPL']
 
-
-stocklist = ['AAPL']
-
-allstocks = pdr.get_data_yahoo(stocklist, startdate, enddate)['Adj Close']
+allstocks = pdr.get_data_yahoo(stock, startdate, enddate)['Adj Close']
 print(allstocks.head())
+
 statistic, p_value, n_lags, critical_values = kpss(series, **kw)
 print(f'KPSS Result: The series is {"not " if p_value < 0.05 else ""}stationary')
