@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -24,8 +23,24 @@ from statsmodels.tsa.stattools import kpss
 startdate = datetime(2013, 2, 2)
 stock = ['AAPL']
 
-allstocks = pdr.get_data_yahoo(stock, startdate, enddate)['Adj Close']
+allstocks = pdr.get_data_yahoo(stock, startdate)['Adj Close']
 print(allstocks.head())
 
-statistic, p_value, n_lags, critical_values = kpss(allstocks, **kw)
-print(f'KPSS Result: The series is {"not " if p_value < 0.05 else ""}stationary')
+# KPSS on raw data
+statistic, p_value, n_lags, critical_values = kpss(allstocks, nlags="auto")
+print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary')
+      
+      
+# KPSS on first differenced data
+diffstocks = allstocks.diff().dropna()
+print(diffstocks.head())
+statistic, p_value, n_lags, critical_values = kpss(diffstocks, nlags="auto")
+print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary')
+ 
+# KPSS on returns     
+ret = allstocks.pct_change().dropna()
+print(ret.head())
+_, p_value, _, _ = kpss(ret, nlags="auto")
+print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary')          
+      
+      
