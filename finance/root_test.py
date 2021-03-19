@@ -30,6 +30,15 @@ print(allstocks.head())
 statistic, p_value, n_lags, critical_values = kpss(allstocks, nlags="auto")
 print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary')
       
+# regression str{“c”, “ct”}
+# The null hypothesis for the KPSS test.
+
+# “c” : The data is stationary around a constant (default).
+
+# “ct” : The data is stationary around a trend i.e around a deterministic trend. 
+      
+statistic, p_value, n_lags, critical_values = kpss(allstocks, nlags="auto", regression="ct")
+print(f'KPSS Result: The series is {"not " if p_value < 0.05 else ""}stationary')      
       
 # KPSS on first differenced data
 diffstocks = allstocks.diff().dropna()
