@@ -64,7 +64,11 @@ print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary'
 ####################################  the Augmented Dickey Fuller (ADF) test 
 ####################################
 #########################################################################################################
- 
+      
+# The null hypothesis of the Augmented Dickey-Fuller is that there is a unit root, with the alternative that there is no unit root. 
+# If the pvalue is above a critical size, then we cannot reject that there is a unit root. 
+# the null hypothesis in ADF test is the series is not stationary.
+      
 ###  Returns
 # adffloat - The test statistic.
 # pvaluefloat - MacKinnon”s approximate p-value based on MacKinnon (1994, 2010).
@@ -72,4 +76,7 @@ print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary'
 # nobsint - The number of observations used for the ADF regression and calculation of the critical values.
 # critical valuesdict - Critical values for the test statistic at the 1 %, 5 %, and 10 % levels. Based on MacKinnon (2010).
 # icbestfloat - The maximized information criterion if autolag is not None.
-# resstoreResultStore, optional - A dummy class with results attached as attributes.     
+# resstoreResultStore, optional - A dummy class with results attached as attributes. 
+      
+result = adfuller(allstocks, autolag='AIC')
+print(f'ADF Result: The series is {"not" if result[1] > 0.05 else ""} stationary')      
