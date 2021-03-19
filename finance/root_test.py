@@ -27,5 +27,5 @@ stock = ['AAPL']
 allstocks = pdr.get_data_yahoo(stock, startdate, enddate)['Adj Close']
 print(allstocks.head())
 
-statistic, p_value, n_lags, critical_values = kpss(series, **kw)
+statistic, p_value, n_lags, critical_values = kpss(allstocks, **kw)
 print(f'KPSS Result: The series is {"not " if p_value < 0.05 else ""}stationary')
