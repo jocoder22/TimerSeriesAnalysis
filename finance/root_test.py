@@ -10,3 +10,8 @@ import pandas as pd
 # Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., & Shin, Y. (1992). 
 # Testing the null hypothesis of stationarity against the alternative of a unit root: How sure are we that economic time series have a unit root? 
 # Journal of Econometrics, 54(1-3), 159–178. https://doi.org/10.1016/0304-4076(92)90104-Y
+
+# A key difference from ADF test is the null hypothesis of the KPSS test is that the series is stationary.
+# So practically, the interpretaion of p-value is just the opposite to each other.
+
+# The test statistic should be smaller
