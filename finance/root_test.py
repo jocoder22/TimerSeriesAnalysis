@@ -5,7 +5,13 @@ import matplotlib.pyplot as plt
 
 import pandas_datareader as pdr
 from datetime import datetime
-from statsmodels.tsa.stattools import kpss
+from statsmodels.tsa.stattools import kpss, adfuller
+
+#########################################################################################################
+####################################
+####################################  Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test 
+####################################
+#########################################################################################################
 
 # Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test (Kwiatkowski, Phillips, Schmidt, & Shin, 1992). 
 # In this test, the null hypothesis is that the data are stationary, 
@@ -53,3 +59,17 @@ _, p_value, _, _ = kpss(ret, nlags="auto")
 print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary')          
       
       
+#########################################################################################################
+####################################
+####################################  the Augmented Dickey Fuller (ADF) test 
+####################################
+#########################################################################################################
+ 
+###  Returns
+# adffloat - The test statistic.
+# pvaluefloat - MacKinnon”s approximate p-value based on MacKinnon (1994, 2010).
+# usedlagint - The number of lags used.
+# nobsint - The number of observations used for the ADF regression and calculation of the critical values.
+# critical valuesdict - Critical values for the test statistic at the 1 %, 5 %, and 10 % levels. Based on MacKinnon (2010).
+# icbestfloat - The maximized information criterion if autolag is not None.
+# resstoreResultStore, optional - A dummy class with results attached as attributes.     
