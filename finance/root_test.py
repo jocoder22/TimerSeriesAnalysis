@@ -58,6 +58,11 @@ print(ret.head())
 _, p_value, _, _ = kpss(ret, nlags="auto")
 print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary')          
       
+# KPSS on log returns     
+logret = allstocks.pct_change().dropna()
+print(logret.head())
+_, p_value, _, _ = kpss(logret, nlags="auto")
+print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary')   
       
 #########################################################################################################
 ####################################
@@ -78,5 +83,22 @@ print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary'
 # icbestfloat - The maximized information criterion if autolag is not None.
 # resstoreResultStore, optional - A dummy class with results attached as attributes. 
       
+# ADF on raw data     
 result = adfuller(allstocks, autolag='AIC')
-print(f'ADF Result: The series is {"not" if result[1] > 0.05 else ""} stationary')      
+print(f'ADF Result: The series is {"not" if result[1] > 0.05 else ""} stationary') 
+      
+# ADF on first differenced data
+result = adfuller(diffstocks, autolag='AIC')
+print(f'ADF Result: The series is {"not" if result[1] > 0.05 else ""} stationary') 
+ 
+# ADF on returns  
+result = adfuller(ret, autolag='AIC')
+print(f'ADF Result: The series is {"not " if result[1] > 0.05 else ""}stationary')
+      
+# ADF on log returns        
+result = adfuller(logret, autolag='AIC')
+print(f'ADF Result: The series is {"not " if result[1] > 0.05 else ""}stationary')
+      
+      
+# https://otexts.com/fpp2/stationarity.html
+    
