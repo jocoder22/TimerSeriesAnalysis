@@ -24,11 +24,7 @@ from statsmodels.tsa.stattools import kpss
 startdate = datetime(2013, 2, 2)
 
 
-stocklist = ['AAPL', 'ABT', 'AIG','AMAT', 'ARNC', 'BAC', 'BSX', 'C',  'CMCSA',
-             'CSCO', 'DAL', 'EBAY', 'F', 'FB', 'FCX', 'FITB', 'FOXA', 'FTR', 'GE',
-             'GILD', 'GLW', 'GM', 'HAL', 'HBAN', 'JPM', 'KEY', 'HPQ', 'INTC',
-             'KMI', 'KO', 'MRK', 'MRO', 'MSFT', 'MU', 'NFLX', 'NVDA', 'ORCL', 'PFE',
-             'QCOM', 'RF', 'SBUX', 'T', 'V', 'VZ', 'WFC', 'XOM', 'XRX', 'YAHOY']
+stocklist = ['AAPL']
 
 allstocks = pdr.get_data_yahoo(stocklist, startdate, enddate)['Adj Close']
 print(allstocks.head())
