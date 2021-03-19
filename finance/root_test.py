@@ -2,6 +2,10 @@
 import os
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+
+import pandas_datareader as pdr
+from datetime import datetime
 from statsmodels.tsa.stattools import kpss
 
 # Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test (Kwiatkowski, Phillips, Schmidt, & Shin, 1992). 
@@ -17,5 +21,16 @@ from statsmodels.tsa.stattools import kpss
 
 # The test statistic should be smaller
 
+startdate = datetime(2013, 2, 2)
+
+
+stocklist = ['AAPL', 'ABT', 'AIG','AMAT', 'ARNC', 'BAC', 'BSX', 'C',  'CMCSA',
+             'CSCO', 'DAL', 'EBAY', 'F', 'FB', 'FCX', 'FITB', 'FOXA', 'FTR', 'GE',
+             'GILD', 'GLW', 'GM', 'HAL', 'HBAN', 'JPM', 'KEY', 'HPQ', 'INTC',
+             'KMI', 'KO', 'MRK', 'MRO', 'MSFT', 'MU', 'NFLX', 'NVDA', 'ORCL', 'PFE',
+             'QCOM', 'RF', 'SBUX', 'T', 'V', 'VZ', 'WFC', 'XOM', 'XRX', 'YAHOY']
+
+allstocks = pdr.get_data_yahoo(stocklist, startdate, enddate)['Adj Close']
+print(allstocks.head())
 statistic, p_value, n_lags, critical_values = kpss(series, **kw)
 print(f'KPSS Result: The series is {"not " if p_value < 0.05 else ""}stationary')
