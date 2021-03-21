@@ -18,3 +18,8 @@ print(data.head())
 print(data.iloc[:6,1:8])
 print(data.iloc[:6,8:15])
 print(data.iloc[:6,15:])
+
+print(data.columns)
+print(data.info())
+
+dd = data.columns.tolist()
