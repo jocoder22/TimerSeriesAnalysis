@@ -30,3 +30,18 @@ col22 = ['Date_Time', 'Open', 'High', 'Low', 'Last', 'Volume', 'Close_Bid',
        'Close_Ask', 'RIC.1', 'Open1', 'High1', 'Low1', 'Last1']
 df2.columns = col22
 df2.head()
+
+# dealing with timestamp
+# df2['from_timestamp']=data['Date_Time'].values.astype('datetime64[s]')
+# df2['from_timestamp22'] = data['Date_Time'].apply(lambda t: datetime.fromisoformat(t[:-11]))
+df2['TimeIndex']= data['Date_Time'].apply(lambda t:datetime.strptime(t[:-11], "%Y-%m-%dT%H:%M:%S"))
+df2.info()
+
+# checking if 'Open1', 'High1', 'Low1', 'Last1' are all equal
+# so select any one of them
+query = '''
+        Open1 != High1 or Open1 != Low1 or  Open1 != Last1 or \
+        Low1 != Last1 or Low1 != High1 or High1 != Last1
+        '''
+
+df2.query(query).shape
