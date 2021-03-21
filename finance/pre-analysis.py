@@ -76,7 +76,6 @@ plt.show()
 
 # Graphical exploration III
 fig, (ax1, ax2) = plt.subplots(2, sharex=True, figsize =(14,8))
-# plt.figure(figsize =(14,8))
 ax1.grid(); ax2.grid()
 ax1.set_title("SPY Open"); ax2.set_title("VIX Differenced")
 ax1.plot(df.loc[:,["OpenSPY"]])
@@ -87,7 +86,6 @@ plt.show()
 # Graphical exploration IV
 df['PerdeltaVIX'] = df.VIX.pct_change()
 fig, (ax1, ax2) = plt.subplots(2, sharex=True, figsize =(14,8))
-# plt.figure(figsize =(14,8))
 ax1.grid(); ax2.grid()
 ax1.set_title("SPY Open"); ax2.set_title("VIX Percentage Change")
 ax1.plot(df.loc[:,["OpenSPY"]])
