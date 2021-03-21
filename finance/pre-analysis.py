@@ -127,4 +127,6 @@ plt.xticks(rotation=30)
 plt.show()
 
 # Explore feature engineering
-
+df['Spread'] = df.CloseAskSPY - df.CloseBidSPY
+df["HLDiff"] = df.HighSPY - df.LowSPY
+f["deltaVolume"] = df.VolumeSPY.diff()
