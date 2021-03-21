@@ -23,3 +23,10 @@ print(data.columns)
 print(data.info())
 
 dd = data.columns.tolist()
+ddcol2 = [3, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21]
+col2 = [dd[i] for i in ddcol2]
+df2 = data.loc[:,col2]
+col22 = ['Date_Time', 'Open', 'High', 'Low', 'Last', 'Volume', 'Close_Bid',
+       'Close_Ask', 'RIC.1', 'Open1', 'High1', 'Low1', 'Last1']
+df2.columns = col22
+df2.head()
