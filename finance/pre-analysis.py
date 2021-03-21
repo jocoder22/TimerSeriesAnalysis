@@ -58,4 +58,23 @@ df['TimeIndex'] = df2['TimeIndex']
 df.set_index("TimeIndex", inplace=True)
 print(df.head())
 
+
+# Graphical exploration I
+plt.figure(figsize =(14,8))
+plt.plot(df.loc[:,["OpenSPY", "VIX"]])
+plt.grid(); plt.legend(["SPY Open", "VIX"])
+plt.xticks(rotation=30)
+plt.show()
+
+# Graphical exploration II
+df['deltaVIX'] = df.VIX.diff()
+plt.figure(figsize =(14,8))
+plt.plot(df.loc[:,["OpenSPY", "deltaVIX"]])
+plt.grid(); plt.legend(["SPY Open", "VIX Differenced"])
+plt.xticks(rotation=30)
+plt.show()
+
+# Graphical exploration II
+# Graphical exploration II
+
 # Explore feature engineering
