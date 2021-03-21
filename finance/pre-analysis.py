@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+import pickle
+
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.decomposition import PCA
 import bisect 
@@ -9,10 +11,41 @@ import bisect
 from datetime import datetime
 from printdescribe import changepath
 
+from datetime import datetime
+startTime = datetime.now()
+
 path1 = r"C:\Users\HP\Downloads"
+path2 = r"C:\Users\HP\Documents\capstone"
+
 
 with changepath(path1):
     data = pd.read_csv("spy_vix.csv")
+
+
+# store a pickle and measure the time
+# saving pickle
+with changepath(path2):
+    # %time pickle.dump(data, open("test.pkl","wb"))  ==> use only in jupyter notebook
+    startTime = datetime.now()
+    pickle.dump(data, open("test.pkl","wb"))
+    print(datetime.now() - startTime)
+
+    # Loading pickle
+    startTime = datetime.now()
+    # %time pickle.load(open("test.pkl","rb")) ==> use only in jupyter notebook
+    pickle.load(open("test.pkl","rb"))
+    print(datetime.now() - startTime)
+
+with changepath(path2):
+    startTime = datetime.now()
+    # %time data.to_csv("spy_vix.csv") ==> use only in jupyter notebook
+    data.to_csv("spy_vix.csv")
+    print(datetime.now() - startTime)
+
+    startTime = datetime.now()
+    # %time pd.read_csv("spy_vix.csv") ==> use only in jupyter notebook
+    pd.read_csv("spy_vix.csv")
+    print(datetime.now() - startTime)
 
 print(data.head())
 print(data.iloc[:6,1:8])
@@ -94,3 +127,4 @@ plt.xticks(rotation=30)
 plt.show()
 
 # Explore feature engineering
+
