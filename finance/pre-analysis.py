@@ -74,7 +74,16 @@ plt.grid(); plt.legend(["SPY Open", "VIX Differenced"])
 plt.xticks(rotation=30)
 plt.show()
 
-# Graphical exploration II
+# Graphical exploration III
+fig, (ax1, ax2) = plt.subplots(2, sharex=True, figsize =(14,8))
+# plt.figure(figsize =(14,8))
+ax1.grid(); ax2.grid()
+ax1.set_title("SPY Open"); ax2.set_title("VIX Differenced")
+ax1.plot(df.loc[:,["OpenSPY"]])
+ax2.plot(df.loc[:,["deltaVIX"]])
+plt.xticks(rotation=30)
+plt.show()
+
 # Graphical exploration II
 
 # Explore feature engineering
