@@ -45,3 +45,17 @@ query = '''
         '''
 
 df2.query(query).shape
+ddcol = [3, 6, 7, 8, 9, 10, 11, 12, 18,]
+col = [dd[i] for i in ddcol]
+df = data.loc[:,col]
+df.head()
+
+colname = 'DateTime OpenSPY HighSPY LowSPY LastSPY VolumeSPY CloseBidSPY CloseAskSPY VIX'.split()
+df.columns = colname
+
+# change to index
+df['TimeIndex'] = df2['TimeIndex']
+df.set_index("TimeIndex", inplace=True)
+print(df.head())
+
+# Explore feature engineering
