@@ -137,7 +137,7 @@ plt.show()
 # Explore feature engineering
 df['Spread'] = df.CloseAskSPY - df.CloseBidSPY
 df["HLDiff"] = df.HighSPY - df.LowSPY
-f["deltaVolume"] = df.VolumeSPY.diff()
+df["deltaVolume"] = df.VolumeSPY.diff()
 
 # scale or normalized the data
 # using minmax scaler
