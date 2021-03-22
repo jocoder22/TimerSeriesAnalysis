@@ -258,3 +258,6 @@ for i in comb:
 
     plt.show()
     print(end = "\n\n" * 4)
+    
+    
+#   http://article.sciencepublishinggroup.com/html/10.11648.j.sjams.20150304.13.html#paper-content-2
