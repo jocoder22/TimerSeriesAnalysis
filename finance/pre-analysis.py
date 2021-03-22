@@ -168,3 +168,6 @@ pca.fit_transform(X)
 colname = ["PC"+ str(i) for i in range(1,res+1)]
 loadings = pd.DataFrame(np.abs(pca.components_.T), columns=colname, 
                         index = X.columns)
+
+print(loadings.sort_values(by="PC6", ascending=False))
+
