@@ -17,6 +17,7 @@ startTime = datetime.now()
 path1 = r"C:\Users\HP\Downloads"
 path2 = r"C:\Users\HP\Documents\capstone"
 
+"""
 
 with changepath(path1):
     data = pd.read_csv("spy_vix.csv")
@@ -46,6 +47,13 @@ with changepath(path2):
     # %time pd.read_csv("spy_vix.csv") ==> use only in jupyter notebook
     pd.read_csv("spy_vix.csv")
     print(datetime.now() - startTime)
+
+"""
+
+with changepath(path2):
+    # Loading picklek
+    data = pickle.load(open("test.pkl","rb"))
+    
 
 print(data.head())
 print(data.iloc[:6,1:8])
