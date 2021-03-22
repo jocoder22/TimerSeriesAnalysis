@@ -130,3 +130,16 @@ plt.show()
 df['Spread'] = df.CloseAskSPY - df.CloseBidSPY
 df["HLDiff"] = df.HighSPY - df.LowSPY
 f["deltaVolume"] = df.VolumeSPY.diff()
+
+# scale or normalized the data
+# using minmax scaler
+minmaxscaler = MinMaxScaler()
+mmscaled = minmaxscaler.fit_transform(df.drop(columns = "DateTime"))
+df_n = pd.DataFrame(mmscaled, columns = df.columns[1:])
+
+print(df_n.corr())
+
+## using standardized scaler
+ssscaler = StandardScaler()
+ssscaled = ssscaler.fit_transform(df.drop(columns = "DateTime" ))
+df_n2 = pd.DataFrame(ssscaled, columns = df.columns[1:])
