@@ -157,6 +157,7 @@ pca.fit_transform(X)
 pce = pca.explained_variance_ratio_
 print(pce.cumsum())
 
+
 # find the number of components for greater than 96%
 pcelist = pce.cumsum()
 res = list(map(lambda i: i> 0.96, pcelist)).index(True)
