@@ -230,3 +230,31 @@ ax2.tick_params(axis='y', labelcolor=color)
 
 fig.tight_layout()  # otherwise the right y-label is slightly clipped
 plt.show()
+
+
+
+from itertools import combinations
+comb = combinations(allstocks.columns ,2)
+print(len(list(comb)))
+
+comb = combinations(allstocks.columns ,2)
+for i in comb:
+    fig, ax1 = plt.subplots(figsize=[14,10])
+
+    color = 'tab:red'
+    ax1.set_xlabel('time (s)')
+    ax1.set_ylabel(f'{i[0]}', color=color)
+    ax1.plot(allstocks[i[0]], color=color)
+    ax1.tick_params(axis='y', labelcolor=color)
+
+    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+    color = 'tab:blue'
+    ax2.set_ylabel(f'{i[1]}', color=color)  # we already handled the x-label with ax1
+    ax2.plot(allstocks[i[1]], color=color)
+    ax2.tick_params(axis='y', labelcolor=color)
+
+    fig.tight_layout()  # otherwise the right y-label is slightly clipped
+
+    plt.show()
+    print(end = "\n\n" * 4)
