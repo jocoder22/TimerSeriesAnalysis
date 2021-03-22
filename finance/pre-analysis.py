@@ -143,3 +143,28 @@ print(df_n.corr())
 ssscaler = StandardScaler()
 ssscaled = ssscaler.fit_transform(df.drop(columns = "DateTime" ))
 df_n2 = pd.DataFrame(ssscaled, columns = df.columns[1:])
+
+#### here the covariance and correlation are the same
+print(df_n2.corr())
+print(df_n2.cov())
+
+
+# Doing Principal component analysis
+X = df_n2.copy()
+X = X.iloc[:,4:].dropna() # dropping spy prices
+pca = PCA()
+pca.fit_transform(X)
+pce = pca.explained_variance_ratio_
+print(pce.cumsum())
+
+# find the number of components for greater than 96%
+pcelist = pce.cumsum()
+res = list(map(lambda i: i> 0.96, pcelist)).index(True)
+print(res)
+
+# re calcuate pca with estimate number of components
+pca = PCA(n_components=res)
+pca.fit_transform(X)
+colname = ["PC"+ str(i) for i in range(1,res+1)]
+loadings = pd.DataFrame(np.abs(pca.components_.T), columns=colname, 
+                        index = X.columns)
