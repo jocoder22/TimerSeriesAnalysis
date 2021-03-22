@@ -144,6 +144,7 @@ ssscaler = StandardScaler()
 ssscaled = ssscaler.fit_transform(df.drop(columns = "DateTime" ))
 df_n2 = pd.DataFrame(ssscaled, columns = df.columns[1:])
 
+
 #### here the covariance and correlation are the same
 print(df_n2.corr())
 print(df_n2.cov())
