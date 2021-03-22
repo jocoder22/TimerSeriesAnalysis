@@ -162,6 +162,7 @@ pcelist = pce.cumsum()
 res = list(map(lambda i: i> 0.96, pcelist)).index(True)
 print(res)
 
+
 # re calcuate pca with estimate number of components
 pca = PCA(n_components=res)
 pca.fit_transform(X)
