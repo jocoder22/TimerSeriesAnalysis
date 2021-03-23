@@ -63,7 +63,6 @@ for i in returns_monthly.index:
 print(covariance_dict[i])
 print(i)
 
-
 portfolio_returns, portfolio_volatility, portfolio_weights = {}, {}, {}
 
 np.random.seed(123)
@@ -108,7 +107,6 @@ for date in portfolio_returns.keys():
     max_sharpe_idxs[date] = np.argmax(sharpe_ratio[date])
 
 print(portfolio_returns[date][max_sharpe_idxs[date]])
-
 
 
 # Calculate exponentially-weighted moving average of daily returns
@@ -167,8 +165,6 @@ rfr.fit(train_features, train_targets)
 print(rfr.score(train_features, train_targets))
 print(rfr.score(test_features, test_targets))
 
-
-
 train_predictions = rfr.predict(train_features)
 test_predictions = rfr.predict(test_features)
 
@@ -178,8 +174,6 @@ plt.plot(test_returns, label='algo')
 plt.plot(returns_monthly['FCX'].iloc[train_size:], label='FCX')
 plt.legend()
 plt.show()
-
-
 
 # Calculate the effect of our portfolio selection on a hypothetical $1k investment
 cash = 1000
