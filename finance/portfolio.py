@@ -80,6 +80,7 @@ for date in sorted(covariance_dict.keys()):
 
 print(portfolio_weights[date][0])
 
+
 # Get latest date of available data
 date = sorted(covariance_dict.keys())[-1]  
 
@@ -93,6 +94,7 @@ plt.show()
 
 # Empty dictionaries for sharpe ratios and best sharpe indexes by date
 sharpe_ratio, max_sharpe_idxs = {}, {}
+
 
 # Loop through dates and get sharpe ratio for each portfolio
 for date in portfolio_returns.keys():
@@ -119,6 +121,7 @@ ewma_monthly = ewma_monthly.shift(1).dropna()
 print(ewma_monthly.iloc[-1])
 
 targets, features = [], []
+
 
 # Create features from price history and targets as ideal portfolio
 for date, ewma in ewma_monthly.iterrows():
