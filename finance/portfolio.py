@@ -8,7 +8,6 @@ import pandas_datareader as pdr
 from datetime import datetime
 from sklearn.ensemble import RandomForestRegressor
 
-
 path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\finance'
 os.chdir(path)
 # startdate = datetime(2010,11,1)
@@ -90,7 +89,6 @@ plt.scatter(portfolio_volatility[date], portfolio_returns[date], alpha=0.3)
 plt.xlabel('Volatility')
 plt.ylabel('Returns')
 plt.show()
-
 
 
 # Empty dictionaries for sharpe ratios and best sharpe indexes by date
@@ -196,5 +194,3 @@ plt.plot(algo_cash, label='algo')
 plt.plot(FCX_cash, label='FCX')
 plt.legend()  # show the legend
 plt.show()
-
-
