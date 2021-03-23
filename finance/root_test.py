@@ -101,4 +101,3 @@ print(f'ADF Result: The series is {"not " if result[1] > 0.05 else ""}stationary
       
       
 # https://otexts.com/fpp2/stationarity.html
-    
