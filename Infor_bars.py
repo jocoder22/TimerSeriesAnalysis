@@ -9,6 +9,7 @@ df = pd.DataFrame({
     'b': [10, 20, 30, 40,0, 0, -30, -50, 0, 0 , 15, 10],
     'c': [100, 50, 50, 10, 40, 40, -30, -50, 0, 0 , 15, 10]})
 
+
 def tickimbalaneT(stock, price):
   stock['PriceChange'] = stock[price].diff()
   stock['PriceChange_Abs'] = stock['PriceChange'].abs()/stock['PriceChange']
