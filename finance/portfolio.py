@@ -132,10 +132,12 @@ targets = np.array(targets)
 features = np.array(features)
 print(targets[-5:])
 
+
 # Get most recent (current) returns and volatility
 date = sorted(covariance_dict.keys())[-1]
 cur_returns = portfolio_returns[date]
 cur_volatility = portfolio_volatility[date]
+
 
 # Plot efficient frontier with sharpe as point
 plt.scatter(x=cur_volatility, y=cur_returns, alpha=0.6, color='blue')
@@ -154,6 +156,7 @@ train_features = features[:train_size]
 test_features = features[train_size:]
 train_targets = targets[:train_size]
 test_targets = targets[train_size:]
+
 
 # Fit the model and check scores on train and test
 # fit a randomforest tree model
