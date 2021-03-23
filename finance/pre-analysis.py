@@ -134,6 +134,27 @@ ax2.plot(df.loc[:,["PerdeltaVIX"]])
 plt.xticks(rotation=30)
 plt.show()
 
+
+# Graphical exploration V
+fig, ax1 = plt.subplots(figsize=[14,10])
+
+color = 'tab:red'
+ax1.set_xlabel('time (s)')
+ax1.set_ylabel('SPY Open', color=color)
+ax1.plot(df.OpenSPY, color=color)
+ax1.tick_params(axis='y', labelcolor=color)
+
+ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+color = 'tab:blue'
+ax2.set_ylabel('CBOE VIX', color=color)  # we already handled the x-label with ax1
+ax2.plot(df.VIX, color=color)
+ax2.tick_params(axis='y', labelcolor=color)
+
+fig.tight_layout()  # otherwise the right y-label is slightly clipped
+plt.show()
+
+
 # Explore feature engineering
 df['Spread'] = df.CloseAskSPY - df.CloseBidSPY
 df["HLDiff"] = df.HighSPY - df.LowSPY
@@ -182,3 +203,62 @@ loadings = pd.DataFrame(np.abs(pca.components_.T), columns=colname,
 
 print(loadings.sort_values(by="PC6", ascending=False))
 
+
+
+
+# Here, we have 3 figures together
+fig, ax1 = plt.subplots(figsize=[14,10])
+
+color = 'tab:red'
+ax1.set_xlabel('time (s)')
+ax1.set_ylabel('Amazon', color=color)
+ax1.plot(allstocks.loc[:,["AMZN", "GOOG"]])
+ax1.tick_params(axis='y', labelcolor=color)
+colormap = plt.cm.gist_ncar #nipy_spectral, Set1,Paired  
+colors = ["red", "green"]
+
+# colors = [colormap(i) for i in np.linspace(0, 1,len(ax1.lines))]
+for i,j in enumerate(ax1.lines):
+    j.set_color(colors[i])
+
+ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+color = 'black'
+ax2.set_ylabel('Bank Of America', color=color)  # we already handled the x-label with ax1
+ax2.plot(allstocks.BAC, color=color)
+ax2.tick_params(axis='y', labelcolor=color)
+
+fig.tight_layout()  # otherwise the right y-label is slightly clipped
+plt.show()
+
+
+
+from itertools import combinations
+comb = combinations(allstocks.columns ,2)
+print(len(list(comb)))
+
+comb = combinations(allstocks.columns ,2)
+for i in comb:
+    fig, ax1 = plt.subplots(figsize=[14,10])
+
+    color = 'tab:red'
+    ax1.set_xlabel('time (s)')
+    ax1.set_ylabel(f'{i[0]}', color=color)
+    ax1.plot(allstocks[i[0]], color=color)
+    ax1.tick_params(axis='y', labelcolor=color)
+
+    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+    color = 'tab:blue'
+    ax2.set_ylabel(f'{i[1]}', color=color)  # we already handled the x-label with ax1
+    ax2.plot(allstocks[i[1]], color=color)
+    ax2.tick_params(axis='y', labelcolor=color)
+
+    fig.tight_layout()  # otherwise the right y-label is slightly clipped
+
+    plt.show()
+    print(end = "\n\n" * 4)
+    
+    
+#   http://article.sciencepublishinggroup.com/html/10.11648.j.sjams.20150304.13.html#paper-content-2
+# https://towardsdatascience.com/predict-time-stamped-sales-in-python-1914292461ad
