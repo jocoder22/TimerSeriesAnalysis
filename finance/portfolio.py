@@ -118,7 +118,6 @@ ewma_monthly = ewma_monthly.shift(1).dropna()
 
 print(ewma_monthly.iloc[-1])
 
-
 targets, features = [], []
 
 # Create features from price history and targets as ideal portfolio
