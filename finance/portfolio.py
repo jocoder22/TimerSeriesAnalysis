@@ -199,3 +199,20 @@ plt.plot(algo_cash, label='algo')
 plt.plot(FCX_cash, label='FCX')
 plt.legend()  # show the legend
 plt.show()
+
+
+
+["BABA", "AMD", "MSFT", "CRM", "BMY", 'FDX', 'UPS', "DIS"]
+folders = ["Alibaba", "AdvancedMicroDevices", "Microsoft", "Salesforce", "BristolMyers", "Fedex", "Ups", "Disney"]
+
+Optimal Risky Portfolio
+Returns        0.336675
+Volatility     0.359894
+AMD_weight     0.389512
+BABA_weight    0.004836
+BMY_weight     0.063844
+CRM_weight     0.080910
+DIS_weight     0.028742
+FDX_weight     0.331963
+MSFT_weight    0.056047
+UPS_weight     0.044146
