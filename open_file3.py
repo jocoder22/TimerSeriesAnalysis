@@ -95,5 +95,5 @@ symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'W
             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
               'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY']
 
-folders2 = ["ExtremeVehicleBattery"]
-symbols2 = ["CRYBF", ]
+folders2 = ["ExtremeVehicleBattery", "SolarAllianceEnergy"]
+symbols2 = ["CRYBF", "SAENF"]
