@@ -216,3 +216,22 @@ DIS_weight     0.028742
 FDX_weight     0.331963
 MSFT_weight    0.056047
 UPS_weight     0.044146
+
+
+def ratesystem(listrr):
+    rating = np.array([5,4,3,2,1])/15
+    newlist = []
+    
+    for i in listrr:
+        for k in range(1, 6):
+            if i <= k:
+                res = rating[k-1] / i
+                break
+            else : continue   
+            
+            
+        newlist.append(res)
+    
+    return newlist
+  
+  realR = np.array([2.3, 1.7, 1.9, 1.9, 2.0, 2.1 , 1.7, 2.5])
