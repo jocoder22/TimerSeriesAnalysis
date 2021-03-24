@@ -202,7 +202,7 @@ plt.show()
 
 
 
-["BABA", "AMD", "MSFT", "CRM", "BMY", 'FDX', 'UPS', "DIS"]
+symbols = ["BABA", "AMD", "MSFT", "CRM", "BMY", 'FDX', 'UPS', "DIS"]
 folders = ["Alibaba", "AdvancedMicroDevices", "Microsoft", "Salesforce", "BristolMyers", "Fedex", "Ups", "Disney"]
 
 Optimal Risky Portfolio
