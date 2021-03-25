@@ -1,3 +1,13 @@
+
+# test null hypothesis of iid, to detect non-random chaotic dynamics
+# postmanteau test or mis-specification when applied to residuals of fitted  linear time series model
+# detect remaining dependence, presence of omitted non-linear structure
+# test statistics > 1.96 at 5% significance level, reject null hypothesis
+# if null hypothesis rejected => linear model is mis-specified => test for non-linearity
+# if null hypothesis not rejected => linear model is not rejected
+
+
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -62,3 +72,6 @@ def Bds_cal(x):
 
 stats, pvalue = Bds_cal(df.VIX)
 print(stats, pvalue, sep="\n\n")
+
+
+# https://medium.com/analytics-vidhya/arima-garch-forecasting-with-python-7a3f797de3ff
