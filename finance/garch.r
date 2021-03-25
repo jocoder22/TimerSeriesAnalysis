@@ -15,3 +15,6 @@ fbGarch1 <- ugarchfit(spec=fb1, data=fbClose)
 fbGarch1
 fbpredict <- ugarchboot(fbGarch1, n.ahead=10, method=c("Partial", "Full)[1])
 plot(fbpredict,which=2,2)
+
+
+http://users.metu.edu.tr/ozancan/ARCHGARCHTutorial.html
