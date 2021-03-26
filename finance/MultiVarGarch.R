@@ -39,8 +39,10 @@ plot(alldata.ret$GSPC, main="S&P500 Returns")
 
 # Add confidence 95% confidence interval lines
 tt = rep(sd(alldata.ret$GSPC)*1.96, nrow(alldata.ret))
-plot(index(alldata.ret), alldata.ret$GSPC, type="l", panel.first = grid(10, lty = 1, lwd = 1), xlab="Time", ylab="S&P500 Returns")
+# plot(index(alldata.ret), alldata.ret$GSPC, type="l", panel.first = grid(10, lty = 1, lwd = 1), xlab="Time", ylab="S&P500 Returns")
 # lines(index(alldata.ret), tt, type = "l", col = "red", lty = 4)
+plot(index(alldata.ret), alldata.ret$GSPC, type="l", xlab="Time", ylab="S&P500 Returns")
+grid( lty = 1, lwd = 1)
 abline(h=sd(alldata.ret$GSPC)*1.96, col = "red")
 abline(h=sd(alldata.ret$GSPC)*-1.96, col = "red")
 
@@ -61,3 +63,9 @@ cor.fun = function(x){
 cov.fun = function(x){
   cov(x)[1,2]
 }
+
+
+roll.cov = rollapply(as.zoo(alldata.ret), FUN=cov.fun, width=20,
+                     by.column=FALSE, align="right")
+roll.cor = rollapply(as.zoo(alldata.ret), FUN=cor.fun, width=20,
+                     by.column=FALSE, align="right")
