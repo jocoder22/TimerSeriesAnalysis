@@ -19,6 +19,11 @@ options(repr.plot.width=14, repr.plot.height=10)
 options(digits=4)
 
 
+# source("https://github.com/R-Finance/FactorAnalytics/blob/master/sandbox/R/covEWMA.R")
+# source("https://rdrr.io/github/R-Finance/FactorAnalytics/src/sandbox/R/covEWMA.R")
+source("https://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/factorAnalytics/R/covEWMA.R?revision=14&root=factoranalytics&pathrev=14")
+
+
 # download dataset
 symbol2.vec = c("AMZN", "^GSPC")
 getSymbols(symbol2.vec, from ="2000-01-03", to = "2012-04-03", auto.assign=F)
