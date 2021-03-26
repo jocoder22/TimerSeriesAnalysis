@@ -101,10 +101,7 @@ print(f'ADF Result: The series is {"not " if result[1] > 0.05 else ""}stationary
       
       
 # https://otexts.com/fpp2/stationarity.html
-<<<<<<< HEAD
     
 # https://www.machinelearningplus.com/time-series/vector-autoregression-examples-python/
-ML+ML+
+# ML+ML+
 #Vector Autoregression (VAR) - Comprehensive Guide with Examples in Python - ML+
-=======
->>>>>>> a27ad802d4ba2fbdccd9f8648a8153e2f6d5e150
