@@ -114,5 +114,39 @@ par(mfrow=c(1,1))
 
 # calculate EWMA covariances and correlations
 lambda <- 0.94 # 0.94 is default
-cov.ewma <- covEWMA(as.data.frame(MSFT.GSPC.ret), lambda=lambda)
-cov.ewma = covEstimation(MSFT.GSPC.ret, control = list(type = 'ewma', lambda = lambda))
+cov.ewma2 = covEstimation(alldata.ret, control = list(type = 'ewma', lambda = lambda))
+
+
+
+# calculate EWMA covariances and correlations
+lambda <- 0.94
+cov.ewma <- covEWMA(as.data.frame(alldata.ret), lambda=lambda)
+
+
+## 2. extract conditional variance and correlation
+### conditional variance
+AMZN.GSPC.cond.cov <- cov.ewma[,2,1];
+
+### conditional correlation
+t <- length(cov.ewma[,1,1]);
+AMZN.GSPC.cond.cor<- rep(0,t);
+for (i in 1:t) {
+  AMZN.GSPC.cond.cor[i]<- cov2cor(cov.ewma[i,,])[1,2];
+      }
+
+### Plots
+par(mfrow=c(2,1))
+plot(x=time(as.zoo(alldata.ret)), y=AMZN.GSPC.cond.cov,
+     type="l", xlab="Time", ylab="Covariance", lwd=2, col="blue",
+     main="EWMA Covariance between MSFT and S&P500");
+grid(lty = 1, lwd = 1.5)
+abline(h=cov(alldata.ret)[1,2], lwd=2, col="red")
+plot(x=time(as.zoo(alldata.ret)), y=AMZN.GSPC.cond.cor,
+     type="l", xlab="Time", ylab="Correlation", lwd=2, col="blue",
+     main="EWMA Correlation between MSFT and S&P500");
+grid(lty = 1, lwd = 1.5)
+abline(h=cor(alldata.ret)[1,2], lwd=2, col="red")
+par(mfrow=c(1,1))
+      
+   
+# https://faculty.washington.edu/ezivot/econ589/econ589multivariateGarch.r
