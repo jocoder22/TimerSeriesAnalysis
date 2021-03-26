@@ -28,3 +28,11 @@ colnames(alldata) = c("AMZN", "GSPC")
 # plot adjusted close prices
 plot(alldata$AMZN, main="Amazon Adjusted Close Price")
 plot(alldata$GSPC, main="S&P500 Adjusted Close Price")
+
+# calculate log-returns for GARCH analysis and drop na 
+alldata.ret = CalculateReturns(alldata, method="log")[-1, ] # method="compound" is same as "log"
+
+# plot the returns
+plot(alldata.ret, col=c("white", "black"), main="Amazon-S&P500 Returns")
+
+
