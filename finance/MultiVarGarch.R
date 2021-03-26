@@ -69,3 +69,32 @@ roll.cov = rollapply(as.zoo(alldata.ret), FUN=cov.fun, width=20,
                      by.column=FALSE, align="right")
 roll.cor = rollapply(as.zoo(alldata.ret), FUN=cor.fun, width=20,
                      by.column=FALSE, align="right")
+
+roll.cov10 = rollapply(as.zoo(alldata.ret), FUN=cov.fun, width=10,
+                     by.column=FALSE, align="right")
+roll.cor10 = rollapply(as.zoo(alldata.ret), FUN=cor.fun, width=10,
+                     by.column=FALSE, align="right")
+
+# plot the 20 day rolling covariance and correlations
+par(mfrow=c(2,1))
+plot(roll.cov, main="20-day rolling covariances",
+     ylab="covariance", lwd=2, col="blue")
+grid(lty = 1, lwd = 1)
+abline(h=cov(alldata.ret)[1,2], lwd=2, col="red")
+plot(roll.cor, main="20-day rolling correlations",
+     ylab="correlation", lwd=2, col="blue")
+grid(lty = 1, lwd = 1)
+abline(h=cor(alldata.ret)[1,2], lwd=2, col="red")
+par(mfrow=c(1,1))
+
+# plot the 10 day rolling covariance and correlations
+par(mfrow=c(2,1))
+plot(roll.cov10, main="10-day rolling covariances",
+     ylab="covariance", lwd=2, col="blue")
+grid(lty = 1, lwd = 1.5)
+abline(h=cov(alldata.ret)[1,2], lwd=2, col="red")
+plot(roll.cor10, main="10-day rolling correlations",
+     ylab="correlation", lwd=2, col="blue")
+grid(lty = 1, lwd = 1.5)
+abline(h=cor(alldata.ret)[1,2], lwd=2, col="red")
+par(mfrow=c(1,1))
