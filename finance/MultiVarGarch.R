@@ -1,5 +1,6 @@
 install.packages(c("PerformanceAnalytics", "quantmod", "rugarch", "car", "FinTS", "rmgarch" , "mgarch"))
 install.packages("https://cran.r-project.org/src/contrib/Archive/rmgarch/rmgarch_1.3-6.tar.gz",  repos = NULL, type="source")
+install.packages("RiskPortfolios")
 
 # https://www.r-graph-gallery.com/
 
@@ -12,6 +13,7 @@ library(FinTS)
 library(rmgarch)
 library(mgarch)
 library(repr)
+library(RiskPortfolios)
 
 options(repr.plot.width=14, repr.plot.height=10)
 options(digits=4)
@@ -102,3 +104,8 @@ plot(roll.cor10, main="10-day rolling correlations",
 grid(lty = 1, lwd = 1.5)
 abline(h=cor(alldata.ret)[1,2], lwd=2, col="red")
 par(mfrow=c(1,1))
+
+
+
+
+cov.ewma = covEstimation(MSFT.GSPC.ret, control = list(type = 'ewma', lambda = lambda))
