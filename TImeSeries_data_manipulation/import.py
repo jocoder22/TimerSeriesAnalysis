@@ -51,12 +51,14 @@ plt.xticks(rotation=45)
 plt.title('Daily Returns Correlations')
 plt.show()
 
+
 correlations.to_excel(excel_writer='correlations.xlsx',
                       sheet_name='correlations',
                       startrow= 1,
                       startcol= 1)
 
 data.index =  data.index.date  
+
 
 with pd.ExcelWriter('Stocks_data.xlsx') as writer:
     correlations.to_excel(excel_writer=writer, sheet_name='correlations')

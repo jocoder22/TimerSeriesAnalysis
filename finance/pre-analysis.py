@@ -262,3 +262,5 @@ for i in comb:
     
 #   http://article.sciencepublishinggroup.com/html/10.11648.j.sjams.20150304.13.html#paper-content-2
 # https://towardsdatascience.com/predict-time-stamped-sales-in-python-1914292461ad
+
+# https://faculty.washington.edu/ezivot/econ584/notes/nonlinear.pdf

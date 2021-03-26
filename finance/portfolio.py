@@ -8,7 +8,6 @@ import pandas_datareader as pdr
 from datetime import datetime
 from sklearn.ensemble import RandomForestRegressor
 
-
 path = 'C:\\Users\\Jose\\Desktop\\TimerSeriesAnalysis\\finance'
 os.chdir(path)
 # startdate = datetime(2010,11,1)
@@ -63,7 +62,6 @@ for i in returns_monthly.index:
 print(covariance_dict[i])
 print(i)
 
-
 portfolio_returns, portfolio_volatility, portfolio_weights = {}, {}, {}
 
 np.random.seed(123)
@@ -82,6 +80,7 @@ for date in sorted(covariance_dict.keys()):
 
 print(portfolio_weights[date][0])
 
+
 # Get latest date of available data
 date = sorted(covariance_dict.keys())[-1]  
 
@@ -93,9 +92,9 @@ plt.ylabel('Returns')
 plt.show()
 
 
-
 # Empty dictionaries for sharpe ratios and best sharpe indexes by date
 sharpe_ratio, max_sharpe_idxs = {}, {}
+
 
 # Loop through dates and get sharpe ratio for each portfolio
 for date in portfolio_returns.keys():
@@ -110,7 +109,6 @@ for date in portfolio_returns.keys():
 print(portfolio_returns[date][max_sharpe_idxs[date]])
 
 
-
 # Calculate exponentially-weighted moving average of daily returns
 ewma_daily = returns_daily.ewm(span=30).mean()
 
@@ -122,8 +120,8 @@ ewma_monthly = ewma_monthly.shift(1).dropna()
 
 print(ewma_monthly.iloc[-1])
 
-
 targets, features = [], []
+
 
 # Create features from price history and targets as ideal portfolio
 for date, ewma in ewma_monthly.iterrows():
@@ -137,10 +135,12 @@ targets = np.array(targets)
 features = np.array(features)
 print(targets[-5:])
 
+
 # Get most recent (current) returns and volatility
 date = sorted(covariance_dict.keys())[-1]
 cur_returns = portfolio_returns[date]
 cur_volatility = portfolio_volatility[date]
+
 
 # Plot efficient frontier with sharpe as point
 plt.scatter(x=cur_volatility, y=cur_returns, alpha=0.6, color='blue')
@@ -160,14 +160,13 @@ test_features = features[train_size:]
 train_targets = targets[:train_size]
 test_targets = targets[train_size:]
 
+
 # Fit the model and check scores on train and test
 # fit a randomforest tree model
 rfr = RandomForestRegressor(n_estimators=300, random_state=42)
 rfr.fit(train_features, train_targets)
 print(rfr.score(train_features, train_targets))
 print(rfr.score(test_features, test_targets))
-
-
 
 train_predictions = rfr.predict(train_features)
 test_predictions = rfr.predict(test_features)
@@ -178,8 +177,6 @@ plt.plot(test_returns, label='algo')
 plt.plot(returns_monthly['FCX'].iloc[train_size:], label='FCX')
 plt.legend()
 plt.show()
-
-
 
 # Calculate the effect of our portfolio selection on a hypothetical $1k investment
 cash = 1000
