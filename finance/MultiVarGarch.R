@@ -33,6 +33,8 @@ plot(alldata$GSPC, main="S&P500 Adjusted Close Price")
 alldata.ret = CalculateReturns(alldata, method="log")[-1, ] # method="compound" is same as "log"
 
 # plot the returns
-plot(alldata.ret, col=c("white", "black"), main="Amazon-S&P500 Returns")
+plot(alldata.ret, col=c("white", "black"), main="Amazon-S&P500 Returns") # returns highly overlap
+plot(alldata.ret$AMZN, main="Amazon Returns")
+plot(alldata.ret$GSPC, main="S&P500 Returns")
 
 
