@@ -43,3 +43,21 @@ plot(index(alldata.ret), alldata.ret$GSPC, type="l", panel.first = grid(10, lty 
 # lines(index(alldata.ret), tt, type = "l", col = "red", lty = 4)
 abline(h=sd(alldata.ret$GSPC)*1.96, col = "red")
 abline(h=sd(alldata.ret$GSPC)*-1.96, col = "red")
+
+
+# scatterplot of returns
+plot(coredata(alldata.ret$GSPC), coredata(alldata.ret$AMZN), xlab="GSPC", ylab="AMZN",
+      type="p", pch=16, lwd=2, col="blue")
+abline(h=0,v=0)
+
+
+# compute rolling correlations
+chart.RollingCorrelation(alldata.ret$GSPC, alldata.ret$AMZN, width=20)
+
+cor.fun = function(x){
+  cor(x)[1,2]
+}
+
+cov.fun = function(x){
+  cov(x)[1,2]
+}
