@@ -11,6 +11,9 @@ library(car)
 library(FinTS)
 library(rmgarch)
 library(mgarch)
+library(repr)
+
+options(repr.plot.width=14, repr.plot.height=10)
 options(digits=4)
 
 
@@ -42,7 +45,7 @@ tt = rep(sd(alldata.ret$GSPC)*1.96, nrow(alldata.ret))
 # plot(index(alldata.ret), alldata.ret$GSPC, type="l", panel.first = grid(10, lty = 1, lwd = 1), xlab="Time", ylab="S&P500 Returns")
 # lines(index(alldata.ret), tt, type = "l", col = "red", lty = 4)
 plot(index(alldata.ret), alldata.ret$GSPC, type="l", xlab="Time", ylab="S&P500 Returns")
-grid( lty = 1, lwd = 1)
+grid(lty = 1, lwd = 1.5)
 abline(h=sd(alldata.ret$GSPC)*1.96, col = "red")
 abline(h=sd(alldata.ret$GSPC)*-1.96, col = "red")
 
@@ -50,6 +53,7 @@ abline(h=sd(alldata.ret$GSPC)*-1.96, col = "red")
 # scatterplot of returns
 plot(coredata(alldata.ret$GSPC), coredata(alldata.ret$AMZN), xlab="GSPC", ylab="AMZN",
       type="p", pch=16, lwd=2, col="blue")
+grid(lty = 1, lwd = 1.5)
 abline(h=0,v=0)
 
 
@@ -79,11 +83,11 @@ roll.cor10 = rollapply(as.zoo(alldata.ret), FUN=cor.fun, width=10,
 par(mfrow=c(2,1))
 plot(roll.cov, main="20-day rolling covariances",
      ylab="covariance", lwd=2, col="blue")
-grid(lty = 1, lwd = 1)
+grid(lty = 1, lwd = 1.5)
 abline(h=cov(alldata.ret)[1,2], lwd=2, col="red")
 plot(roll.cor, main="20-day rolling correlations",
      ylab="correlation", lwd=2, col="blue")
-grid(lty = 1, lwd = 1)
+grid(lty = 1, lwd = 1.5)
 abline(h=cor(alldata.ret)[1,2], lwd=2, col="red")
 par(mfrow=c(1,1))
 
