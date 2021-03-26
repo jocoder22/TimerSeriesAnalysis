@@ -107,5 +107,7 @@ par(mfrow=c(1,1))
 
 
 
-
+# calculate EWMA covariances and correlations
+lambda <- 0.94 # 0.94 is default
+cov.ewma <- covEWMA(as.data.frame(MSFT.GSPC.ret), lambda=lambda)
 cov.ewma = covEstimation(MSFT.GSPC.ret, control = list(type = 'ewma', lambda = lambda))
