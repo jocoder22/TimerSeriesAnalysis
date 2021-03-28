@@ -60,6 +60,7 @@ def copy_all_files2(_dstt, src=src):
             copy_all_files2(_dst, _src)
 
         else:
+            # set the file path
             myfile = os.path.join(src, entry)
             shutil.copy(f"{myfile}", f"{_dstt}")
             print(f"Copied {entry} to {_dstt}")
