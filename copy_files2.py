@@ -48,12 +48,15 @@ def copy_all_files2(_dstt, src=src):
     for entry in os.scandir(src):
         if entry.is_dir(follow_symlinks=False):
 
+            # define source and destination paths
             _src = os.path.join(entry)
             _dst = os.path.join(_dstt,  entry.name)
 
+            # create directory if not existing
             if not os.path.isdir(_dst):
                 os.makedirs(_dst)
 
+            # repeating recursively
             copy_all_files2(_dst, _src)
 
         else:
