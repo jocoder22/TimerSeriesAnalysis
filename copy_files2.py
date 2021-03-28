@@ -43,7 +43,7 @@ def copy_all_files(_dstt, src=src):
 
 
 def copy_all_files2(_dstt, src=src):
-    """Print name of all files in given path and subdirs."""
+    """copy all files in given path and subdirs to another file."""
 
     for entry in os.scandir(src):
         if entry.is_dir(follow_symlinks=False):
@@ -67,13 +67,3 @@ def copy_all_files2(_dstt, src=src):
 
 copy_all_files2(dst)
 
-
-
-
-# def print_all_files(path):
-#     """Print name of all files in given path and subdirs."""
-#     for entry in os.scandir(path):
-#         if entry.is_dir(follow_symlinks=False):
-#             print_all_files(entry.path)
-#         else:
-#           print(entry.name)
