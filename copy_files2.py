@@ -62,11 +62,13 @@ def copy_all_files2(_dstt, src=src):
         else:
             # set the file path
             myfile = os.path.join(src, entry)
+
+            # copy source file to distination
             shutil.copy(f"{myfile}", f"{_dstt}")
             print(f"Copied {entry} to {_dstt}")
-    
+
             if entry == os.listdir(src)[-1]:
-                print()
+                print("Done coping!")
 
 
 copy_all_files2(dst)
