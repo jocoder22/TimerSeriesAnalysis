@@ -38,6 +38,5 @@ def copy_all_files2(_dstt, src=src):
             if entry == os.listdir(src)[-1]:
                 print("Done coping!")
 
-
 copy_all_files2(dst)
 
