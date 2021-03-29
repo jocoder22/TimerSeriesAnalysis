@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 from datetime import datetime
-from pandas_datareader import data
+import pandas_datareader as pdr
 import matplotlib.pyplot as plt
 %matplotlib inline
 
