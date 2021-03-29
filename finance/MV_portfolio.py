@@ -1,4 +1,4 @@
-pip install pandas_datareader
+
 # Load Packages
 import numpy as np
 import pandas as pd
