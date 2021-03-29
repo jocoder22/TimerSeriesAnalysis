@@ -67,7 +67,7 @@ def portfolioAnalysis(porf):
   gg = plt.subplots(figsize=(10, 10))
   gg.scatter(portfolios['Volatility'], portfolios['Returns'],marker='o', s=10, alpha=0.3)
   gg.scatter(min_vol_port[1], min_vol_port[0], color='r', marker='*', s=500)
-  gg.scatter(max_ret_port[1], man_ret_port[0], color='y', marker='*', s=500)
+  gg.scatter(max_ret_port[1], max_ret_port[0], color='y', marker='*', s=500)
   gg.scatter(optimal_risky_port[1], optimal_risky_port[0], color='g', marker='*', s=500)
   gg.show()
   
