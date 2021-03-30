@@ -62,18 +62,18 @@ def portfolioAnalysis(porf):
 
 
     # Plot efficient frontier
-    portfolios.plot.scatter(x='Volatility', y='Returns', marker='o', s=10, alpha=0.3, grid=True, figsize=[10,10])
+    # portfolios.plot.scatter(x='Volatility', y='Returns', marker='o', s=10, alpha=0.3, grid=True, figsize=[10,10])
 
     # Plotting optimal portfolio
-    gg = plt.subplots(figsize=(10, 10))
-    gg.scatter(portfolios['Volatility'], portfolios['Returns'],marker='o', s=10, alpha=0.3)
-    gg.scatter(min_vol_port[1], min_vol_port[0], color='r', marker='*', s=500)
-    gg.scatter(max_ret_port[1], max_ret_port[0], color='y', marker='*', s=500)
-    gg.scatter(optimal_risky_port[1], optimal_risky_port[0], color='g', marker='*', s=500)
-    gg.show()
+    plt.subplots(figsize=(10, 10))
+    plt.scatter(portfolios['Volatility'], portfolios['Returns'],marker='o', s=10, alpha=0.3)
+    pltpltpltplt.scatter(min_vol_port[1], min_vol_port[0], color='r', marker='*', s=500)
+    pltpltplt.scatter(max_ret_port[1], max_ret_port[0], color='y', marker='*', s=500)
+    pltplt.scatter(optimal_risky_port[1], optimal_risky_port[0], color='g', marker='*', s=500)
+    plt.show()
 
 
-    return min_vol_port, max_ret_port, optimal_risky_port, gg
+    return min_vol_port, max_ret_port, optimal_risky_port
   
 
 ddd = df.tail(1); bbb = df.head(1)
