@@ -44,7 +44,7 @@ def portfolioAnalysis(porf):
 
     data = {'Returns':p_ret, 'Volatility':p_vol}
 
-    for counter, symbol in enumerate(df.columns.tolist()):
+    for counter, symbol in enumerate(allstocks.columns.tolist()):
       data[symbol+' weight'] = [w[counter] for w in p_weights]
 
     portfolios  = pd.DataFrame(data)
