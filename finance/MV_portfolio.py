@@ -72,6 +72,14 @@ def portfolioAnalysis(porf):
     pltpltplt.scatter(max_ret_port[1], max_ret_port[0], color='y', marker='*', s=500)
     pltplt.scatter(optimal_risky_port[1], optimal_risky_port[0], color='g', marker='*', s=500)
     plt.show()
+    print("\n\n\n")
+    
+    print(f"Minimal Volatility Portfolio")
+    print(min_vol_port, end="\n\n")
+    print(f"Maximal Return Portfolio")
+    print(max_ret_port, end="\n\n")
+    print(f"Optimal Risky Portfolio")
+    print(optimal_risky_port, end="\n\n")
 
 
     return min_vol_port, max_ret_port, optimal_risky_port
