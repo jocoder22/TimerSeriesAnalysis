@@ -26,7 +26,7 @@ def portfolioAnalysis(porf):
     p_weights = [] # Define an empty array for asset weights
 
     num_assets = len(allstocks.columns)
-    num_portfolios = 50000
+    num_portfolios = 20000
     np.random.seed(0)
 
     for portfolio in range(num_portfolios):
