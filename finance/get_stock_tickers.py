@@ -33,10 +33,9 @@ def get_stock_tickers(alphabet):
 
 def get_stock_tickers2(alphabet):
     
-    name =[]
-    ticker = []
-    closePrice = []
+    name, ticker, closePrice = [], [], []
     startdate = date.today()
+    alphabet = alphabet.upper()
     
     for char in alphabet: 
         URL =  f'https://www.advfn.com/nyse/newyorkstockexchange.asp?companies={char}'
@@ -47,17 +46,12 @@ def get_stock_tickers2(alphabet):
         for i in items:
             row = i.find_all('td')
             name.append(row[0].text.strip())
-            tt = row[1].text.strip()
-            ticker.append(tt)
-            
-            try:
-                closePrice.append(pdr.get_data_yahoo(tt, startdate)['Adj Close'].values[0])
-            except:
-                closePrice.append(0.00)
+            ticker.append(row[1].text.strip())
 
+
+    closePrice.append(pdr.get_data_yahoo(ticker, startdate)['Adj Close'].values[0])
         
     data = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker', 'AdjustedClosePrice'])
-    
     
     data['CompanyName'] = name
     data['CompanyTicker'] = ticker
