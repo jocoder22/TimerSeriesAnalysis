@@ -1,4 +1,8 @@
 
+
+import string
+
+
 def scrape_stock_symbols22(alphabet):
     company_name2 =[]
     company_ticker2 = []
