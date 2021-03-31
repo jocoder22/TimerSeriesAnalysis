@@ -27,3 +27,5 @@ def scrape_stock_symbols22(alphabet):
     data['Company_Ticker'] = company_ticker2
     
     return data
+
+mmm = string.ascii_uppercase + "0"
