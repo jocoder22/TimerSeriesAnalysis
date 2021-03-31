@@ -65,3 +65,6 @@ ddd = get_stock_tickers(mmm)
 
 df2 = ddd.sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
 ddd.query('AdjustedClosePrice < 12.0').sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
+
+
+gg = ddd[ddd["AdjustedClosePrice"].isnull()]
