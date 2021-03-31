@@ -55,7 +55,7 @@ def get_stock_tickers2(alphabet):
     
     data['CompanyName'] = name
     data['CompanyTicker'] = ticker
-    data['AdjustedClosePrice'] = closePrice
+    data['AdjustedClosePrice'] = closePrice[0]
     
     return data
 
