@@ -21,11 +21,13 @@ def get_stock_tickers(alphabet):
             ticker.append(row[1].text.strip())
 
         
-    data = pd.DataFrame(columns = ['Company_Name',  'Company_Ticker']) 
+    data = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker']) 
     
-    data['Company_Name'] = name
-    data['Company_Ticker'] = ticker
+    data['CompanyName'] = name
+    data['CompanyTicker'] = ticker
     
     return data
 
 mmm = string.ascii_uppercase + "0"
+
+ddd = get_stock_tickers(mmm)
