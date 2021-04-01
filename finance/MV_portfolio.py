@@ -84,11 +84,9 @@ def portfolioAnalysis(porf):
 
     return min_vol_port, max_ret_port, optimal_risky_port
   
-
 ddd = df.tail(1); bbb = df.head(1)
 fff = pd.concat([bbb, ddd])
 mmm = fff.pct_change().mean()
-
 
 
 # ['CHPT', 'QS', 'NIO', 'XPEV', 'LI', 'NKLA', 'BLNK']
