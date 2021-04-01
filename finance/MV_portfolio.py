@@ -91,5 +91,7 @@ mmm = fff.pct_change().mean()
 
 
 
+# ['CHPT', 'QS', 'NIO', 'XPEV', 'LI', 'NKLA', 'BLNK']
+
   
 
