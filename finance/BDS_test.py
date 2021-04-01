@@ -7,7 +7,7 @@
 # if null hypothesis not rejected => linear model is not rejected
 
 
-
+#!/usr/bin/env python
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
