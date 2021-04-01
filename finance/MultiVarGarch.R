@@ -3,7 +3,6 @@ install.packages("https://cran.r-project.org/src/contrib/Archive/rmgarch/rmgarch
 install.packages("RiskPortfolios")
 
 # https://www.r-graph-gallery.com/
-
 # loading required libraries
 library(PerformanceAnalytics)
 library(quantmod)
