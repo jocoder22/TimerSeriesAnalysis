@@ -1,1 +1,63 @@
+Automatically compares files
+1.	Windows  -> FC (file compare)
+2.	Mac -> Diff (difference)
+3.	Linux -> Diff (difference)
+
+On windows:
+a.	Open the command prompt
+b.	go to the folder where the files are located
+c.	type:  FC file1 file2
+d.	press Enter: 
+e.g  C:\users\ …. \Downloads> FC myoldfile.txt mynewfile.txt
+on Mac or Linux:
+a.	Open the terminal and cd to the folder with the file
+b.	Type:  diff -u myoldfile2 mynewfile2
+a.	The -u is for unified diff format and makes the output easier to read
+
+Working with GitHub
+1.	Install Git,  https://git-scm.com/downloads
+2.	Open the git bash
+3.	Check your git version:  type:  git –version
+4.	Type:  git config –global color.ui auto
+a.	Give you color coding print out
+5.	Navigate to the folder you like to work with
+6.	Clone the repository of your choice using: git clone and URL of the repository
+e.g. git clone https://github.com/.../someonerepo.git
+git clone https://github.com/.../someonerepo.git  mycopy
+
+ 
+
+
+
+
+
+a.	git log -> print out all committed changed
+a.	the print out has:
+i.	commit id
+ii.	 the Author
+iii.	The date of commit
+iv.	The message associated with the commit
+
+b.	git diff -> compares two versions files or commits
+a.	it has color coded comparison
+b.	green lines, section or parts added to old file
+c.	red lines, section or parts removed from the old file
+d.	black lines, didn’t change
+
+c.	git log –stat -> print statistics about which files changed at each commit in the entire repository
+a.	besides git log information, gives
+b.	which files that changed 
+i.	total number of lines changed
+ii.	color coded comparison, 
+1.	green plus: for each added line in each file
+2.	red minus:  for each line removed from each file
+c.	the statistics
+i.	number of changed files
+ii.	total number of insertions (+) for entire repository
+iii.	total number of deletions (-) for entire repository
+
+d.	git checkout -> to revert to earlier version of your repository
+
+
+
 
