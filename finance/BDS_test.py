@@ -7,6 +7,7 @@
 # if null hypothesis not rejected => linear model is not rejected
 
 
+
 #!/usr/bin/env python
 import numpy as np
 import pandas as pd
@@ -33,6 +34,7 @@ allstocks.head()
 
 
 df = allstocks.copy()
+
 
 # Graphical exploration V
 fig, ax1 = plt.subplots(figsize=[14,10])
