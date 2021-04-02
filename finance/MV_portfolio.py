@@ -83,7 +83,6 @@ def portfolioAnalysis(porf):
     print(f"Optimal Risky Portfolio")
     print(optimal_risky_port, end="\n\n")
 
-
     return min_vol_port, max_ret_port, optimal_risky_port
   
 ddd = df.tail(1); bbb = df.head(1)
