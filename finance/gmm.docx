@@ -32,17 +32,17 @@ git clone https://github.com/.../someonerepo.git  mycopy
 
 
 a.	git log -> print out all committed changed
-a.	the print out has:
-i.	commit id
-ii.	 the Author
-iii.	The date of commit
-iv.	The message associated with the commit
+    a.	the print out has:
+        i.	commit id
+        ii.	 the Author
+        iii.	The date of commit
+        iv.	The message associated with the commit
 
 b.	git diff -> compares two versions files or commits
-a.	it has color coded comparison
-b.	green lines, section or parts added to old file
-c.	red lines, section or parts removed from the old file
-d.	black lines, didn’t change
+    a.	it has color coded comparison
+    b.	green lines, section or parts added to old file
+    c.	red lines, section or parts removed from the old file
+    d.	black lines, didn’t change
 
 c.	git log –stat -> print statistics about which files changed at each commit in the entire repository
         a.	besides git log information, gives
