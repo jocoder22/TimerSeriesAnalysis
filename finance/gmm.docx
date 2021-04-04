@@ -51,10 +51,10 @@ c.	git log –stat -> print statistics about which files changed at each commit 
             ii.	color coded comparison, 
                 1.	green plus: for each added line in each file
                 2.	red minus:  for each line removed from each file
-c.	the statistics
-i.	number of changed files
-ii.	total number of insertions (+) for entire repository
-iii.	total number of deletions (-) for entire repository
+        c.	the statistics
+            i.	number of changed files
+            ii.	total number of insertions (+) for entire repository
+            iii.	total number of deletions (-) for entire repository
 
 
 d.	git checkout -> to revert to earlier version of your repository
