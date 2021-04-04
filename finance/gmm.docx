@@ -8,11 +8,14 @@ a.	Open the command prompt
 b.	go to the folder where the files are located
 c.	type:  FC file1 file2
 d.	press Enter: 
-e.g  C:\users\ …. \Downloads> FC myoldfile.txt mynewfile.txt
+        \users\ …. \Downloads> FC myoldfile.txt mynewfile.txt
+
 on Mac or Linux:
 a.	Open the terminal and cd to the folder with the file
 b.	Type:  diff -u myoldfile2 mynewfile2
 a.	The -u is for unified diff format and makes the output easier to read
+
+
 
 Working with GitHub
 1.	Install Git,  https://git-scm.com/downloads
