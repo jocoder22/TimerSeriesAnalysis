@@ -22,8 +22,8 @@ Working with GitHub
 a.	Give you color coding print out
 5.	Navigate to the folder you like to work with
 6.	Clone the repository of your choice using: git clone and URL of the repository
-e.g. git clone https://github.com/.../someonerepo.git
-git clone https://github.com/.../someonerepo.git  mycopy
+    e.g. git clone https://github.com/.../someonerepo.git
+    git clone https://github.com/.../someonerepo.git  mycopy
 
  
 
