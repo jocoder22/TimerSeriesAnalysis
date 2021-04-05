@@ -77,3 +77,6 @@ if __name__ == "__main__":
 
     with changepath(path1):
         ddd.to_csv("tickers.csv")
+
+    tickers = data.CompanyTicker.tolist()
+    companies = data.CompanyName.tolist()
