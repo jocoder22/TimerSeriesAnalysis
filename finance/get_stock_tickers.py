@@ -5,6 +5,9 @@ import pandas_datareader as pdr
 from datetime import datetime, date
 from bs4 import BeautifulSoup
 import string
+from printdescribe import changepath
+
+path1 = r"E:\Capstone"
 
 
 def get_stock_tickers(alphabet):
@@ -60,12 +63,16 @@ def get_stock_tickers2(alphabet):
     
     return data
 
-mmm = string.ascii_uppercase + "0"
+if __name__ == "__main__":
+    mmm = string.ascii_uppercase + "0"
 
-ddd = get_stock_tickers(mmm)
+    ddd = get_stock_tickers(mmm)
 
-# df2 = ddd.sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
-# ddd.query('AdjustedClosePrice < 12.0').sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
+    # df2 = ddd.sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
+    # ddd.query('AdjustedClosePrice < 12.0').sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
 
 
-# gg = ddd[ddd["AdjustedClosePrice"].isnull()]
+    # gg = ddd[ddd["AdjustedClosePrice"].isnull()]
+
+    with changepath(path1):
+        ddd.to_csv("tickers.csv")
