@@ -28,7 +28,6 @@ a.	Give you color coding print out
     git clone https://github.com/.../someonerepo.git  mycopy
 
 
-
 a.	git log -> print out all committed changed
     a.	the print out has:
         i.	commit id
