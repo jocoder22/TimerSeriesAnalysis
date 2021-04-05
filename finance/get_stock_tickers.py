@@ -49,13 +49,14 @@ def get_stock_tickers2(alphabet):
             ticker.append(row[1].text.strip())
 
 
-    closePrice.append(pdr.get_data_yahoo(ticker, startdate)['Adj Close'].values[0])
+    # closePrice.append(pdr.get_data_yahoo(ticker, startdate)['Adj Close'].values[0])
         
-    data = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker', 'AdjustedClosePrice'])
+    # data = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker', 'AdjustedClosePrice'])
+    data = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker'])
     
     data['CompanyName'] = name
     data['CompanyTicker'] = ticker
-    data['AdjustedClosePrice'] = closePrice[0]
+    # data['AdjustedClosePrice'] = closePrice[0]
     
     return data
 
@@ -63,8 +64,8 @@ mmm = string.ascii_uppercase + "0"
 
 ddd = get_stock_tickers(mmm)
 
-df2 = ddd.sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
-ddd.query('AdjustedClosePrice < 12.0').sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
+# df2 = ddd.sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
+# ddd.query('AdjustedClosePrice < 12.0').sort_values(by='AdjustedClosePrice', ascending=True, na_position='last')
 
 
-gg = ddd[ddd["AdjustedClosePrice"].isnull()]
+# gg = ddd[ddd["AdjustedClosePrice"].isnull()]
