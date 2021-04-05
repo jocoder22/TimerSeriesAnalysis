@@ -33,7 +33,6 @@ allstocks.head()
 
 df = allstocks.copy()
 
-
 # Graphical exploration V
 fig, ax1 = plt.subplots(figsize=[14,10])
 
