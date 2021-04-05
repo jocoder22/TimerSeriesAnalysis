@@ -28,10 +28,6 @@ a.	Give you color coding print out
     e.g. git clone https://github.com/.../someonerepo.git
     git clone https://github.com/.../someonerepo.git  mycopy
 
- 
-
-
-
 
 
 a.	git log -> print out all committed changed
