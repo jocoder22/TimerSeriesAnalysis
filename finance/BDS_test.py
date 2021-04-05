@@ -30,7 +30,6 @@ print(allstocks.head())
 allstocks.columns = ["OpenSPY", "VIX"]
 allstocks.head()
 
-
 df = allstocks.copy()
 
 # Graphical exploration V
