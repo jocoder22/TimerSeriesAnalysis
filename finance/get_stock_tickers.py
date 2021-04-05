@@ -6,6 +6,7 @@ from datetime import datetime, date
 from bs4 import BeautifulSoup
 import string
 from printdescribe import changepath
+import time
 
 path1 = r"E:\Capstone"
 
