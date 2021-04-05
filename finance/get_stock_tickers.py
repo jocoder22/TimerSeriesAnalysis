@@ -34,10 +34,10 @@ def get_stock_tickers(alphabet):
     return data
 
 
-def get_stock_tickers2(alphabet):
+def get_stock_tickers2(alphabet, startdate=data.today()):
     
     name, ticker, closePrice = [], [], []
-    startdate = date.today()
+    # startdate = date.today()
     alphabet = alphabet.upper()
     
     for char in alphabet: 
@@ -52,14 +52,14 @@ def get_stock_tickers2(alphabet):
             ticker.append(row[1].text.strip())
 
 
-    # closePrice.append(pdr.get_data_yahoo(ticker, startdate)['Adj Close'].values[0])
+    closePrice.append(pdr.get_data_yahoo(ticker, startdate)['Adj Close'].values[0])
         
-    # data = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker', 'AdjustedClosePrice'])
-    data = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker'])
+    data = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker', 'AdjustedClosePrice'])
+    
     
     data['CompanyName'] = name
     data['CompanyTicker'] = ticker
-    # data['AdjustedClosePrice'] = closePrice[0]
+    data['AdjustedClosePrice'] = closePrice[0]
     
     return data
 
