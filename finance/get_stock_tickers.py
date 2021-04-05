@@ -34,7 +34,7 @@ def get_stock_tickers(alphabet):
     return data
 
 
-def get_stock_tickers2(alphabet, startdate=data.today()):
+def get_stock_tickers2(alphabet, startdate=date.today()):
     
     name, ticker, closePrice = [], [], []
     # startdate = date.today()
