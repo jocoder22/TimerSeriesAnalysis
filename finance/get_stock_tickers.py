@@ -80,3 +80,20 @@ if __name__ == "__main__":
 
     tickers = data.CompanyTicker.tolist()
     companies = data.CompanyName.tolist()
+
+    startp = 0
+endt = 10
+for i in range(len(tickers)):
+    startp = endt
+    endt += 10
+    closePrice.append(pdr.get_data_yahoo(tickers[startp:endt], start_)['Adj Close'].values[0])
+    ticker.append(tickers[startp:endt])
+    name.append(companies[startp:endt])
+    data33 = pd.DataFrame(columns = ['CompanyName',  'CompanyTicker', 'AdjustedClosePrice'])
+data33['CompanyName'] = name
+data33['CompanyTicker'] = ticker
+data33['AdjustedClosePrice'] = closePrice
+
+path1 = r"E:\Capstone"
+with changepath(path1):
+        data33.to_csv("tickersplus.csv")
