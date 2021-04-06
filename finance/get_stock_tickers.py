@@ -97,3 +97,6 @@ data33['AdjustedClosePrice'] = closePrice
 path1 = r"E:\Capstone"
 with changepath(path1):
         data33.to_csv("tickersplus.csv")
+
+
+data['Price'] = [float(str(x).strip()[1:]) for x in data['Last Sale']]
