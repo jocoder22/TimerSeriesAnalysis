@@ -98,4 +98,5 @@ symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'W
 folders2 = ["ExtremeVehicleBattery", "SolarAllianceEnergy", "SponsorsOne", "iQSTEL"]
 symbols2 = ["CRYBF", "SAENF", "SPONF", "IQST"]
 
+
 gg = ["BABA", "AMD", "MSFT", "CRM", "BMY"]
