@@ -59,3 +59,148 @@ d.	git checkout -> to revert to earlier version of your repository
 
 
 
+
+
+
+
+
+
+
+
+Automatically compares files
+1.	Windows  -> FC (file compare)
+2.	Mac -> Diff (difference)
+3.	Linux -> Diff (difference)
+
+On windows:
+a.	Open the command prompt
+b.	go to the folder where the files are located
+c.	type:  FC file1 file2
+d.	press Enter: 
+e.g  C:\users\ …. \Downloads> FC myoldfile.txt mynewfile.txt
+on Mac or Linux:
+a.	Open the terminal and cd to the folder with the file
+b.	Type:  diff -u myoldfile2 mynewfile2
+a.	The -u is for unified diff format and makes the output easier to read
+
+Working with GitHub
+1.	Install Git,  https://git-scm.com/downloads
+2.	Open the git bash
+3.	Check your git version:  type:  git –version
+4.	Type:  
+a.	git config –global color.ui auto
+i.	Give you color coding print out
+b.	git config –global core.autocrlf true
+i.	to fix window’s conversion of LF to CRLF
+
+5.	Navigate to the folder you like to work with
+6.	Clone the repository of your choice using: git clone and URL of the repository
+e.g. git clone https://github.com/.../someonerepo.git
+git clone https://github.com/.../someonerepo.git  mycopy
+
+a.	git log -> print out all committed changed
+a.	the print out has:
+i.	commit id
+ii.	 the Author
+iii.	The date of commit
+iv.	The message associated with the commit
+v.	git log -n 1, which show only one commit
+
+b.	git diff -> compares two versions files or commits
+a.	it has color coded comparison
+b.	green lines, section or parts added to old file
+c.	red lines, section or parts removed from the old file
+d.	black lines, didn’t change
+e.	without commit ID, will show changes to file blw working directory and staging area
+f.	git diff –staged, will show the difference blw files in staging area and the repository
+
+
+c.	git log –stat -> print statistics about which files changed at each commit in the entire repository
+a.	besides git log information, gives
+b.	which files that changed 
+i.	total number of lines changed
+ii.	color coded comparison, 
+1.	green plus: for each added line in each file
+2.	red minus:  for each line removed from each file
+c.	the statistics
+i.	number of changed files
+ii.	total number of insertions (+) for entire repository
+iii.	total number of deletions (-) for entire repository
+
+d.	git checkout -> to revert to earlier version of your repository
+
+
+Creating, Editing and Modifying GIT Repository
+# https://github.com/github/training-kit/blob/master/downloads/github-git-cheat-sheet.pdf
+a.	cd into the directory of your choice
+1.	ls -a
+2.	Initialize a git repository using: git init
+3.	git status
+b.	stage files for the repository using: git add file1
+i.	git add file1
+ii.	git add file1 file2
+iii.	git add .
+c.	To remove a staged file use: git rm -cached file1 
+i.	git rm -cached file1
+ii.	git reset file1
+d.	Commit the changes to the repository using: git commit
+i.	git commit
+1.	this will open a text editor for your commit message
+2.	Add you commit message as a command
+a.	Add new control button
+3.	Close the text editor, git commit done!
+ii.	git commit -m “commit message”
+1.	this will automatically add your commit message
+2.	will not open the text editor
+e.	To undo last staging and commit use: git reset –hard
+i.	git reset –hard
+ii.	don’t do often
+
+
+
+Git Branches
+a.	git branch – show the branches
+i.	if not branches, will show the default * master
+ii.	this is the current checkout branch
+
+b.	git branch yourbranch, will create a new branch named yourbranch
+i.	git branch will show
+1.	yourbranch
+2.	* master
+ii.	git checkout -b newbranch is actually two commands
+1.	create a branch newbranch
+2.	checkout to newbranch
+
+c.	git checkout yourbranch, to checkout to yourbranch
+i.	git branch will now show
+1.	* yourbranch
+2.	Master
+ii.	git status, will confirm the active branch
+
+d.	To see the commit history or diagram use
+i.	git log –graph –online master yourbranch
+ii.	displays the commit diagram
+
+e.	Merge the branches using git merge
+i.	Checkout on the master branch
+ii.	Run git merge master yourbranch
+1.	git merge master yourbranch
+2.	git merge yourbranch
+3.	This run Auto-merging
+4.	Using recursive strategy
+5.	Prints the commit stats
+
+iii.	Sorts the commit by time
+1.	Two close commits are not essential sequential
+2.	Use git show commitID
+a.	Show difference compared to parent
+b.	Solved the recursive problem
+f.	Clean closed branch using git branch -d yourbranch
+i.	git branch -d yourbranch
+ii.	delete the branch labels
+iii.	the commitID will be reached through the master
+
+
+
+
+
