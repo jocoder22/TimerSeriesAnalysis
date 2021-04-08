@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 import pandas_datareader as pdr
 import fix_yahoo_finance as yf
+import statsmodels.tsa.stattools as ts
 import time
 import string
 
