@@ -16,7 +16,7 @@ sys.path.insert(0, pathtk)
 
 import wewebs
 
-folder = wewebs.folders
+folders = wewebs.folders
 symbols = wewebs.symbols
 
 # sp = {'sep': '\n\n', 'end': '\n\n'}
@@ -86,12 +86,12 @@ for idx in range(len(symbols)):
     print2(intradata.shape, intradata.info())
 
 
-folders = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
+folders222 = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
             'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
             "Cvs", "AT_T", "CocaCola", "Boeing", "SolarEdge", "AdvancedMicroDevices", "Twilio",
             "ExpWorld", "HomeDepot", "Ford", "PVH", "Twitter", "Salesforce", 
             "Alibaba", "NioElectricMotor", "Apple" ,  "BristolMyers"]
-symbols = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
+symbols222 = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C', 'WMT', 'TGT', 'FDX',
             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
               'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY']
 
