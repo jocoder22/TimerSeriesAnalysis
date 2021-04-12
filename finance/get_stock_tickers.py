@@ -104,4 +104,5 @@ newdata = data.iloc[:, [0,1,11]].sort_values('Price').query('Price  > 200.0 and 
 # https://www.nasdaq.com/market-activity/stocks/screener
 # https://old.nasdaq.com/screening/companies-by-name.aspx
 # https://github.com/shilewenuw/get_all_tickers/blob/master/get_all_tickers/get_tickers.py
+# https://www.nasdaq.com/market-activity/stocks/screener
 pd.set_option('display.max_colwidth', None)
