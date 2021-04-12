@@ -106,3 +106,10 @@ newdata = data.iloc[:, [0,1,11]].sort_values('Price').query('Price  > 200.0 and 
 # https://github.com/shilewenuw/get_all_tickers/blob/master/get_all_tickers/get_tickers.py
 # https://www.nasdaq.com/market-activity/stocks/screener
 pd.set_option('display.max_colwidth', None)
+
+
+# add ?raw=true
+url = "https://github.com/shilewenuw/get_all_tickers/blob/master/get_all_tickers/tickers.csv?raw=true"
+url = "https://github.com/jocoder22/TimerSeriesAnalysis/blob/master/finance/allstocks.csv?raw=true"
+df = pd.read_csv(url, index_col=0)
+print(df.head(5))
