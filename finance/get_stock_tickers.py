@@ -101,5 +101,5 @@ with changepath(path1):
 
 data['Price'] = [float(str(x).strip()[1:]) for x in data['Last Sale']]
 newdata = data.iloc[:, [0,1,11]].sort_values('Price').query('Price  > 200.0 and Price < 400.0')
-https://www.nasdaq.com/market-activity/stocks/screener
+# https://www.nasdaq.com/market-activity/stocks/screener
 pd.set_option('display.max_colwidth', None)
