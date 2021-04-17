@@ -83,7 +83,7 @@ print(f'KPSS Result: The series is {"not" if p_value < 0.05 else ""} stationary'
 # nobsint - The number of observations used for the ADF regression and calculation of the critical values.
 # critical valuesdict - Critical values for the test statistic at the 1 %, 5 %, and 10 % levels. Based on MacKinnon (2010).
 # icbestfloat - The maximized information criterion if autolag is not None.
-# resstoreResultStore, optional - A dummy class with results attached as attributes. 
+# resstore: ResultStore, optional - A dummy class with results attached as attributes. 
       
 # ADF on raw data     
 result = adfuller(allstocks, autolag='AIC')
