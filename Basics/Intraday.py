@@ -41,7 +41,6 @@ symbols = wewebs.symbols
 # folders = ["Ford", "PVH", "Twitter", "Salesforce"]
 # symbols = [ 'F', 'PVH', 'TWTR', 'CRM']
 
-
 intradata = pd.DataFrame()
 limitday = 80
 dattt = date.today()
