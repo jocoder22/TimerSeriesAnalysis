@@ -47,6 +47,8 @@ dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
 
 
+
+
 for idx in range(len(symbols)):
     stdate = date.today() - timedelta(days=limitday)
     os.chdir(path)
@@ -61,6 +63,7 @@ for idx in range(len(symbols)):
         intradata = pd.concat([intradata, df2], axis=0, sort=True)
         stdate = startdate
         time.sleep(1.8) # seconds
+      
         
     # saving data
     savedir = os.path.join(os.getcwd(), folders[idx])
