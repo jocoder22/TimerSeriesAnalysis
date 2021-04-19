@@ -76,3 +76,9 @@ for idx in range(len(symbols)):
 
 
 
+https://wqu-capstone.slack.com/archives/G01NSUR38GP/p1618798234058700
+
+https://wqu-capstone.slack.com/archives/G01NSUR38GP/p1618798234058700
+
+
+https://docs.google.com/document/d/1M82damLQQ5QnMVEfHeP4x-qqn2ODIdY-stbmqMvB3R8/edit#heading=h.gjdgxs
