@@ -51,7 +51,6 @@ upper_limits = confidence_intervals.loc[:,'upper Close']
 # Print best estimate  predictions
 print(mean_prediction[:5])
 
-
 # plot the apple data
 plt.plot(apple.index, apple['Close'], label='observed', color='black')
 
