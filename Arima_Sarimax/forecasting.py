@@ -67,8 +67,6 @@ plt.ylabel('apple Stock Price - Close USD')
 plt.legend()
 plt.show()
 
-
-
 # using dynamic predictions
 model_dynamic = SARIMAX(apple['Close'], order=(0,1,0), trend='c').fit()
 
