@@ -83,7 +83,6 @@ confidence_intervals_dynamic = prediction_dynamic.conf_int()
 lower_limits_dynamic = confidence_intervals_dynamic.loc[:,'lower Close']
 upper_limits_dynamic = confidence_intervals_dynamic.loc[:,'upper Close']
 
-
 # plot the apple data
 plt.plot(apple.index, apple['Close'], label='observed')
 
