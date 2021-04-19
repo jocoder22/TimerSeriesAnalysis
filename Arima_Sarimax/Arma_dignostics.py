@@ -17,9 +17,6 @@ import statsmodels.api as sm
 
 import warnings
 warnings.filterwarnings("ignore")
-
-
-
 sp = '\n\n'
 
 symbol = 'AMZN'
