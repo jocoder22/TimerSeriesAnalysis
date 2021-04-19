@@ -35,8 +35,6 @@ decomp_seasons = seasonal_decompose(apple.loc['2016':,['Close']], freq=season_x)
 decomp_seasons.plot()
 plt.show()
 
-
-
 # Seasonality check
 apple22 = apple['Close'].diff().diff(season_x).dropna()
 fig, (ax1, ax2) = plt.subplots(2,1, figsize=(12,8))
