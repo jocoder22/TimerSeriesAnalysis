@@ -100,6 +100,8 @@ plt.show()
 
 
 
+
+
 """ 
 df.index = pd.to_datetime(df.index)
 df['2012']
