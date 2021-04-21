@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
+
 import datetime
 from datetime import date
 from datetime import datetime
@@ -54,6 +55,7 @@ print(today1, today2, sep=sp)
 # enddate = datetime(2019, 3, 16)
 # df = get_historical_data(stocksname, startdate, enddate, output_format='pandas')
 # print(df.shape)
+
 
 n = 0
 intradata = pd.DataFrame()
