@@ -63,8 +63,10 @@ limitday = 91
 stdate = date.today() - timedelta(days=limitday)
 print(stdate)
 
+
 path = r'C:\Users\Jose\Documents\Intradays'
 os.chdir(path)
+
 
 dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
