@@ -98,6 +98,8 @@ print(f'Correlation of sp500 and UsBond10Y is {correlation}')
 plt.scatter(returns['SP500'], returns['Bond10Y'])
 plt.show()
 
+
+
 """ 
 df.index = pd.to_datetime(df.index)
 df['2012']
