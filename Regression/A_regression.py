@@ -79,6 +79,7 @@ print(res.params)
 mod = ARMA(simulated_data_2, order=(1, 0))
 res = mod.fit()
 
+
 # Print out the estimate for the constant and for phi
 print("When the true phi=0.9, the estimate of phi (and the constant) are:")
 print(res.params)
