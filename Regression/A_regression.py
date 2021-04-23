@@ -110,6 +110,7 @@ print(yy.head())
 dd = get_historical_intraday("S", output_format='pandas')
 print(dd.head(), dd.tail(), dd.info(), sep=sp)
 
+
 ff = pd.DataFrame(get_historical_intraday("AAPL", date))
 ff['date'] = ff['date'].astype('datetime64[ns]')
 print(ff.head(20))
