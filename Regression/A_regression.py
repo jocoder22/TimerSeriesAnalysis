@@ -91,6 +91,7 @@ res = mod.fit()
 print("When the true phi=0.9, the estimate of phi (and the constant) are:")
 print(res.params)
 
+
 # Forecast the first AR(1) model
 mod = ARMA(simulated_data_1, order=(1, 0))
 res = mod.fit()
