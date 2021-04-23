@@ -105,6 +105,7 @@ date = datetime(2018, 11, 27)
 yy = pd.DataFrame(get_historical_intraday("S", date))
 print(yy.head())
 
+
 # output_format: pandas will index the pandas dataframe using the minutes of the date
 dd = get_historical_intraday("S", output_format='pandas')
 print(dd.head(), dd.tail(), dd.info(), sep=sp)

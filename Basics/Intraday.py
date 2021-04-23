@@ -67,8 +67,8 @@ ttt = wewebs.token
 # symbols = [ 'F', 'PVH', 'TWTR', 'CRM']
 
 
-folders = ["XPeng"]
-symbols = ['XPEV']
+folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "BristolMyers"]
+symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'BMY']
 
 intradata = pd.DataFrame()
 
