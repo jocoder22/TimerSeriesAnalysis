@@ -97,6 +97,7 @@ res = mod.fit()
 res.plot_predict(start=990, end=1010)
 plt.show()
 
+
 # https://pypi.org/project/iexfinance/
 # pip3 install iexfinance
 from datetime import datetime
