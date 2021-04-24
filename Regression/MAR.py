@@ -76,8 +76,6 @@ print(res.summary())
 print("When the true theta=-0.9, the estimate of theta (and the constant) are:")
 print(res.params)
 
-
-
 # Forecast the first MA(1) model
 mod = ARMA(simulated_data_1, order=(0, 1))
 res = mod.fit()
