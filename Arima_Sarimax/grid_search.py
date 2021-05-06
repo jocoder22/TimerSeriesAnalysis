@@ -19,7 +19,6 @@ today = date.today()
 apple = pdr.get_data_yahoo(symbol, starttime, today)
 
 print(apple.head())
-
 # do grid search for parameters
 gridlist = []
 
@@ -51,6 +50,7 @@ griddataframe = pd.DataFrame(gridlist,
                         columns=['p', 'q', 'AIC', 'BIC', 'MAE', 'T'])
 
 print(griddataframe, end=sp)
+
 
 # Print griddataframe in order of increasing AIC
 print('Based on AIC:', griddataframe.sort_values('AIC').head(1), end=sp, sep='\n')
