@@ -21,8 +21,6 @@ apple = pdr.get_data_yahoo(symbol, starttime, today)
 
 print(apple.head())
 
-
-
 # do grid search for parameters
 gridlist = []
 
@@ -67,8 +65,6 @@ print('Based on MAE:\n', griddataframe.sort_values('MAE').head(1), end=sp)
 
 
 '''
-
-
 # do grid search for parameters
 gridlist2 = []
 
