@@ -141,3 +141,5 @@ output_mod2 = sm.tsa.UnobservedComponents(apple.loc['2016':,['Adj Close']], **re
 output_res2 = output_mod2.fit(method='powell', disp=False)
 
 
+fig = output_res.plot_components(legend_loc='lower right', figsize=(15, 15));
+fig = output_res2.plot_components(legend_loc='lower right', figsize=(15, 15));
