@@ -18,7 +18,6 @@ starttime = datetime(2006, 1, 1)
 today = date.today()
 apple = pdr.get_data_yahoo(symbol, starttime, today)
 
-
 print(apple.head())
 
 # do grid search for parameters
@@ -61,7 +60,6 @@ print('Based on BIC:\n', griddataframe.sort_values('BIC').head(1), end=sp)
 
 # Print griddataframe in order of increasing MAE
 print('Based on MAE:\n', griddataframe.sort_values('MAE').head(1), end=sp)
-
 
 
 '''
