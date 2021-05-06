@@ -115,3 +115,29 @@ print('Based on BIC:\n', griddataframe2.sort_values('BIC').head(1), end=sp)
 print('Based on MAE:\n', griddataframe2.sort_values('MAE').head(1), end=sp)
 
 '''
+
+
+# Detrending
+# https://www.statsmodels.org/stable/examples/notebooks/generated/statespace_structural_harvey_jaeger.html
+import statsmodels.api as sm
+
+# Unrestricted model, using string specification
+unrestricted_model = {
+    'level': 'local linear trend', 'cycle': True, 'damped_cycle': True, 'stochastic_cycle': True
+}
+
+# The restricted model forces a smooth trend
+restricted_model = {
+    'level': 'smooth trend', 'cycle': True, 'damped_cycle': True, 'stochastic_cycle': True
+}
+
+
+# Output
+output_mod = sm.tsa.UnobservedComponents(apple.loc['2016':,['Adj Close']], **unrestricted_model)
+output_res = output_mod.fit(method='powell', disp=False)
+
+# Output2
+output_mod2 = sm.tsa.UnobservedComponents(apple.loc['2016':,['Adj Close']], **restricted_model)
+output_res2 = output_mod2.fit(method='powell', disp=False)
+
+
