@@ -61,7 +61,6 @@ print('Based on BIC:\n', griddataframe.sort_values('BIC').head(1), end=sp)
 # Print griddataframe in order of increasing MAE
 print('Based on MAE:\n', griddataframe.sort_values('MAE').head(1), end=sp)
 
-
 '''
 # do grid search for parameters
 gridlist2 = []
