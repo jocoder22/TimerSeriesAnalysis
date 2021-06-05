@@ -70,9 +70,9 @@ def portfolioAnalysis(porf):
     # plt.figure(figsize=(14,10))
     plt.subplots(figsize=(14, 10))
     plt.scatter(portfolios['Volatility'], portfolios['Returns'],marker='o', s=10, alpha=0.3)
-    pltpltpltplt.scatter(min_vol_port[1], min_vol_port[0], color='r', marker='*', s=500)
-    pltpltplt.scatter(max_ret_port[1], max_ret_port[0], color='y', marker='*', s=500)
-    pltplt.scatter(optimal_risky_port[1], optimal_risky_port[0], color='g', marker='*', s=500)
+    plt.scatter(min_vol_port[1], min_vol_port[0], color='r', marker='*', s=500)
+    plt.scatter(max_ret_port[1], max_ret_port[0], color='y', marker='*', s=500)
+    plt.scatter(optimal_risky_port[1], optimal_risky_port[0], color='g', marker='*', s=500)
     plt.show()
     print("\n\n\n")
     
