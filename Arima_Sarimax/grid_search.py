@@ -11,6 +11,9 @@ from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.arima_model import ARMA
 
+import warnings
+warnings.filterwarnings('ignore')
+
 sp = '\n\n'
 
 symbol = 'AAPL'
@@ -18,11 +21,7 @@ starttime = datetime(2006, 1, 1)
 today = date.today()
 apple = pdr.get_data_yahoo(symbol, starttime, today)
 
-
 print(apple.head())
-
-
-
 # do grid search for parameters
 gridlist = []
 
@@ -55,6 +54,7 @@ griddataframe = pd.DataFrame(gridlist,
 
 print(griddataframe, end=sp)
 
+
 # Print griddataframe in order of increasing AIC
 print('Based on AIC:', griddataframe.sort_values('AIC').head(1), end=sp, sep='\n')
 
@@ -64,11 +64,7 @@ print('Based on BIC:\n', griddataframe.sort_values('BIC').head(1), end=sp)
 # Print griddataframe in order of increasing MAE
 print('Based on MAE:\n', griddataframe.sort_values('MAE').head(1), end=sp)
 
-
-
 '''
-
-
 # do grid search for parameters
 gridlist2 = []
 
@@ -119,3 +115,31 @@ print('Based on BIC:\n', griddataframe2.sort_values('BIC').head(1), end=sp)
 print('Based on MAE:\n', griddataframe2.sort_values('MAE').head(1), end=sp)
 
 '''
+
+
+# Detrending
+# https://www.statsmodels.org/stable/examples/notebooks/generated/statespace_structural_harvey_jaeger.html
+import statsmodels.api as sm
+
+# Unrestricted model, using string specification
+unrestricted_model = {
+    'level': 'local linear trend', 'cycle': True, 'damped_cycle': True, 'stochastic_cycle': True
+}
+
+# The restricted model forces a smooth trend
+restricted_model = {
+    'level': 'smooth trend', 'cycle': True, 'damped_cycle': True, 'stochastic_cycle': True
+}
+
+
+# Output
+output_mod = sm.tsa.UnobservedComponents(apple.loc['2016':,['Adj Close']], **unrestricted_model)
+output_res = output_mod.fit(method='powell', disp=False)
+
+# Output2
+output_mod2 = sm.tsa.UnobservedComponents(apple.loc['2016':,['Adj Close']], **restricted_model)
+output_res2 = output_mod2.fit(method='powell', disp=False)
+
+
+fig = output_res.plot_components(legend_loc='lower right', figsize=(15, 15));
+fig = output_res2.plot_components(legend_loc='lower right', figsize=(15, 15));
