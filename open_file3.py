@@ -19,6 +19,9 @@ import wewebs
 folders = wewebs.folders
 symbols = wewebs.symbols
 
+# folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "Schrodinger"]
+# symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'SDGR']
+
 # sp = {'sep': '\n\n', 'end': '\n\n'}
 path = r"E:\Intradays"
 # path1 = r"E:\Intradays\AdvancedMicroDevices"
