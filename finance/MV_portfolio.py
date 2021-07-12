@@ -7,11 +7,14 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 import pandas_datareader as pdr
+import yfinance as yf
 import matplotlib.pyplot as plt
 %matplotlib inline
 
 porfolio = ['AAPL', 'ABT', 'AIG','AMAT']
 startdate = datetime(2018,1,1)
+
+yf.pdr_override() # this override pandas_datareader to use yfinance which is faster and more stable
 
 def portfolioAnalysis(porf):
   
