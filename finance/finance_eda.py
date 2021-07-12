@@ -4,12 +4,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import pandas_datareader as pdr
+import yfinance as yf
 from datetime import datetime
 from statsmodels.tsa.arima_process import ArmaProcess
 from statsmodels.graphics.tsaplots import plot_acf
 from statsmodels.tsa.arima_model import ARMA
 from statsmodels.graphics.tsaplots import plot_pacf
 
+yf.pdr_override()
 stocksname = ['LNG', 'SPY']
 startdate = datetime(2016, 4, 15)
 enddate = datetime(2018, 4, 10)
