@@ -20,8 +20,12 @@ stock = pdr.get_data_yahoo(stocksname, startdate, enddate)[['Adj Close', 'Volume
 lng_df = stock.loc[:, (slice(None), 'LNG')]
 spy_df = stock.loc[:, (slice(None), 'SPY')]
 
+lng2 = lng_df.droplevel(1, axis=1)
+spy2 = spy_df.droplevel(1, axis=1)
+
 spy_df.columns = spy_df.columns.get_level_values(0)
-lng_df.columns = lng_df.columns.get_level_values('Attributes')
+lng_df.columns = lng_df.columns.get_level_values(0)
+
 print(stock.head())
 print(lng_df.head())  
 print(spy_df.head())
