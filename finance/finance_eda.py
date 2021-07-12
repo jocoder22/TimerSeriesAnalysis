@@ -35,6 +35,7 @@ print(lng_df.columns)
 # Plot the Adj Close columns for SPY and LNG
 spy_df['Adj Close'].plot(label='SPY', legend=True)
 lng_df['Adj Close'].plot(label='LNG', legend=True, secondary_y=True, mark_right=False)
+plt.tick_params(axis='y', colors=plt.gca().lines[-1].get_color())
 plt.show()  # show the plot
 plt.clf()  # clear the plot space
 
