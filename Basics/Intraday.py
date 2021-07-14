@@ -79,8 +79,6 @@ datt2 = dattt.strftime("%d_%b_%Y")
 
 
 
-
-
 for idx in range(len(symbols)):
 
     stdate = date.today() - timedelta(days=limitday)
