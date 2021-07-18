@@ -69,6 +69,7 @@ def Bds_cal(x):
     return stat_table, pvalue_table
 
 
+
 stats, pvalue = Bds_cal(df.VIX)
 print(stats, pvalue, sep="\n\n")
 
