@@ -18,8 +18,8 @@ from datetime import datetime
 # enddate = datetime(2019,1,30)
 startdate = datetime(2019, 1, 1)
 # enddate = datetime(2020, 12, 31)
-
 # statsmodels.tsa.stattools.bds(x, max_dim=2, epsilon=None, distance=1.5)[source]
+
 from statsmodels.tsa.stattools import bds
 
 allstocks = ["^VIX", "SPY"]
