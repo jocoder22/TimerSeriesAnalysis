@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import pandas_datareader as pdr
+import yfinance as yf
 
 from datetime import datetime
 # startdate = datetime(2010,11,1)
@@ -22,9 +23,11 @@ startdate = datetime(2019, 1, 1)
 from statsmodels.tsa.stattools import bds
 
 allstocks = ["^VIX", "SPY"]
+allstocks = "^VIX SPY"
 
 # allstocks = pdr.get_data_yahoo(allstocks, startdate, enddate)['Adj Close']
-allstocks = pdr.get_data_yahoo(allstocks, startdate)['Adj Close']
+# allstocks = pdr.get_data_yahoo(allstocks, startdate)['Adj Close']
+allstocks = yf.download(tickers = allstocks, period = "200d", interval = "1d", auto_adjust = True)["Adj Close"]
 print(allstocks.head())
 
 allstocks.columns = ["OpenSPY", "VIX"]
