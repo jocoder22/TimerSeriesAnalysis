@@ -65,9 +65,8 @@ for idx in range(len(symbols)):
     n = 0
 
     if date.today() ==  stdate:
-        print2(f"Downloaded {folders[idx]} Data today");
+        print2(f"Downloaded {folders[idx]} Data today")
         continue
-    
 
     while date.today() > stdate:
         startdate = stdate + timedelta(days=1)
