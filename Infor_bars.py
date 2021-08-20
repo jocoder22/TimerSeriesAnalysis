@@ -2,7 +2,7 @@
 import os
 import numpy as np
 import pandas as pd
-from printdescribe print2
+from printdescribe import print2
 
 df = pd.DataFrame({
     'a': [4, 5, 6, 7, 9, 9,-30, -50, 0, 0 , 15, 10],
