@@ -48,6 +48,7 @@ plt.xlabel('Date')
 plt.legend(loc='upper left')
 plt.show()
 
+
 aapl['direction'] = np.where(aapl.pos_directional_indicator>aapl.neg_directional_indicator,1,-1) * aapl['trend_signal']
 aapl['daily_returns'] = aapl['Adj Close'].pct_change()
 aapl['strategy_returns'] = aapl.daily_returns.shift(-1) * aapl.direction
