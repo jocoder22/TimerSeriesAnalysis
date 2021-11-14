@@ -36,6 +36,7 @@ plt.grid()
 plt.legend(loc='upper right')
 # plt.show()
 
+
 aapl['trend'] = np.where(aapl.adx>25,aapl['Adj Close'],np.nan)
 
 aapl['trend_signal'] = np.where(aapl.adx>25,1,0)
