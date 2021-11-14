@@ -1,3 +1,4 @@
+# https://lessonsfinancial.com/2020/04/16/edu-campaign-six-indicators/?gclid=EAIaIQobChMIh9rX9O708AIVhdzICh0ZyAAXEAAYASAAEgIM8fD_BwE
 #!/usr/bin/env python
 import numpy as np 
 import pandas as pd 
@@ -58,4 +59,4 @@ plt.show()
 
 
 
-# https://lessonsfinancial.com/2020/04/16/edu-campaign-six-indicators/?gclid=EAIaIQobChMIh9rX9O708AIVhdzICh0ZyAAXEAAYASAAEgIM8fD_BwE
+
