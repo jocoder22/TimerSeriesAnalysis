@@ -10,7 +10,6 @@ from datetime import timedelta, date
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 from printdescribe import print2, changepath
 
-
 pathtk = r"E:\PPP"
 sys.path.insert(0, pathtk)
 
