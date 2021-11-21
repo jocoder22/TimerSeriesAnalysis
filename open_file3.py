@@ -102,3 +102,6 @@ symbols2 = ["CRYBF", "SAENF", "SPONF", "IQST"]
 
 
 gg = ["BABA", "AMD", "MSFT", "CRM", "BMY"]
+
+
+
