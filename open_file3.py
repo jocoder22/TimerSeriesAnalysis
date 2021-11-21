@@ -4,8 +4,8 @@ import sys
 import numpy as np
 import pandas as pd
 
-import datetime, time
-from datetime import datetime, timedelta, date
+import  time
+from datetime import timedelta, date
 
 from iexfinance.stocks import Stock, get_historical_intraday, get_historical_data
 from printdescribe import print2, changepath
