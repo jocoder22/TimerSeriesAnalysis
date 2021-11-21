@@ -27,7 +27,7 @@ path = r"E:\Intradays"
 # path1 = r"E:\Intradays\AdvancedMicroDevices"
 
 ttt = wewebs.token
-limitday = 80
+limitday = 90
 
 def get_lastdate(path4):
     datelist = []
@@ -77,7 +77,7 @@ for idx in range(len(symbols)):
         intradata = pd.concat([intradata, df2], axis=0, sort=True)
         stdate = startdate
         # startdate +=  timedelta(days=1)
-        time.sleep(1.8) # seconds
+        time.sleep(1.0) # seconds
     
     
     # saving our data
