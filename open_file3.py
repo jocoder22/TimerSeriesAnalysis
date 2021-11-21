@@ -50,7 +50,6 @@ dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
 
 
-
 for idx in range(len(symbols)):
     os.chdir(path)
     _dir = os.path.join(os.getcwd(), folders[idx])
