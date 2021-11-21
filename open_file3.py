@@ -96,6 +96,7 @@ symbols222 = ['AAPL', 'MSFT', 'GOOGL', 'NFLX', 'TSLA', 'AMZN', 'TM', 'JPM', 'C',
             'UPS', 'WBA', 'DIS', 'PFE', 'CVS', 'T', 'KO', 'BA', 'SEDG', 'AMD', 'TWLO', 'EXPI', 'HD',
               'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY']
 
+
 folders2 = ["ExtremeVehicleBattery", "SolarAllianceEnergy", "SponsorsOne", "iQSTEL"]
 symbols2 = ["CRYBF", "SAENF", "SPONF", "IQST"]
 
