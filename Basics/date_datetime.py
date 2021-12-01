@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # https://machinelearningmastery.com/using-cnn-for-financial-time-series-prediction/
 # https://machinelearningmastery.com/how-to-develop-convolutional-neural-network-models-for-time-series-forecasting/
+# https://abouttrading.substack.com/about
 import os
 import numpy as np
 import pandas as pd
