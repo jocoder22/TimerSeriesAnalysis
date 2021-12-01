@@ -8,7 +8,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
-
 import datetime
 from datetime import date
 from datetime import datetime
