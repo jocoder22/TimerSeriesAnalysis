@@ -103,9 +103,6 @@ plt.show()
 # https://eli.thegreenplace.net/2014/derivation-of-the-normal-equation-for-linear-regression/
 
 
-
-
-
 """ 
 df.index = pd.to_datetime(df.index)
 df['2012']
