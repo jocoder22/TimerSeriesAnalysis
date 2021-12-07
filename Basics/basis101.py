@@ -99,6 +99,9 @@ plt.scatter(returns['SP500'], returns['Bond10Y'])
 plt.show()
 
 
+# https://d2l.ai/chapter_linear-networks/linear-regression.html
+
+
 
 
 
