@@ -115,3 +115,8 @@ df['col1'].corr(df['col2'])
 df['col3'].autocorr()
 
 """
+
+# https://keras.io/guides/transfer_learning/#the-typical-transferlearning-workflow
+# https://gogul.dev/software/flower-recognition-deep-learning#keras-pre-trained-models
+# https://github.com/fmfn/BayesianOptimization
+# https://github.com/borisbanushev/stockpredictionai
