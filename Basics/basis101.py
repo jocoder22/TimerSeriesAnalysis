@@ -89,6 +89,7 @@ print(usBondA.head())
 
 allclose = sp500A.join(usBondA, how='inner')
 
+
 print(allclose.head())
 
 returns = allclose.pct_change()
