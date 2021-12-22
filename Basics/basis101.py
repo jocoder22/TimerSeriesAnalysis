@@ -101,6 +101,7 @@ plt.show()
 
 # https://d2l.ai/chapter_linear-networks/linear-regression.html
 # https://eli.thegreenplace.net/2014/derivation-of-the-normal-equation-for-linear-regression/
+# https://www.youtube.com/playlist?list=PLZSO_6-bSqHQHBCoGaObUljoXAyyqhpFW
 
 
 
