@@ -21,6 +21,8 @@ symbols = wewebs.symbols
 # folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "Schrodinger"]
 # symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'SDGR']
 
+print(folders)
+
 # sp = {'sep': '\n\n', 'end': '\n\n'}
 path = r"E:\Intradays"
 # path1 = r"E:\Intradays\AdvancedMicroDevices"
@@ -63,7 +65,7 @@ for idx in range(len(symbols)):
 
     if date.today() ==  stdate:
         print2(f"Downloaded {folders[idx]} Data today")
-        continue
+        continue # continue with the next iteration i.e go to the top of the for loop
 
     while date.today() > stdate:
         startdate = stdate + timedelta(days=1)
