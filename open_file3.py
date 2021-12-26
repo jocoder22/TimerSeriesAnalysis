@@ -21,7 +21,7 @@ symbols = wewebs.symbols
 # folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "Schrodinger"]
 # symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'SDGR']
 
-print(folders)
+# print(folders)
 
 # sp = {'sep': '\n\n', 'end': '\n\n'}
 path = r"E:\Intradays"
