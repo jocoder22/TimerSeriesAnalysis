@@ -99,6 +99,7 @@ folders2 = ["ExtremeVehicleBattery", "SolarAllianceEnergy", "SponsorsOne", "iQST
 symbols2 = ["CRYBF", "SAENF", "SPONF", "IQST"]
 
 
+
 gg = ["BABA", "AMD", "MSFT", "CRM", "BMY"]
 
 
