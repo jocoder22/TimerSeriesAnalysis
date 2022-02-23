@@ -18,6 +18,15 @@ import wewebs
 folders = wewebs.folders
 symbols = wewebs.symbols
 
+folders = [ "Twilio",
+            "ExpWorld", "HomeDepot", "Ford", "PVH", "Twitter", "Salesforce", "Alibaba", 
+            "NioElectricMotor", "Apple" ,  "BristolMyers", "XPeng",  "ChargingPoint", "GeneralElectric", 
+            "LiAuto", "Schrodinger", "Nvidia", "Marvel", "PaloAlto", "Proofprint", "Mandiant", "TenableHoldings"]
+            
+symbols = ['TWLO', 'EXPI', 'HD',
+              'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY', 'XPEV', 'CHPT', 'GE', 'LI', 
+              'SDGR', 'NVDA', 'MRVL', 'PANW', 'PFPT', 'MNDT', 'TENB']
+
 # folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "Schrodinger"]
 # symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'SDGR']
 
