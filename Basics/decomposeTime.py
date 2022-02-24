@@ -14,15 +14,24 @@ allstocks = ["^VIX", "SPY"]
 allstocks = "^VIX SPY"
 ticker = "BABA"
 
-allstocks = pdr.get_data_yahoo(ticker, startdate).reset_index()
+allstocks = pdr.get_data_yahoo(ticker, startdate)[["Adj Close"]].reset_index()
 allstocks['year'] = allstocks["Date"].apply(lambda x: str(x.isocalendar()[0]))
+allstocks['quarter'] = allstocks["Date"].apply(lambda x: str(x.quarter))
 allstocks['weekNumb'] = allstocks["Date"].apply(lambda x: str(x.isocalendar()[1]))
 allstocks['weekday'] = allstocks["Date"].apply(lambda x: str(x.isocalendar()[2]))
-print(allstocks.head())
-# print(date(2010, 6, 16).isocalendar()[2])
-# print(date.today().isocalendar())
+allstocks['monthday'] = allstocks["Date"].apply(lambda x: x.strftime("%b%d"))
+allstocks['month'] = allstocks["Date"].apply(lambda x: x.strftime("%b"))
+allstocks['day'] = allstocks["Date"].apply(lambda x: x.strftime("%d"))
 
-weekdaymean = allstocks.groupby("weekNumb").agg({"Adj Close":"min"}).sort_values("Adj Close", ascending=False)
+print(allstocks.head())
+
+
+# # print(date(2010, 6, 16).isocalendar()[2])
+# # print(date.today().isocalendar())
+
+weekdaymean = allstocks.groupby("day").agg({"Adj Close":"max"}).sort_values("Adj Close", ascending=False)
 
 weekdaymean.plot(kind="bar")
 plt.show()
+
+print(startdate.strftime("%b"))
