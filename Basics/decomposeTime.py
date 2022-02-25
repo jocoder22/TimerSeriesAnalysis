@@ -23,6 +23,7 @@ allstocks['monthday'] = allstocks["Date"].apply(lambda x: x.strftime("%b%d"))
 allstocks['month'] = allstocks["Date"].apply(lambda x: x.strftime("%b"))
 allstocks['day'] = allstocks["Date"].apply(lambda x: x.strftime("%d"))
 
+
 print(allstocks.head())
 
 
