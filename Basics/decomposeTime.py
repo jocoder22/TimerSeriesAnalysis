@@ -22,8 +22,6 @@ allstocks['weekday'] = allstocks["Date"].apply(lambda x: str(x.isocalendar()[2])
 allstocks['monthday'] = allstocks["Date"].apply(lambda x: x.strftime("%b%d"))
 allstocks['month'] = allstocks["Date"].apply(lambda x: x.strftime("%b"))
 allstocks['day'] = allstocks["Date"].apply(lambda x: x.strftime("%d"))
-
-
 print(allstocks.head())
 
 
