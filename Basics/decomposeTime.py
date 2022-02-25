@@ -30,6 +30,7 @@ print(allstocks.head())
 
 weekdaymean = allstocks.groupby("day").agg({"Adj Close":"max"}).sort_values("Adj Close", ascending=False)
 
+# plot the data
 weekdaymean.plot(kind="bar")
 plt.show()
 
