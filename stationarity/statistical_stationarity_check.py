@@ -56,3 +56,4 @@ kpsstest(aapl)
 
 # A major difference between KPSS and ADF tests is the capability of the KPSS test 
 # to check for stationarity in the ‘presence of a deterministic trend’.
+# also their Hull hypothesis are opposite
