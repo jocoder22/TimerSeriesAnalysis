@@ -3,6 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 from printdescribe import print2
+sp = {"sep":"\n\n", "end":"\n\n"}
 
 df = pd.DataFrame({
     'a': [4, 5, 6, 7, 9, 9,-30, -50, 0, 0 , 15, 10],
