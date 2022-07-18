@@ -24,10 +24,10 @@ def adftest(timeseries):
    
 
 
-def kpsstest(timeseries):
+def kpsstest(timeseries, **kw):
     # Perform Dickey-Fuller test:
     print ('Kwiatkowski-Phillips-Schmidt-Shin (KPSS) Test:')
-    kpsstest = kpss(timeseries, nlags='auto')
+    kpsstest = kpss(timeseries, nlags='auto', **kw)
     kpssoutput = pd.DataFrame({"Results": kpsstest[0:3]}, index=['Test Statistic','p-value','Number of Lags Used'])
     for key,value in kpsstest[3].items():
        kpssoutput.loc[f'Critical Value {key}', :] = value
@@ -57,3 +57,17 @@ kpsstest(aapl)
 # A major difference between KPSS and ADF tests is the capability of the KPSS test 
 # to check for stationarity in the ‘presence of a deterministic trend’.
 # also their Hull hypothesis are opposite
+
+# What that effectively means to us is, the test may not necessarily reject the null hypothesis
+#  (that the series is stationary) even if a series is steadily increasing or decreasing.
+
+# The word ‘deterministic’ implies the slope of the trend in the series does not change permanently. 
+# That is, even if the series goes through a shock, it tends to regain its original path.
+
+kpsstest(train['#Passengers'], regression='ct')
+kpsstest(aapl, regression='ct')
+
+# So overall what this means to us is, if a series is stationary according to the KPSS test by 
+# setting regression='ct' and is not stationary according to the ADF test, it means the series 
+# is stationary around a deterministic trend and so is fairly easy to model this series and 
+# produce fairly accurate forecasts.
