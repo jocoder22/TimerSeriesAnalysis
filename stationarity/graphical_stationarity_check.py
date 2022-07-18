@@ -52,14 +52,23 @@ plot_graph(month_mean['Adj Close'], 'Price', 'Date')
 plot_graph(month_var['Adj Close'], 'Price', 'Date')
 
 
-# compute moving 14 days moving averages and variance and plot them
+# compute moving 9 and 21 days moving averages and variance and plot them
+# both shows trends
 df = aapl['Adj Close']
 plt.plot(df,label=  'Adj Close')
 plt.plot(df.rolling(9).mean(),label= 'MA 9 days')
 plt.plot(df.rolling(21).mean(),label= 'MA 21 days')
+plt.legend(loc='best')
+plt.grid()
+plt.title('Apple Adjusted Close and Moving Averages ')
+plt.show()
+
+
+# plot moving variance
+# there are trends
 plt.plot(df.rolling(9).var(),label= 'Mv 9 days')
 plt.plot(df.rolling(21).var(),label= 'Mv 21 days')
 plt.legend(loc='best')
 plt.grid()
-plt.title('Apple Adjusted Close \nMoving Averages and Moving Variances')
+plt.title('Apple Moving Variances')
 plt.show()
