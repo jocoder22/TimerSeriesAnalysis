@@ -42,9 +42,9 @@ sp = {'sep': '\n\n', 'end': '\n\n'}
 
 ttt = wewebs.token
 
-# folder = wewebs.folders
+folders = wewebs.folders
 
-# symbols = wewebs.symbols
+symbols = wewebs.symbols
 
 
 # https://iexcloud.io/cloud-login#/
@@ -67,8 +67,8 @@ ttt = wewebs.token
 # symbols = [ 'F', 'PVH', 'TWTR', 'CRM']
 
 
-folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "BristolMyers"]
-symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'BMY']
+# folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "BristolMyers"]
+# symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'BMY']
 
 intradata = pd.DataFrame()
 
@@ -103,7 +103,7 @@ for idx in range(len(symbols)):
         intradata = pd.concat([intradata, df2], axis=0, sort=True)
         stdate = startdate
 
-        time.sleep(1.8) # seconds
+        time.sleep(1.5) # seconds
 
 
 

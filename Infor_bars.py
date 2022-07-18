@@ -25,3 +25,4 @@ df.ewm(com=0.5).mean()
 
 df['EoT'] = df.c.ewm(com=0.5).mean()
 df['2p_1'] = df.b_t.ewm(com=0.5).mean()
+print2(df)

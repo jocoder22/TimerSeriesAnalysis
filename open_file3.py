@@ -18,14 +18,14 @@ import wewebs
 folders = wewebs.folders
 symbols = wewebs.symbols
 
-folders = [ "Twilio",
-            "ExpWorld", "HomeDepot", "Ford", "PVH", "Twitter", "Salesforce", "Alibaba", 
-            "NioElectricMotor", "Apple" ,  "BristolMyers", "XPeng",  "ChargingPoint", "GeneralElectric", 
-            "LiAuto", "Schrodinger", "Nvidia", "Marvel", "PaloAlto", "Proofprint", "Mandiant", "TenableHoldings"]
+# folders = [ "Twilio","ExpWorld", "HomeDepot", 
+# folders = ["Ford", "PVH", "Twitter", "Salesforce", "Alibaba", 
+#             "NioElectricMotor", "Apple" ,  "BristolMyers", "XPeng",  "ChargingPoint", "GeneralElectric", 
+#             "LiAuto", "Schrodinger", "Nvidia", "Marvel", "PaloAlto", "Proofprint", "Mandiant", "TenableHoldings"]
             
-symbols = ['TWLO', 'EXPI', 'HD',
-              'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY', 'XPEV', 'CHPT', 'GE', 'LI', 
-              'SDGR', 'NVDA', 'MRVL', 'PANW', 'PFPT', 'MNDT', 'TENB']
+# symbols = ['TWLO', 'EXPI', 'HD',
+# symbols = [ 'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY', 'XPEV', 'CHPT', 'GE', 'LI', 
+#               'SDGR', 'NVDA', 'MRVL', 'PANW', 'PFPT', 'MNDT', 'TENB']
 
 # folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "Schrodinger"]
 # symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'SDGR']
@@ -60,8 +60,10 @@ dattt = date.today()
 datt2 = dattt.strftime("%d_%b_%Y")
 
 for idx in range(len(symbols)):
-    os.chdir(path)
-    _dir = os.path.join(os.getcwd(), folders[idx])
+    # os.chdir(path)
+    # _dir = os.path.join(os.getcwd(), folders[idx])
+    with changepath(path):
+        _dir = os.path.join(os.getcwd(), folders[idx])
 
     if not os.path.isdir(_dir):
         os.makedirs(_dir)
@@ -89,13 +91,14 @@ for idx in range(len(symbols)):
     
     
     # saving our data
-    os.chdir(_dir)
-    intradata.to_csv(f'intraday_{datt2}.csv')
+    # os.chdir(_dir)
+    with changepath(_dir):
+        intradata.to_csv(f'intraday_{datt2}.csv')
     print2(f'This is for {folders[idx]}')
     print2(intradata.head(), intradata.columns, n)
     print2(intradata.shape, intradata.info())
 
-
+print("Done! TenableHoldings is the last!")
 
 folders222 = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
             'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
