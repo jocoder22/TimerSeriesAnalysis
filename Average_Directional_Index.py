@@ -28,6 +28,9 @@ def plot_graph(data,ylabel,xlabel):
     plt.plot(data)
     plt.ylabel(ylabel)
     plt.xlabel(xlabel)
+    plt.show()
+
+    
 plot_graph(aapl['Adj Close'], 'Price', 'Date')
 plot_graph(aapl['adx'], 'Price', 'Date')
 
