@@ -37,6 +37,8 @@ def kpsstest(timeseries, **kw):
     else: print(f"The TimeSeries is Stationary, p-value = {round(kpssoutput.loc['p-value', :].values[0], 2)}")
     print(f'Result: The TimeSeries is {"not " if kpssoutput.loc["p-value", :].values < 0.05 else ""}stationary', end="\n\n")
 
+# Null Hypothesis: The process is trend stationary.
+# Alternate Hypothesis: The series has a unit root (series is not stationary).
 
 sp = {"sep":"\n\n", "end":"\n\n"}
 airpassengers = "E:\TimerSeriesAnalysis\datasets\AirPassengers.csv"
