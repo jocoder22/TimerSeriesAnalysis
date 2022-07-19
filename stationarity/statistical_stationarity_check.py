@@ -78,3 +78,9 @@ kpsstest(aapl, regression='ct')
 
 # So in summary, the ADF test has an alternate hypothesis of linear or difference stationary,
 #  while the KPSS test identifies trend-stationarity in a series.
+
+##### 4 possible scenarios
+# Case 1: Both tests conclude that the series is not stationary -> series is not stationary
+# Case 2: Both tests conclude that the series is stationary -> series is stationary
+# Case 3: KPSS = stationary and ADF = not stationary  -> trend stationary, remove the trend to make series strict stationary
+# Case 4: KPSS = not stationary and ADF = stationary -> difference stationary, use differencing to make series stationary
