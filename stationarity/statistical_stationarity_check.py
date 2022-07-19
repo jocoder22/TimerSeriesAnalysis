@@ -71,3 +71,6 @@ kpsstest(aapl, regression='ct')
 # setting regression='ct' and is not stationary according to the ADF test, it means the series 
 # is stationary around a deterministic trend and so is fairly easy to model this series and 
 # produce fairly accurate forecasts.
+
+# So in summary, the ADF test has an alternate hypothesis of linear or difference stationary,
+#  while the KPSS test identifies trend-stationarity in a series.
