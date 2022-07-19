@@ -22,6 +22,8 @@ def adftest(timeseries):
         print(f"The TimeSeries is not Stationary, p-value = {round(dfoutput['p-value'], 2)}", end="\n\n")
     else: print(f"The TimeSeries is Stationary, p-value = {round(dfoutput['p-value'], 2)}", end="\n\n")
    
+# Null Hypothesis: The series has a unit root (value of a =1)
+# Alternate Hypothesis: The series has no unit root.
 
 
 def kpsstest(timeseries, **kw):
