@@ -1,15 +1,19 @@
-
+#!/usr/bin/env python
+import sys
 from cmath import e
+from typing import KeysView
 import numpy as np
 import pandas as np
 import matplotlib.pyplot as plt
-from stationarity.stationarity_conversion import stationarityTest
+
 import statsmodels.api as sm
 from statsmodels.tsa.api import VAR
 
 import yfinance as yf
 
-from stationarity.stationarity_conversion import  stationarityTest
+sys.path.append("E:\TimerSeriesAnalysis")
+
+from stationarity.stationarity_conversion import stationarityTest
 
 
 sp = {"sep":"\n\n", "end":"\n\n"}
@@ -23,7 +27,7 @@ eVgo['Adj Close'].plot()
 plt.grid()
 plt.show()
 
-stationarityTest(eVgo)
+stationarityTest(eVgo["Adj Close"])
 
 
 # make a VAR model
