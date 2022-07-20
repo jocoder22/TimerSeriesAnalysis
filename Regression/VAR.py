@@ -25,6 +25,7 @@ plt.show()
 
 stationarityTest(eVgo)
 
+
 # make a VAR model
 model = VAR(eVgo)
 resutlOrder = model.select_order(15)
