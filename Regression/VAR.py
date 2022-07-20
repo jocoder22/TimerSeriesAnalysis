@@ -28,7 +28,10 @@ plt.grid()
 plt.show()
 
 stationarityTest(eVgo["Adj Close"])
+eVgo_lag4 =  eVgo["Adj Close"].diff(periods=4).dropna()
 
+print(f"#################     Testing 4 lagged dataset     ###################################")
+stationarityTest(eVgo_lag4)
 
 # make a VAR model
 model = VAR(eVgo)
