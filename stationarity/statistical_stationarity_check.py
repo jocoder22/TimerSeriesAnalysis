@@ -27,6 +27,9 @@ def adftest(timeseries):
 
 
 def kpsstest(timeseries, **kw):
+    import warnings
+    warnings.filterwarnings('ignore')
+    
     # Perform Dickey-Fuller test:
     print ('Kwiatkowski-Phillips-Schmidt-Shin (KPSS) Test:')
     kpsstest = kpss(timeseries, nlags='auto', **kw)
