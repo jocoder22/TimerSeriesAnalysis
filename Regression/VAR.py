@@ -21,9 +21,13 @@ sp = {"sep":"\n\n", "end":"\n\n"}
 #  load the dataset
 eVgo = yf.download('EVGO')[["Adj Close", "Volume"]]
 
-print(eVgo.head(), eVgo.tail(10))
+print(eVgo.head(), eVgo.tail(10), **sp)
 
 eVgo['Adj Close'].plot()
+plt.grid()
+plt.show()
+
+eVgo.iloc[-40:, 1].plot()
 plt.grid()
 plt.show()
 
@@ -39,7 +43,7 @@ resutlOrder = model.select_order(15)
 print(resutlOrder.summary(), resutlOrder, **sp)
 results = model.fit(maxlags=15, ic='aic')
 lag_order = results.k_ar
-print(lag_order)
+print(lag_order, **sp)
 
 results = model.fit(lag_order)
 

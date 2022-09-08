@@ -36,7 +36,7 @@ with open('filename.txt', 'rb') as f:
   last_line = f.readline().decode()
    
   
- with open('filename.txt') as f:
+with open('filename.txt') as f:
     for line in f:
         pass
     last_line = line
@@ -136,7 +136,7 @@ def print_all_files(path):
           print(entry.name)
  
   
- def get_tree_size(path):
+def get_tree_size(path):
     """Return total size of files in given path and subdirs."""
     total = 0
     for entry in os.scandir(path):
