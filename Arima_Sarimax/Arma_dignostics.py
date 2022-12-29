@@ -23,6 +23,7 @@ symbol = 'AMZN'
 starttime = datetime(2006, 1, 1)
 today = date.today()
 apple = pdr.get_data_yahoo(symbol, starttime, today)
+print(apple.head())
 
 logid = np.log(apple['Close'])
 season_x = 24

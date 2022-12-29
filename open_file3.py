@@ -18,19 +18,8 @@ import wewebs
 folders = wewebs.folders
 symbols = wewebs.symbols
 
-# folders = [ "Twilio","ExpWorld", "HomeDepot", 
-# folders = ["Ford", "PVH", "Twitter", "Salesforce", "Alibaba", 
-#             "NioElectricMotor", "Apple" ,  "BristolMyers", "XPeng",  "ChargingPoint", "GeneralElectric", 
-#             "LiAuto", "Schrodinger", "Nvidia", "Marvel", "PaloAlto", "Proofprint", "Mandiant", "TenableHoldings"]
-            
-# symbols = ['TWLO', 'EXPI', 'HD',
-# symbols = [ 'F', 'PVH', 'TWTR', 'CRM', 'BABA', 'NIO', 'AAPL', 'BMY', 'XPEV', 'CHPT', 'GE', 'LI', 
-#               'SDGR', 'NVDA', 'MRVL', 'PANW', 'PFPT', 'MNDT', 'TENB']
-
-# folders = ["XPeng", "ChargingPoint", "GeneralElectric", "LiAuto", "Schrodinger"]
-# symbols = ['XPEV', 'CHPT', 'GE', 'LI', 'SDGR']
-
-# print(folders)
+# folders = ["Rapid7" ,"VaronisSystems", "Qualys","CyberArk","NortonLifeLock", "LeidosHoldings","NetApp"]
+# symbols = ["RPD", "VRNS", "QLYS", "CYBR", "NLOK", "LDOS", "NTAP"]
 
 # sp = {'sep': '\n\n', 'end': '\n\n'}
 path = r"E:\Intradays"
@@ -98,7 +87,7 @@ for idx in range(len(symbols)):
     print2(intradata.head(), intradata.columns, n)
     print2(intradata.shape, intradata.info())
 
-print("Done! TenableHoldings is the last!")
+print2(f"Done! {folders[idx]} is the last!")
 
 folders222 = ['Apple', 'MicroSoft', 'Google', 'Netflix', 'Tesla', 'Amazon', 'Toyota', 'JPMorgan', 
             'Citigroup', 'Walmat', 'Target', "Fedex", "Ups", "Walgreens", "Disney", "Pfizer",
