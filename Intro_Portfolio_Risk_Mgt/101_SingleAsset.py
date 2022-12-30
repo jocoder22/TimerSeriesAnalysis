@@ -2,8 +2,8 @@
 import numpy as np
 import pandas as pd
 
-# Import skew. kurtosis from scipy.stats
-from scipy.stats import skew, kurtosis
+# Import skew, kurtosis, and shapiro from scipy.stats
+from scipy.stats import skew, kurtosis, shapiro
 
 from printdescribe import changepath
 from mmodules.plotting import plotReturn, plotReturnHistogram
@@ -78,3 +78,13 @@ print(f"Excess kurtosis of Returns: {excess_kurtosis}")
 # Derive the true fourth moment of the returns distribution
 fourth_moment = excess_kurtosis + 3.0
 print(f"The true fourth moment: {fourth_moment}")
+
+# Run the Shapiro-Wilk test on the stock returns
+shapiro_results = shapiro(clean_returns)
+print(f"Shapiro results: {shapiro_results}")
+
+# Extract the p-value from the shapiro_results
+p_value = shapiro_results[1]
+print(f"P-value: {p_value}")
+
+# The p-value is 0, so null hypothesis of normality is rejected. The data are non-normal.
