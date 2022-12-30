@@ -52,7 +52,7 @@ print(f"Annualized mean returns: {mean_return_annualized}")
 sigma_daily = np.std(amazon['Returns'])
 print(f"standard deviation of daily return: {sigma_daily}")
 
-# Calculate the daily variance
+# Calculate the daily returns variance
 variance_daily = sigma_daily ** 2
 print(f"Variance of daily return: {variance_daily}")
 
