@@ -79,7 +79,7 @@ print(f"Excess kurtosis of Returns: {excess_kurtosis}")
 fourth_moment = excess_kurtosis + 3.0
 print(f"The true fourth moment: {fourth_moment}")
 
-# Run the Shapiro-Wilk test on the stock returns
+# Run the Shapiro-Wilk normality test on the stock returns
 shapiro_results = shapiro(clean_returns)
 print(f"Shapiro results: {shapiro_results}")
 
