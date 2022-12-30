@@ -26,8 +26,7 @@ with changepath(datapath):
     print("[getData] Start saving data ...")
     stockdata.to_csv("portfolio.csv", index=True)
     print("[getData] Done saving data!")
-    data = pd.read_csv("portfolio.csv", index_col="Date")
-    print(data.head())
+
 
 
 
