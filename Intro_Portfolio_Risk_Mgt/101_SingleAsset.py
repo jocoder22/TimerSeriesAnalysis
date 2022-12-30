@@ -87,4 +87,5 @@ print(f"Shapiro results: {shapiro_results}")
 p_value = shapiro_results[1]
 print(f"P-value: {p_value}")
 
+
 # The p-value is 0, so null hypothesis of normality is rejected. The data are non-normal.
