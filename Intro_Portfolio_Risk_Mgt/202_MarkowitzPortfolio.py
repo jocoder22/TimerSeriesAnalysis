@@ -46,6 +46,7 @@ portfolio['Portfolio_GMR'] = portfolio.iloc[:, 0:9].mul(GMR_weights, axis=1).sum
 # Plot the cumulative Returns
 hd.cumulative_returns_plot(portfolio[['S&P500', 'Portfolio_MSR', 'Portfolio_GMV', "Portfolio_GMR"]])
 
+
 # Plotting optimal portfolio
 plt.subplots(figsize=(10, 10))
 plt.scatter(portfolios['Volatility'], portfolios['Returns'],marker='o', s=15, alpha=0.3)
