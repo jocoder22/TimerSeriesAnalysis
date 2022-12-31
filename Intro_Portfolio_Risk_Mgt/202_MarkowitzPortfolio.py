@@ -60,7 +60,7 @@ plt.scatter(gmvPortfolio[1], gmvPortfolio[0], color='g', marker='*', s=500)
 plt.scatter(gmrPortfolio[1], gmrPortfolio[0], color='y', marker='*', s=500)
 plt.show()
 
-a = 5
+a = 9
 allocation = defaultdict(list)
 
 for r in np.linspace(risk_free, max(portfolios['Returns']), 20):
