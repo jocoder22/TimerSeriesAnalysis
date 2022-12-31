@@ -1,5 +1,8 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+from collections import defaultdict
+
 import mmodules.header as hd
 
 plt.style.use('fivethirtyeight')
@@ -14,7 +17,7 @@ plt.show()
 
 
 # Risk free rate
-risk_free = 0
+risk_free = 0.014
 
 # Calculate the Sharpe Ratio for each asset
 portfolios['Sharpe'] = (portfolios.Returns - risk_free) / portfolios["Volatility"]
@@ -51,8 +54,37 @@ hd.cumulative_returns_plot(portfolio[['S&P500', 'Portfolio_MSR', 'Portfolio_GMV'
 
 # Plotting optimal portfolio
 plt.subplots(figsize=(10, 10))
-plt.scatter(portfolios['Volatility'], portfolios['Returns'],marker='o', s=15, alpha=0.3)
+plt.scatter(portfolios['Volatility'], portfolios['Returns'],marker='o', alpha=0.3)
 plt.scatter(msrPortfolio[1], msrPortfolio[0], color='r', marker='*', s=500)
 plt.scatter(gmvPortfolio[1], gmvPortfolio[0], color='g', marker='*', s=500)
 plt.scatter(gmrPortfolio[1], gmrPortfolio[0], color='y', marker='*', s=500)
+plt.show()
+
+a = 5
+allocation = defaultdict(list)
+
+for r in np.linspace(risk_free, max(portfolios['Returns']), 20):
+    sd = (r - risk_free)/((msrPortfolio[0] - risk_free)/ msrPortfolio[1])
+    utility_ = r - 0.5 * a * (sd ** 2)
+    allocation['utility'].append(utility_)
+    allocation['alloc_x'].append(sd)
+    allocation['alloc_y'].append(r)
+
+allc_df = pd.DataFrame(allocation)
+print(allc_df.head())
+
+invest_portfolio = allc_df.iloc[allc_df["utility"].idxmax()]
+print(invest_portfolio)
+
+
+# Plotting optimal portfolio
+plt.subplots(figsize=(10, 10))
+plt.scatter(portfolios['Volatility'], portfolios['Returns'],marker='o', alpha=0.3)
+plt.scatter(msrPortfolio[1], msrPortfolio[0], color='r', marker='*', s=500)
+plt.scatter(gmvPortfolio[1], gmvPortfolio[0], color='black', marker='*', s=500)
+plt.scatter(gmrPortfolio[1], gmrPortfolio[0], color='y', marker='*', s=500)
+plt.plot(allc_df['alloc_x'], allc_df['alloc_y'], color = 'g')
+plt.scatter(invest_portfolio[1], invest_portfolio[2], color = 'orange',  marker='*', s=500)
+plt.text(invest_portfolio[1], invest_portfolio[2] + 0.001, rf"$A={a}$", ha="center")
+plt.xlim(0.02, 0.04)
 plt.show()
