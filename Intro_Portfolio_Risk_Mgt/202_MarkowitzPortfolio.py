@@ -91,4 +91,5 @@ plt.xlabel('Volatility')
 plt.ylabel('Portfolio Returns')
 plt.show()
 
+
 print(portfolios[portfolios["Volatility"] == msrPortfolio[1]].values)
