@@ -12,6 +12,7 @@ portfolios = hd.getEfficientPortfolio(portfolio)
 portfolios.plot.scatter(x='Volatility', y='Returns', marker='o', s=15, alpha=0.3, grid=True, figsize=[10,10])
 plt.show()
 
+
 # Risk free rate
 risk_free = 0
 
