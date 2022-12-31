@@ -22,6 +22,7 @@ portfolios['Sharpe'] = (portfolios.Returns - risk_free) / portfolios["Volatility
 # Print the range of Sharpe ratios
 print(portfolios['Sharpe'].describe()[['min', 'max']],  **hd.sp)
 
+
 # compute the asset returns
 portfolio = portfolio_.pct_change().dropna()
 
