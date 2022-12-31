@@ -37,6 +37,7 @@ print(gmvPortfolio, gmvPortfolio.values, **hd.sp)
 GMV_weights = np.array(gmvPortfolio.values[2:11])
 portfolio['Portfolio_GMV'] = portfolio.iloc[:, 0:9].mul(GMV_weights, axis=1).sum(axis=1)
 
+
 # Global maximum return porfolio
 gmrPortfolio = portfolios.iloc[portfolios.Returns.idxmax()]
 print(gmrPortfolio, gmrPortfolio.values,  **hd.sp)
