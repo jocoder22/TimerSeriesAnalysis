@@ -1,22 +1,10 @@
-#!/usr/bin/env python
 import numpy as np
-import pandas as pd
+import mmodules.header as hd
 
-# Import skew, kurtosis, and shapiro from scipy.stats
-from scipy.stats import skew, kurtosis, shapiro
+portfolio = hd._getAssets()
+amazon = portfolio[["Amazon"]]
+amazon.columns = ["AdjClose"]
 
-from printdescribe import changepath
-from mmodules.plotting import plotReturn, plotReturnHistogram
-
-datapath = r"E:\TimerSeriesAnalysis\Intro_Portfolio_Risk_Mgt\Data"
-
-sp = {"end":"\n\n", "sep":"\n\n"}
-
-with changepath(datapath):
-    data = pd.read_csv("portfolio.csv", index_col="Date")
-    amazon = data[["Amazon"]]
-    amazon.columns = ["AdjClose"]
-    
 print(amazon.head())
 
 # compute simple returns
@@ -26,10 +14,14 @@ amazon["Returns"] = amazon['AdjClose'].pct_change()
 print(amazon.head())
 
 # plot the Adjusted closing price
-plotReturn(amazon['AdjClose'])
+hd.plotReturn(amazon['AdjClose'], title="Amazon Adjusted Close prices")
 
 # plot the returns
-plotReturn(amazon['Returns'])
+hd.plotReturn(amazon['Returns'], title="Amazon Daily Returns")
+
+# plot cumulative returns
+cumulativeR = ((1 + amazon["Returns"]).cumprod() - 1)
+hd.plotReturn(cumulativeR, title="Amazon Cumulative Returns")
 
 # Convert the decimal returns into percentage returns
 percent_return = amazon['Returns']*100
@@ -38,7 +30,7 @@ percent_return = amazon['Returns']*100
 returns_plot = percent_return.dropna()
 
 # Plot the returns histogram
-plotReturnHistogram(returns_plot)
+hd.plotReturnHistogram(returns_plot, title="Amazon Daily Returns")
 
 # Calculate the average daily return of the stock
 mean_return_daily = np.mean(amazon['Returns'])
@@ -68,11 +60,11 @@ print(f"Annualized variance: {variance_annualized}")
 clean_returns = amazon["Returns"].dropna()
 
 # Calculate the third moment (skewness) of the returns distribution
-returns_skewness = skew(clean_returns)
+returns_skewness = hd.skew(clean_returns)
 print(f"Third moment (skewness): {returns_skewness}")
 
 # Calculate the excess kurtosis of the returns distribution
-excess_kurtosis = kurtosis(clean_returns)
+excess_kurtosis = hd.kurtosis(clean_returns)
 print(f"Excess kurtosis of Returns: {excess_kurtosis}")
 
 # Derive the true fourth moment of the returns distribution
@@ -80,7 +72,7 @@ fourth_moment = excess_kurtosis + 3.0
 print(f"The true fourth moment: {fourth_moment}")
 
 # Run the Shapiro-Wilk normality test on the stock returns
-shapiro_results = shapiro(clean_returns)
+shapiro_results = hd.shapiro(clean_returns)
 print(f"Shapiro results: {shapiro_results}")
 
 # Extract the p-value from the shapiro_results
