@@ -6,7 +6,6 @@ plt.style.use('fivethirtyeight')
 
 portfolio_ = hd._getAssets()
 portfolio = portfolio_.drop(["S&P500"], axis=1)
-
 portfolios = hd.getEfficientPortfolio(portfolio)
 
 # Plot efficient frontier
