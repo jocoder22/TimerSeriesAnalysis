@@ -13,8 +13,8 @@ tickers = 'AAPL MSFT XOM JNJ JPM AMZN GE META T ^GSPC'
 sp = {"end":"\n\n", "sep":"\n\n"}
 
 # Download the data
-startdate = "2017-01-01"
-enddate = "2017-12-31"
+startdate = "2010-01-01"
+enddate = "2022-12-31"
 
 print("[getData] Downloading data ...")
 stockdata = yf.download(tickers, start=startdate, end=enddate)[['Adj Close']].droplevel(0, axis=1)
@@ -24,7 +24,7 @@ print("[getData] Done Downloading data!")
 
 with changepath(datapath):
     print("[getData] Start saving data ...")
-    stockdata.to_csv("portfolio.csv", index=True)
+    stockdata.to_csv("portfolio2.csv", index=True)
     print("[getData] Done saving data!")
 
 

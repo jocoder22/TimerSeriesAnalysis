@@ -17,7 +17,7 @@ plt.show()
 
 
 # Risk free rate
-risk_free = 0.0
+risk_free = 0.0042
 
 # Calculate the Sharpe Ratio for each asset
 portfolios['Sharpe'] = (portfolios.Returns - risk_free) / portfolios["Volatility"]
@@ -93,3 +93,10 @@ plt.show()
 
 
 print(portfolios[portfolios["Volatility"] == msrPortfolio[1]].values)
+portfolios["p_sharpe"] = (msrPortfolio[0] - risk_free)/ msrPortfolio[1]
+portfolios["sdd"]  = (portfolios["Returns"] - risk_free)/portfolios["p_sharpe"]
+portfolios['utility'] = portfolios["Returns"] - (0.50 * Raversion * (portfolios["sdd"]**2))
+
+
+
+print(portfolios.head())
