@@ -97,6 +97,4 @@ portfolios["p_sharpe"] = (msrPortfolio[0] - risk_free)/ msrPortfolio[1]
 portfolios["sdd"]  = (portfolios["Returns"] - risk_free)/portfolios["p_sharpe"]
 portfolios['utility'] = portfolios["Returns"] - (0.50 * Raversion * (portfolios["sdd"]**2))
 
-
-
 print(portfolios.head())
