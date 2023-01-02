@@ -76,7 +76,6 @@ for col in cols:
     # Print  r-squared of the fitted regression
     regressValues['R squared'].append(CAPM_fit.rsquared)
 
-
 regressResults = pd.DataFrame(regressValues)
 print(regressResults, **hd.sp)
 
