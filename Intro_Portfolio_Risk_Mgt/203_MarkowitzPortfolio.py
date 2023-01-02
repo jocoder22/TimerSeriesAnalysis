@@ -12,12 +12,19 @@ portfolio_ = hd._getAssets(datan="2")
 portfolio = portfolio_[portfolio_.index < "2020-12-31"].drop(["S&P500"], axis=1)
 portfolios = hd.getEfficientPortfolio(portfolio, mYear=True)
 
+# # get fred risk free rate
+# riskFree_rate = pd.read_pickle(os.path.join(hd.datapath, "fred_rfr.pkl"))
+# print(riskFree_rate.head(), portfolios_.head(), **hd.sp)
+
+# # merge the data sets
+# portfolios = portfolios_.merge(riskFree_rate, on="Date", how="inner",  suffixes=(False, False))
+
 # Plot efficient frontier
 portfolios.plot.scatter(x='Volatility', y='Returns', marker='o', s=15, alpha=0.3, grid=True, figsize=[10,10])
 plt.show()
 
 # Risk free rate
-risk_free = 0.0042
+risk_free = 0.00042
 
 # Calculate the Sharpe Ratio for each asset
 portfolios['Sharpe'] = (portfolios.Returns - risk_free) / portfolios["Volatility"]
@@ -50,7 +57,8 @@ portfolio['Portfolio_GMR'] = np.dot(portfolio.iloc[:, 0:9], GMR_weights)
 
 # save the MSR and GMV weights
 msrPortfolio.to_pickle(os.path.join(hd.datapath, 'MSR_weights.pkls'))
-gmrPortfolio.to_pickle(os.path.join(hd.datapath, 'GMV_weights.pkls'))
+gmvPortfolio.to_pickle(os.path.join(hd.datapath, 'GMV_weights.pkls'))
+gmrPortfolio.to_pickle(os.path.join(hd.datapath, 'GMR_weights.pkls'))
 
 
 # Plot the cumulative Returns on train data

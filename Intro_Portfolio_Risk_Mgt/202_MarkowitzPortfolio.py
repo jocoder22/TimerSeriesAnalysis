@@ -11,6 +11,7 @@ portfolio_ = hd._getAssets()
 portfolio = portfolio_.drop(["S&P500"], axis=1)
 portfolios = hd.getEfficientPortfolio(portfolio)
 
+
 # Plot efficient frontier
 portfolios.plot.scatter(x='Volatility', y='Returns', marker='o', s=15, alpha=0.3, grid=True, figsize=[10,10])
 plt.show()
