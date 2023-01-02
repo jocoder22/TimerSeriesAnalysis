@@ -68,13 +68,13 @@ for col in cols:
     # Extract the beta
     CAPM_fit = CAPM_model.fit()
     regression_beta = CAPM_fit.params['Mkt_RF']
-    regressValues["Beta"].append(regression_beta)
+    regressValues["Beta"].append(round(regression_beta, 3))
 
     # Extract adjusted r-squared of the fitted regression
-    regressValues['R squared Adjusted'].append(CAPM_fit.rsquared_adj)
+    regressValues['R squared Adjusted'].append(round(CAPM_fit.rsquared_adj, 3))
 
     # Extract  r-squared of the fitted regression
-    regressValues['R squared'].append(CAPM_fit.rsquared)
+    regressValues['R squared'].append(round(CAPM_fit.rsquared, 3))
 
 regressResults = pd.DataFrame(regressValues)
 print(regressResults, **hd.sp)
