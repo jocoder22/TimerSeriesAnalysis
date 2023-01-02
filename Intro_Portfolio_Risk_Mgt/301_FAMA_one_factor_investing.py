@@ -70,10 +70,10 @@ for col in cols:
     regression_beta = CAPM_fit.params['Mkt_RF']
     regressValues["Beta"].append(regression_beta)
 
-    # Print adjusted r-squared of the fitted regression
+    # Extract adjusted r-squared of the fitted regression
     regressValues['R squared Adjusted'].append(CAPM_fit.rsquared_adj)
 
-    # Print  r-squared of the fitted regression
+    # Extract  r-squared of the fitted regression
     regressValues['R squared'].append(CAPM_fit.rsquared)
 
 regressResults = pd.DataFrame(regressValues)
