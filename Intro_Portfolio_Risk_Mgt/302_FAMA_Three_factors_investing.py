@@ -12,10 +12,7 @@ import mmodules.header as hd
 FF_portfolio = pd.read_pickle(os.path.join(hd.datapath, "Fama_French_PortfolioFull.pkl"))
 FF_portfolio["Mkt_RF"] = FF_portfolio["Mkt-RF"]
 FF_portfolio["SP_500_Excess"] = FF_portfolio["S&P500_Excess"]
-print(FF_portfolio.head(), FF_portfolio.tail(), FF_portfolio.columns, **hd.sp)
-
-# dropcolumns = FF_portfolio.columns[4:10]
-# data1 = FF_portfolio.drop(columns=dropcolumns)
+# print(FF_portfolio.head(), FF_portfolio.tail(), FF_portfolio.columns, **hd.sp)
 
 # Plot the cumulative Returns and excess returns
 title="Cumulative Returns Plot"
@@ -45,18 +42,21 @@ regressValues = defaultdict(list)
 for col in cols:
     # Define the regression formula
     regressValues['Model'].append(col)
-    CAPM_model = smf.ols(formula=f'{col}_Excess ~ Mkt_RF', data=FF_portfolio)
+    
+    FamaFrench3f_model = smf.ols(formula=f'{col}_Excess ~ Mkt_RF + SMB + HML', data=FF_portfolio)
+
+    # Fit the regression
+    FamaFrench3f_fit = FamaFrench3f_model.fit()
 
     # Extract the beta
-    CAPM_fit = CAPM_model.fit()
-    regression_beta = CAPM_fit.params['Mkt_RF']
+    regression_beta = FamaFrench3f_fit.params['Mkt_RF']
     regressValues["Beta"].append(regression_beta)
 
-    # Print adjusted r-squared of the fitted regression
-    regressValues['R squared Adjusted'].append(CAPM_fit.rsquared_adj)
+    # Extract adjusted r-squared of the fitted regression
+    regressValues['R squared Adjusted'].append(FamaFrench3f_fit.rsquared_adj)
 
-    # Print  r-squared of the fitted regression
-    regressValues['R squared'].append(CAPM_fit.rsquared)
+    # Extract  r-squared of the fitted regression
+    regressValues['R squared'].append(FamaFrench3f_fit.rsquared)
 
 regressResults = pd.DataFrame(regressValues)
 print(regressResults, **hd.sp)
