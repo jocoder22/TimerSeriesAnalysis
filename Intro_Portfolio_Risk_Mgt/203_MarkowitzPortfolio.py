@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -25,7 +26,9 @@ portfolios['Sharpe'] = (portfolios.Returns - risk_free) / portfolios["Volatility
 # print(portfolios['Sharpe'].describe()[['min', 'max']],  **hd.sp)
 
 # compute the asset returns
-portfolio = portfolio_.pct_change().dropna()
+portfolio_train = portfolio_[portfolio_.index < "2020-12-31"]
+portfolio_test = portfolio_[portfolio_.index > "2020-12-31"]
+portfolio = portfolio_train.pct_change().dropna()
 
 # maximum sharpe ratio porfolio
 msrPortfolio = portfolios.iloc[portfolios.Sharpe.idxmax()]
@@ -40,27 +43,28 @@ portfolio['Portfolio_GMV'] = np.dot(portfolio.iloc[:, 0:9], GMV_weights)
 
 # Global maximum return porfolio
 gmrPortfolio = portfolios.iloc[portfolios.Returns.idxmax()]
-# print(gmrPortfolio, gmrPortfolio.values,  **hd.sp)
+print(gmrPortfolio, gmrPortfolio.values,  **hd.sp)
 GMR_weights = np.array(gmrPortfolio.values[2:11])
 portfolio['Portfolio_GMR'] = np.dot(portfolio.iloc[:, 0:9], GMR_weights)
 
-# Plot the cumulative Returns
-hd.cumulative_returns_plot(portfolio[['S&P500', 'Portfolio_MSR', 'Portfolio_GMV', 'Portfolio_GMR']])
 
-CumulativeReturns = ((1+portfolio[['S&P500', 'Portfolio_MSR', 'Portfolio_GMV', 'Portfolio_GMR']]).cumprod()-1)
-trainReturns =  CumulativeReturns[CumulativeReturns.index < "2020-12-31"]
-testReturns =  CumulativeReturns[CumulativeReturns.index > "2020-12-31"]
-
-plt.subplots(figsize=(13, 10))
-plt.plot(testReturns)
-plt.plot(trainReturns)
-plt.legend(trainReturns.columns)
-plt.ylabel("Cumulative Portfolio Returns")
-plt.axvspan("2020-12-31", "2022-12-31", color = 'lightblue')
-plt.show()  
+# save the MSR and GMV weights
+msrPortfolio.to_pickle(os.path.join(hd.datapath, 'MSR_weights.pkls'))
+gmrPortfolio.to_pickle(os.path.join(hd.datapath, 'GMV_weights.pkls'))
 
 
-CumulativeReturns.plot(figsize =[12,10], title="Cumulative Returns Plot")
-plt.ylabel("Cumulative Portfolio Returns")
-plt.axvspan("2020-12-31", "2022-12-31", color = 'lightblue')
-plt.show() 
+# Plot the cumulative Returns on train data
+title="Train Data: Cumulative Returns Plot"
+ylabel = "Cumulative Portfolio Returns"
+hd.cumulative_returns_plot(portfolio[['S&P500', 'Portfolio_MSR', 'Portfolio_GMV', 'Portfolio_GMR']],
+            title=title, ylabel=ylabel)
+
+# plot cumulative Return on test data
+portfolio2 = portfolio_test.pct_change().dropna()
+portfolio2['Portfolio_MSR'] = np.dot(portfolio2.iloc[:, 0:9], MSR_weights)
+portfolio2['Portfolio_GMV'] = np.dot(portfolio2.iloc[:, 0:9], GMV_weights)
+portfolio2['Portfolio_GMR'] = np.dot(portfolio2.iloc[:, 0:9], GMR_weights)
+
+title="Test Data: Cumulative Returns Plot"
+hd.cumulative_returns_plot(portfolio2[['S&P500', 'Portfolio_MSR', 'Portfolio_GMV', 'Portfolio_GMR']],
+            title=title, ylabel=ylabel)
