@@ -73,6 +73,7 @@ portfolio2['Portfolio_MSR'] = np.dot(portfolio2.iloc[:, 0:9], MSR_weights)
 portfolio2['Portfolio_GMV'] = np.dot(portfolio2.iloc[:, 0:9], GMV_weights)
 portfolio2['Portfolio_GMR'] = np.dot(portfolio2.iloc[:, 0:9], GMR_weights)
 
+
 title="Test Data: Cumulative Returns Plot"
 hd.cumulative_returns_plot(portfolio2[['S&P500', 'Portfolio_MSR', 'Portfolio_GMV', 'Portfolio_GMR']],
             title=title, ylabel=ylabel)
