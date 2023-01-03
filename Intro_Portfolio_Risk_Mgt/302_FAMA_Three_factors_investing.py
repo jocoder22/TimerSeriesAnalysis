@@ -47,7 +47,7 @@ for col in cols:
 
     # Fit the regression
     FamaFrench3f_fit = FamaFrench3f_model.fit()
-    print(FamaFrench3f_fit.summary(), **hd.sp)
+    # print(FamaFrench3f_fit.summary(), **hd.sp)
 
     # Extract the beta
     regression_beta = FamaFrench3f_fit.params['Mkt_RF']
@@ -59,8 +59,22 @@ for col in cols:
     # Extract  r-squared of the fitted regression
     regressValues['R squared'].append(round(FamaFrench3f_fit.rsquared, 3))
 
+    # Extract the p-value of the SMB factor
+    smb_pval = FamaFrench3f_fit.pvalues["SMB"]
+
+    # If the p-value is significant, print significant
+    if smb_pval < 0.05:
+        significant_msg = 'significant'
+    else:
+        significant_msg = 'not significant'
+
+    # Print the SMB coefficient
+    smb_coeff = FamaFrench3f_fit.params["SMB"]
+    print(f"The SMB coefficient of {col}_Excess is {smb_coeff}, and is {significant_msg}", **hd.sp)
+
 regressResults = pd.DataFrame(regressValues)
 print(regressResults, **hd.sp)
+
 
 
 
