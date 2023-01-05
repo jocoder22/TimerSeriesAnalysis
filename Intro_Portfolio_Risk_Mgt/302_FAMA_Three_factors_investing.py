@@ -70,7 +70,16 @@ for col in cols:
 
     # Print the SMB coefficient
     smb_coeff = FamaFrench3f_fit.params["SMB"]
-    print(f"The SMB coefficient of {col}_Excess is {smb_coeff}, and is {significant_msg}", **hd.sp)
+    print(f"The SMB coefficient of {col} is {smb_coeff:.3f}, and is {significant_msg}")
+
+    # Calculate your portfolio alpha
+    portfolio_alpha = FamaFrench3f_fit.params['Intercept']
+
+    # Annualize your portfolio alpha
+    portfolio_alpha_annualized = ((1 + portfolio_alpha) ** 252) - 1
+
+    print(f"The Alpha of {col} is {portfolio_alpha:.3f}, and Annualise Alpha of {portfolio_alpha_annualized:.3f}", **hd.sp)
+
 
 regressResults = pd.DataFrame(regressValues)
 print(regressResults, **hd.sp)
