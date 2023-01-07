@@ -48,7 +48,6 @@ def _getCleanedData():
             ppf = _loadAssets(file_name, index=0).resample("m").apply(cagr)
             ppf.columns = [f"Rate_{file_name}"]
             ppf.index.name = "Date"
-            
             ppf.index = ppf.index.to_period('M')
             ppf.index = ppf.index.to_timestamp()
             # print(ppf.index, ppf.head(), **sp)
