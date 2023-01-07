@@ -31,7 +31,6 @@ def _getCleanedData():
             ppf.index.name = "Date"
             ppf.index = pd.to_datetime(ppf.index)
             # print(ppf.index, ppf.head(), **sp)
-
             dff = pd.concat([dff, ppf], axis=1, sort=False)
 
         if "fredQ" in file_name:
@@ -52,6 +51,7 @@ def _getCleanedData():
             ppf.index = ppf.index.to_timestamp()
             # print(ppf.index, ppf.head(), **sp)
             dff = pd.concat([dff, ppf], axis=1, sort=False)
+
 
     return dff.dropna(), dff2
 
