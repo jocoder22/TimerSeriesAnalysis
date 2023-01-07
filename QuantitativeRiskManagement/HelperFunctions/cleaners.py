@@ -20,6 +20,7 @@ def _getCleanedData():
     """
     dff = pd.DataFrame()
     dff2 = pd.DataFrame()
+    
     for file_name in os.listdir(datapath):
         # print(file_name)
         if "cf" in file_name:
