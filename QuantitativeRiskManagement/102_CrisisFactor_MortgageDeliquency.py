@@ -83,7 +83,7 @@ mort_del = sm.add_constant(data["del_rate"])
 results = sm.OLS(data["Qmean"], mort_del).fit()
 
 # Print a summary of the results
-print(results.summary(, **sp)
+print(results.summary(), **sp)
 
 # Add a constant to the regression
 mort_del = sm.add_constant(data["del_rate"])
