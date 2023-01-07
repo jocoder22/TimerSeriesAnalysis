@@ -76,57 +76,16 @@ data = pd.concat([vol_q_mean, data], axis=1, sort=False).dropna()
 data.columns = ["Qvolmean", "Qmean", "Qmin", "del_rate", "mort_income_per"]
 print(data.head(), **sp)
 
-# Add a constant to the regression
+namelist = ["Qmean",  "Qmin", "Qvolmean"]
 mort_del = sm.add_constant(data["del_rate"])
+for n  in namelist:
+    results = sm.OLS(data[n], mort_del).fit()
+    rlm_model = sm.RLM(data[n], mort_del, M=sm.robust.norms.HuberT()).fit()
 
-# Create the regression factor model and fit it to the data
-results = sm.OLS(data["Qmean"], mort_del).fit()
-
-# Print a summary of the results
-print(results.summary(), **sp)
-
-# Add a constant to the regression
-mort_del = sm.add_constant(data["del_rate"])
-
-# Create the regression factor model and fit it to the data
-results = sm.OLS(data["Qmin"], mort_del).fit()
-
-# Print a summary of the results
-print(results.summary(), **sp)
-
-# Create the regression factor model and fit it to the data
-results = sm.OLS(data["Qmin"], data["del_rate"]).fit()
-
-# Print a summary of the results
-print(results.summary(), **sp)
-
-print("#################################  Qmin @@@@@@@@@@@@@@@ ###########################")
-# Fit model and print summary
-rlm_model = sm.RLM(data["Qmin"], mort_del, M=sm.robust.norms.HuberT())
-
-rlm_results = rlm_model.fit()
-print(rlm_results.summary(), **sp)
-
-
-# Create the regression factor model and fit it to the data
-results = sm.OLS(data["Qvolmean"], mort_del).fit()
-
-# Print a summary of the results
-print(results.summary(), **sp)
-
-# Create the regression factor model and fit it to the data
-results = sm.OLS(data["Qvolmean"], data["del_rate"]).fit()
-
-# Print a summary of the results
-print(results.summary(), **sp)
-
-# Fit model and print summary
-rlm_model = sm.RLM(data["Qvolmean"], mort_del, M=sm.robust.norms.HuberT())
-
-print("################################# Qvolmean @@@@@@@@@@@@@@@ ###########################")
-rlm_results = rlm_model.fit()
-print(rlm_results.summary(), **sp)
-
+    # Print a summary of the results
+    print(f"################################# {n} @@@@@@@@@@@@@@@ ###########################")
+    print(results.summary(), rlm_model.summary(), **sp)
+    print(f"################################# {n} @@@@@@@@@@@@@@@ ###########################",**sp)
 
 
 portfolio_m_average = portfolio_returns.resample('M', closed="left", label="left", convention="end").mean().dropna()
@@ -138,24 +97,29 @@ print(monthly_.columns, portfolio_m_average.tail(), **sp)
 
 data2 = pd.concat([monthly_, portfolio_m_average], axis=1, sort=False).dropna()
 data2.columns = ["mort_30year", "mort_del_R3090", "mort_del_R90+", "PortReturn"]
-# rlm_model = sm.RLM(data.endog, data.exog, M=sm.robust.norms.HuberT())
 data2 = data2.reset_index()
 print(data2.head(), data2.info(), **sp)
 
-data = pd.DataFrame()
 # # Add a constant to the regression
 mort_del2 = sm.add_constant(data2[["mort_30year", "mort_del_R3090", "mort_del_R90+"]])
 
-# # Create the regression factor model and fit it to the data
+# # Create the OLS regression factor model and fit it to the data
 results = sm.OLS(data2["PortReturn"], mort_del2).fit()
 
-# Print a summary of the results
-print(results.summary(), **sp)
+# Create the Robust regression factor model and fit it to the data
+rlm_results = sm.RLM(data2["PortReturn"], mort_del2, M=sm.robust.norms.HuberT()).fit()
 
-
-# Fit model and print summary
-rlm_model = sm.RLM(data2["PortReturn"], mort_del2, M=sm.robust.norms.HuberT())
-
-rlm_results = rlm_model.fit()
 # print(rlm_results.params)
-print(rlm_results.summary(), **sp)
+print(results.summary(), rlm_results.summary(), **sp)
+
+
+namelist2 = ["mort_30year", "mort_del_R3090", "mort_del_R90+"]
+mort_del3 = sm.add_constant(data2["PortReturn"])
+for n  in namelist2:
+    results2 = sm.OLS(data2[n], mort_del3).fit()
+    rlm_model2 = sm.RLM(data2[n], mort_del3, M=sm.robust.norms.HuberT()).fit()
+
+    # Print a summary of the results
+    print(f"################################# {n} @@@@@@@@@@@@@@@ ###########################")
+    print(results2.summary(), rlm_model2.summary(), **sp)
+    print(f"################################# {n} @@@@@@@@@@@@@@@ ###########################",**sp)
