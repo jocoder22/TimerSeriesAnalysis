@@ -26,12 +26,15 @@ mort_30rate_fred = web.DataReader('MORTGAGE30US', 'fred', startdate, enddate)
 mort__Income_fred = web.DataReader('MDSP', 'fred', startdate, enddate)
 
 weblink = "https://s3.amazonaws.com/files.consumerfinance.gov/data/mortgage-performance/downloads/CountyMortgagesPercent-90-plusDaysLate-thru-2022-06.csv"
+weblink2 = "https://s3.amazonaws.com/files.consumerfinance.gov/data/mortgage-performance/downloads/CountyMortgagesPercent-30-89DaysLate-thru-2022-06.csv"
 
 mort_del_rate_cusFin = pd.read_csv(weblink)
+mort_del_rate_cusFin2 = pd.read_csv(weblink2)
 
 with changepath(datapath):
     stockdata.to_csv(f"assetsData.csv")
-    mort_del_rate_cusFin.to_csv('mort_del_R_cf.csv')
+    mort_del_rate_cusFin.to_csv('mort_del_R90+_cf.csv')
+    mort_del_rate_cusFin2.to_csv('mort_del_R3090_cf.csv')
     mort_del_rate_fred.to_csv('mort_del_R_fred.csv')
     mort_30rate_fred.to_csv('mort_30rate_R_fred.csv')
     mort__Income_fred.to_csv('mort_income_fred.csv')

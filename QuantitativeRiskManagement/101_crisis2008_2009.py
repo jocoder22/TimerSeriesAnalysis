@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from HelperFunctions.loadData import _loadAssets
 
 # load the asset data
-portfolio = _loadAssets()
+portfolio = _loadAssets("assetsData.csv", index="Date")
 
 # Select portfolio asset prices for the middle of the crisis, 2008-2009
 asset_prices = portfolio.loc['2008-01-01':'2009-12-31', :]
@@ -51,3 +51,15 @@ volatility_series = returns_windowed.std()*np.sqrt(252)
 # Plot the portfolio volatility
 volatility_series.plot().set_ylabel("Annualized Volatility, 30-day Window")
 plt.show()
+
+# Convert daily returns to quarterly average returns
+returns_q = portfolio_returns.resample('Q').mean()
+
+# Examine the beginning of the quarterly series
+print(returns_q.head())
+
+# Now convert daily returns to weekly minimum returns
+returns_w = portfolio_returns.resample('W').min()
+
+# Examine the beginning of the weekly series
+print(returns_w.head())

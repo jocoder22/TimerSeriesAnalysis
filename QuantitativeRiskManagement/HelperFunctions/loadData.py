@@ -7,9 +7,9 @@ from printdescribe import changepath
 datapath = r"E:\TimerSeriesAnalysis\QuantitativeRiskManagement\Data"
 
 
-def _loadAssets():
+def _loadAssets(data, index = None):
     with changepath(datapath):
-        portfolio_ = pd.read_csv("assetsData.csv", parse_dates=True, index_col="Date")
+        portfolio_ = pd.read_csv(data, parse_dates=True, index_col=index)
 
     return portfolio_
 
