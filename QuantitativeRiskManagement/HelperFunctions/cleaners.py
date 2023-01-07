@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from loadData import _loadAssets
+from HelperFunctions.loadData import _loadAssets
 
 datapath = r"E:\TimerSeriesAnalysis\QuantitativeRiskManagement\Data"
 
@@ -28,6 +28,7 @@ def _getCleanedData():
             # load the asset data
             portfolio = _loadAssets(file_name, index=0)
             ppf = pd.DataFrame(portfolio.iloc[0,:][4:])
+            ppf = ppf.astype('float32')
             ppf.columns = [f"Rate_{file_name}"]
             ppf.index.name = "Date"
             ppf.index = pd.to_datetime(ppf.index)
@@ -54,8 +55,3 @@ def _getCleanedData():
             dff = pd.concat([dff, ppf], axis=1, sort=False)
 
     return dff.dropna(), dff2
-
-
-# pp, pp1 = _getCleanedData()
-
-# print(pp.head(), pp1.head(), **sp)

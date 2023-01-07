@@ -2,17 +2,160 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+from datetime import timedelta
 
-from HelperFunctions.loadData import _loadAssets
+import statsmodels.api as sm
+from dateutil.relativedelta import relativedelta
+
 from HelperFunctions.cleaners import _getCleanedData
+from HelperFunctions.getPortReturns import _loadPortReturns
 
-# load the asset data
-portfolio = _loadAssets("assetsData.csv", index="Date")
+sp = {"end":"\n\n", "sep":"\n\n"}
+
+# load asset and portfolio returns
+portfolio_returns, asset_returns = _loadPortReturns()
 monthly_, quarterly_ = _getCleanedData()
 
-ppf = pd.DataFrame(portfolio.iloc[0,:][4:])
-ppf.columns = ["Rate"]
-ppf.index.name = "Date"
-print(ppf.index, ppf.head())
+# Transform the daily portfolio_returns into quarterly average returns
+portfolio_q_average = portfolio_returns.resample('Q', closed="left", label="left", convention="end").mean().dropna()
+portfolio_q_average.index = portfolio_q_average.index + timedelta(days = 1)
+print(portfolio_q_average.head(), **sp)
+
+# Transform daily portfolio_returns returns into quarterly minimum returns
+portfolio_q_min = portfolio_returns.resample('Q', closed="left", label="left", convention="end").min().dropna()
+portfolio_q_min.index = portfolio_q_min.index + timedelta(days = 1)
+print(portfolio_q_min.head(), **sp)
+
+# concatenate all the data
+data = pd.concat([portfolio_q_average, portfolio_q_min, quarterly_], axis=1, sort=False).dropna()
+data.columns = ["Qmean", "Qmin", "del_rate", "mort_income_per"]
+print(data.head(), **sp)
+
+# Create a scatterplot 
+fig, (ax1, ax2) = plt.subplots(nrows=2, ncols=1, figsize=[10, 12], sharex=True)
+sns.regplot(ax=ax1, x="del_rate", y="Qmean", data=data)
+# sns.lmplot(x="del_rate", y="Qmin", data=data)
+sns.regplot(ax=ax2, x="del_rate", y="Qmin", data=data)
+plt.show()
+
+# plot the join plot
+sns.jointplot(x="del_rate", y="Qmean", data=data, kind="reg")
+plt.show()
+
+# plot the join plot
+sns.jointplot(x="del_rate", y="Qmin", data=data, kind="reg")
+plt.show()
+
+# equal weights
+n = len(asset_returns.columns)
+weights = np.repeat(1/n, n)
+
+# Generate the covariance matrix from portfolio asset's returns
+covariance = asset_returns.cov()
+
+# Annualize the covariance using 252 trading days per year
+covariance = covariance * 252
+
+# Compute and display portfolio volatility for 2008 - 2009
+portfolio_variance = np.transpose(weights) @ covariance @ weights
+portfolio_volatility = np.sqrt(portfolio_variance)
+
+# Calculate the 30-day rolling window of portfolio returns
+returns_windowed = portfolio_returns.rolling(30)
+
+# Compute the annualized volatility series
+volatility_series = returns_windowed.std()*np.sqrt(252)
+
+# Transform annualized volatility into quarterly mean volatility
+vol_q_mean = volatility_series.resample('Q', closed="left", label="left", convention="end").mean().dropna()
+vol_q_mean.index = vol_q_mean.index + timedelta(days = 1)
+print(vol_q_mean.head(), **sp)
+
+data = pd.concat([vol_q_mean, data], axis=1, sort=False).dropna()
+data.columns = ["Qvolmean", "Qmean", "Qmin", "del_rate", "mort_income_per"]
+print(data.head(), **sp)
+
+# Add a constant to the regression
+mort_del = sm.add_constant(data["del_rate"])
+
+# Create the regression factor model and fit it to the data
+results = sm.OLS(data["Qmean"], mort_del).fit()
+
+# Print a summary of the results
+print(results.summary(, **sp)
+
+# Add a constant to the regression
+mort_del = sm.add_constant(data["del_rate"])
+
+# Create the regression factor model and fit it to the data
+results = sm.OLS(data["Qmin"], mort_del).fit()
+
+# Print a summary of the results
+print(results.summary(), **sp)
+
+# Create the regression factor model and fit it to the data
+results = sm.OLS(data["Qmin"], data["del_rate"]).fit()
+
+# Print a summary of the results
+print(results.summary(), **sp)
+
+print("#################################  Qmin @@@@@@@@@@@@@@@ ###########################")
+# Fit model and print summary
+rlm_model = sm.RLM(data["Qmin"], mort_del, M=sm.robust.norms.HuberT())
+
+rlm_results = rlm_model.fit()
+print(rlm_results.summary(), **sp)
 
 
+# Create the regression factor model and fit it to the data
+results = sm.OLS(data["Qvolmean"], mort_del).fit()
+
+# Print a summary of the results
+print(results.summary(), **sp)
+
+# Create the regression factor model and fit it to the data
+results = sm.OLS(data["Qvolmean"], data["del_rate"]).fit()
+
+# Print a summary of the results
+print(results.summary(), **sp)
+
+# Fit model and print summary
+rlm_model = sm.RLM(data["Qvolmean"], mort_del, M=sm.robust.norms.HuberT())
+
+print("################################# Qvolmean @@@@@@@@@@@@@@@ ###########################")
+rlm_results = rlm_model.fit()
+print(rlm_results.summary(), **sp)
+
+
+
+portfolio_m_average = portfolio_returns.resample('M', closed="left", label="left", convention="end").mean().dropna()
+
+portfolio_m_average.index = portfolio_m_average.index.to_period('M')
+portfolio_m_average.index = portfolio_m_average.index.to_timestamp()
+
+print(monthly_.columns, portfolio_m_average.tail(), **sp)
+
+data2 = pd.concat([monthly_, portfolio_m_average], axis=1, sort=False).dropna()
+data2.columns = ["mort_30year", "mort_del_R3090", "mort_del_R90+", "PortReturn"]
+# rlm_model = sm.RLM(data.endog, data.exog, M=sm.robust.norms.HuberT())
+data2 = data2.reset_index()
+print(data2.head(), data2.info(), **sp)
+
+data = pd.DataFrame()
+# # Add a constant to the regression
+mort_del2 = sm.add_constant(data2[["mort_30year", "mort_del_R3090", "mort_del_R90+"]])
+
+# # Create the regression factor model and fit it to the data
+results = sm.OLS(data2["PortReturn"], mort_del2).fit()
+
+# Print a summary of the results
+print(results.summary(), **sp)
+
+
+# Fit model and print summary
+rlm_model = sm.RLM(data2["PortReturn"], mort_del2, M=sm.robust.norms.HuberT())
+
+rlm_results = rlm_model.fit()
+# print(rlm_results.params)
+print(rlm_results.summary(), **sp)
