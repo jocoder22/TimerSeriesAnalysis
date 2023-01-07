@@ -27,7 +27,6 @@ portfolio_returns = asset_returns.dot(weights)
 portfolio_returns.plot().set_ylabel("Daily Return, %")
 plt.show()
 
-
 # Generate the covariance matrix from portfolio asset's returns
 covariance = asset_returns.cov()
 
