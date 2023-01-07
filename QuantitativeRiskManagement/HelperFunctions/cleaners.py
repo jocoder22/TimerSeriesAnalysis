@@ -20,7 +20,7 @@ def _getCleanedData():
     """
     dff = pd.DataFrame()
     dff2 = pd.DataFrame()
-    
+
     for file_name in os.listdir(datapath):
         # print(file_name)
         if "cf" in file_name:
@@ -52,7 +52,6 @@ def _getCleanedData():
             ppf.index = ppf.index.to_timestamp()
             # print(ppf.index, ppf.head(), **sp)
             dff = pd.concat([dff, ppf], axis=1, sort=False)
-
 
     return dff.dropna(), dff2
 
