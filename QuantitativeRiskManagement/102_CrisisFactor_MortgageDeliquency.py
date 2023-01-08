@@ -14,7 +14,7 @@ from HelperFunctions.getPortReturns import _loadPortReturns
 sp = {"end":"\n\n", "sep":"\n\n"}
 
 # load asset and portfolio returns
-portfolio_returns, asset_returns = _loadPortReturns()
+portfolio_returns, asset_returns, weights, covariance = _loadPortReturns()
 monthly_, quarterly_ = _getCleanedData()
 
 # Transform the daily portfolio_returns into quarterly average returns
@@ -46,16 +46,6 @@ plt.show()
 # plot the join plot
 sns.jointplot(x="del_rate", y="Qmin", data=data, kind="reg")
 plt.show()
-
-# equal weights
-n = len(asset_returns.columns)
-weights = np.repeat(1/n, n)
-
-# Generate the covariance matrix from portfolio asset's returns
-covariance = asset_returns.cov()
-
-# Annualize the covariance using 252 trading days per year
-covariance = covariance * 252
 
 # Compute and display portfolio volatility for 2008 - 2009
 portfolio_variance = np.transpose(weights) @ covariance @ weights
@@ -89,10 +79,8 @@ for n  in namelist:
 
 
 portfolio_m_average = portfolio_returns.resample('M', closed="left", label="left", convention="end").mean().dropna()
-
 portfolio_m_average.index = portfolio_m_average.index.to_period('M')
 portfolio_m_average.index = portfolio_m_average.index.to_timestamp()
-
 print(monthly_.columns, portfolio_m_average.tail(), **sp)
 
 data2 = pd.concat([monthly_, portfolio_m_average], axis=1, sort=False).dropna()
@@ -100,6 +88,19 @@ data2.columns = ["mort_30year", "mort_del_R3090", "mort_del_R90+", "PortReturn"]
 data2 = data2.reset_index()
 print(data2.head(), data2.info(), **sp)
 
+# Do univariate analysis
+namelist2 = ["mort_30year", "mort_del_R3090", "mort_del_R90+"]
+mort_del3 = sm.add_constant(data2["PortReturn"])
+for n  in namelist2:
+    results2 = sm.OLS(data2[n], mort_del3).fit()
+    rlm_model2 = sm.RLM(data2[n], mort_del3, M=sm.robust.norms.HuberT()).fit()
+
+    # Print a summary of the results
+    print(f"################################# {n} @@@@@@@@@@@@@@@ ###########################")
+    print(results2.summary(), rlm_model2.summary(), **sp)
+    print(f"################################# {n} @@@@@@@@@@@@@@@ ###########################",**sp)
+
+## Do multivariate regression
 # # Add a constant to the regression
 mort_del2 = sm.add_constant(data2[["mort_30year", "mort_del_R3090", "mort_del_R90+"]])
 
@@ -111,15 +112,3 @@ rlm_results = sm.RLM(data2["PortReturn"], mort_del2, M=sm.robust.norms.HuberT())
 
 # print(rlm_results.params)
 print(results.summary(), rlm_results.summary(), **sp)
-
-
-namelist2 = ["mort_30year", "mort_del_R3090", "mort_del_R90+"]
-mort_del3 = sm.add_constant(data2["PortReturn"])
-for n  in namelist2:
-    results2 = sm.OLS(data2[n], mort_del3).fit()
-    rlm_model2 = sm.RLM(data2[n], mort_del3, M=sm.robust.norms.HuberT()).fit()
-
-    # Print a summary of the results
-    print(f"################################# {n} @@@@@@@@@@@@@@@ ###########################")
-    print(results2.summary(), rlm_model2.summary(), **sp)
-    print(f"################################# {n} @@@@@@@@@@@@@@@ ###########################",**sp)

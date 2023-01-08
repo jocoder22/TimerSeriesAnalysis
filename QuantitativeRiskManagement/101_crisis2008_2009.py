@@ -10,7 +10,7 @@ from HelperFunctions.loadData import _loadAssets
 asset = _loadAssets("assetsData.csv", index="Date")
 
 # load asset and portfolio returns
-portfolio_returns, asset_returns = _loadPortReturns()
+portfolio_returns, asset_returns, _, _ = _loadPortReturns()
 
 # Select portfolio asset prices for the middle of the crisis, 2008-2009
 asset_prices = asset.loc['2008-01-01':'2009-12-31', :]
