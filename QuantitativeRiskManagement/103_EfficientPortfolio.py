@@ -75,5 +75,6 @@ for n, i in enumerate(epochs.keys()):
 
     axs[0].legend()
     axs[n+1].legend()
+    
 plt.tight_layout()
 plt.show()
