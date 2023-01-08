@@ -51,8 +51,11 @@ for x in epochs.keys():
     meanr[x] = mean_historical_return(sub_price, frequency = 252)
     e_cov[x] = CovarianceShrinkage(sub_price).ledoit_wolf()
 
+    # Display the mean historical return for  epochs
+    print(f"Mean Historical Return: {x} Crisis\n", meanr[x], "\n\n")
+
     # Display the efficient covariance matrices for  epochs
-    print(f"Efficient Covariance Matrices: {x}\n", e_cov[x], "\n\n")
+    print(f"Efficient Covariance Matrices: {x} Crisis\n", e_cov[x], "\n\n")
 
 # {x: CovarianceShrinkage(assets.loc[epochs[x]['start']:epochs[x]['end'], :]).ledoit_wolf() for x in epochs.keys()}
 
@@ -75,6 +78,6 @@ for n, i in enumerate(epochs.keys()):
 
     axs[0].legend()
     axs[n+1].legend()
-    
+
 plt.tight_layout()
 plt.show()
