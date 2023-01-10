@@ -63,15 +63,29 @@ sns.lineplot(x=JPMorgan_spot.index, y= option_values, color = "red", label = "Pu
 ax2.set_ylabel("J.P Morgan Put Option Prices")
 plt.show()
 
+
+# Compute the Black-Scholes value at IBM spot price 70
+value = BlackScholes(S = 70, X = 80, T = 0.5, r = 0.02, 
+                      sigma = sigma, option_type = "put")
 # Find the delta of the option at JPMorgan spot price 70
 delta = BsDelta(S = 70, X = 80, T = 0.5, r = 0.02, 
                  sigma = sigma, option_type = "put")
 
 # Find the option value change when the price of JPMorgan falls to 69.5
-value_change = black_scholes(S = 69.5, X = 80, T = 0.5, r = 0.02, 
-                             sigma = sigma, option_type = "put") - value_s
+value_change = BlackScholes(S = 69.5, X = 80, T = 0.5, r = 0.02, 
+                             sigma = sigma, option_type = "put") - value
 
+# Show that the sum of the spot price change and the value_change 
+# weighted by 1/delta is (close to) zero.
 print( (69.5 - 70) + (1/delta) * value_change )
+print(f"Delta: {delta}", f"1/Delta: {1/delta:.0f}", sep="\n")
+
+# The change in the option value is called the “delta” of the option. 
+# It is the derivative of the option value V with respect to the spot 
+# price S. By holding an amount of the option equal to one over the 
+# delta, changes in the price of the underlying stock can be offset.
+#  Delta neutrality is when the total change in the portfolio's value 
+#  from a change in the portfolio's asset price is zero. 
 
 
 
