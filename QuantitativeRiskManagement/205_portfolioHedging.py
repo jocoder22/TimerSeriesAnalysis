@@ -6,7 +6,7 @@ import seaborn as sns
 
 from HelperFunctions.getPortReturns import _loadPortReturns
 from HelperFunctions.loadData import _loadAssets
-from HelperFunctions.black_scholes import BlackScholes
+from HelperFunctions.black_scholes import BlackScholes, BsDelta
 
 sns.set_style("darkgrid", {"grid.color": ".6", "grid.linestyle": ":"})
 sp = {"end":"\n\n\n", "sep":"\n\n\n"}
@@ -21,9 +21,12 @@ assets = _loadAssets("assetsDataClose.csv", index="Date")
 # get JPMorgan returns
 JPMorgan_returns = asset_returns["JPMorgan"]
 
-# Compute the volatility as the annualized standard deviation of IBM returns
+# Compute the volatility as the annualized standard deviation of JPMorgan returns
 sigma = np.sqrt(252) * JPMorgan_returns.std()
 
+# First, value the European put option using the Black-Scholes option pricing formula, 
+# with a strike X of 80 and a time to maturity T of 1/2 a year. The risk-free interest 
+# rate is 2% and the spot S is initially 70.
 # Compute the Black-Scholes option price for this volatility
 value_s = BlackScholes(S = 90, X = 80, T = 0.5, r = 0.02, 
                         sigma = sigma, option_type = "call")
@@ -35,7 +38,6 @@ value_2s = BlackScholes(S = 90, X = 80, T = 0.5, r = 0.02,
 # Display and compare both values
 print(f"Option value for sigma: {value_s}",
       f"Option value for 2 * sigma: {value_2s}", sep="\n", end="\n\n")
-
 
 # Select the first 100 observations of JPMorgan data
 JPMorgan_spot = assets.loc[:assets.index[100], ["JPMorgan"]]
@@ -61,6 +63,15 @@ sns.lineplot(x=JPMorgan_spot.index, y= option_values, color = "red", label = "Pu
 ax2.set_ylabel("J.P Morgan Put Option Prices")
 plt.show()
 
+# Find the delta of the option at JPMorgan spot price 70
+delta = BsDelta(S = 70, X = 80, T = 0.5, r = 0.02, 
+                 sigma = sigma, option_type = "put")
+
+# Find the option value change when the price of JPMorgan falls to 69.5
+value_change = black_scholes(S = 69.5, X = 80, T = 0.5, r = 0.02, 
+                             sigma = sigma, option_type = "put") - value_s
+
+print( (69.5 - 70) + (1/delta) * value_change )
 
 
 
