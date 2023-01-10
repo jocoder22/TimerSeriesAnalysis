@@ -34,7 +34,7 @@ value_2s = BlackScholes(S = 90, X = 80, T = 0.5, r = 0.02,
 
 # Display and compare both values
 print(f"Option value for sigma: {value_s}",
-      f"Option value for 2 * sigma: {value_2s}", sep="\n")# Select the first 100 observations of IBM data
+      f"Option value for 2 * sigma: {value_2s}", sep="\n", end="\n\n")
 
 
 # Select the first 100 observations of JPMorgan data
@@ -62,6 +62,6 @@ sns.lineplot(x=JPMorgan_spot.index, y= option_values, color = "red", label = "Pu
 ax2.set_ylabel("J.P Morgan Put Option Prices")
 plt.show()
 
-print(option_values)
+
 
 
