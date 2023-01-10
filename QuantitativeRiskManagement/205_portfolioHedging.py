@@ -18,8 +18,8 @@ portfolio_losses = -portfolio_returns
 # load the asset data
 assets = _loadAssets("assetsDataClose.csv", index="Date")
 
+# get JPMorgan returns
 JPMorgan_returns = asset_returns["JPMorgan"]
-
 
 # Compute the volatility as the annualized standard deviation of IBM returns
 sigma = np.sqrt(252) * JPMorgan_returns.std()
@@ -45,7 +45,7 @@ option_values = np.zeros(JPMorgan_spot.size)
 
 # Iterate through JPMorgan's spot price and compute the option values
 for i,S in enumerate(JPMorgan_spot.values):
-    option_values[i] = BlackScholes(S = S, X = 140, T = 0.5, r = 0.02, 
+    option_values[i] = BlackScholes(S = S, X = 40, T = 0.5, r = 0.02, 
                         sigma = sigma, option_type = "put")
 
 
