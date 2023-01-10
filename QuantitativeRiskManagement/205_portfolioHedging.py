@@ -48,8 +48,7 @@ for i,S in enumerate(JPMorgan_spot.values):
     option_values[i] = BlackScholes(S = S, X = 40, T = 0.5, r = 0.02, 
                         sigma = sigma, option_type = "put")
 
-
-
+# plot the graphs
 fig, ax1 = plt.subplots(figsize = [10, 12])
 plt.title("J.P Morgan Prices Vs JPMorgan Put Option Prices")
 sns.lineplot(x=JPMorgan_spot.index, y= "JPMorgan", ax=ax1, label = "JPMorgan Prices", data=JPMorgan_spot)
