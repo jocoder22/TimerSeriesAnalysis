@@ -9,7 +9,7 @@ from collections import defaultdict
 from pypfopt.efficient_frontier import EfficientCVaR, EfficientFrontier
 from pypfopt.risk_models import CovarianceShrinkage
 
-from scipy.stats import gaussian_kde
+from scipy.stats import gaussian_kde, t, norm, skewnorm
 
 from HelperFunctions.getPortReturns import _loadPortReturns
 from HelperFunctions.loadData import _loadAssets
