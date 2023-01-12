@@ -27,6 +27,7 @@ print(credit.describe(), **sp)
 Xraw = credit[["loan_int_rate"]]
 y = credit[["loan_status"]]
 
+
 scaler = MinMaxScaler()
 X = scaler.fit_transform(Xraw)
 
