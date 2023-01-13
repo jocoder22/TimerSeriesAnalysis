@@ -39,11 +39,9 @@ plt.show()
 xgb.plot_importance(clf_gbt2, importance_type = 'weight')
 plt.show()
 
-
 # create x train with some features
 X_train4 = X_train[['loan_int_rate','person_emp_length']]
 X_train3 = X_train[['person_emp_length','loan_int_rate','loan_percent_income']]
-
 
 # Train a model on the X data with 3 columns
 clf_gbt3 = xgb.XGBClassifier().fit(X_train3,np.ravel(y_train))
@@ -52,7 +50,6 @@ clf_gbt3 = xgb.XGBClassifier().fit(X_train3,np.ravel(y_train))
 xgb.plot_importance(clf_gbt3, importance_type = 'weight')
 plt.show()
 
-
 # Train a model on the X data with 2 columns
 clf_gbt4 = xgb.XGBClassifier().fit(X_train4,np.ravel(y_train))
 
@@ -60,11 +57,9 @@ clf_gbt4 = xgb.XGBClassifier().fit(X_train4,np.ravel(y_train))
 xgb.plot_importance(clf_gbt4, importance_type = 'weight')
 plt.show()
 
-
 # create x train with some features
 X_test4 = X_test[['loan_int_rate','person_emp_length']]
 X_test3 = X_test[['person_emp_length','loan_int_rate','loan_percent_income']]
-
 
 # Predict the loan_status using each model
 gbt_preds = clf_gbt3.predict(X_test3)
@@ -74,7 +69,6 @@ gbt2_preds = clf_gbt4.predict(X_test4)
 target_names = ['Non-Default', 'Default']
 print("Model with 'person_emp_length','loan_int_rate','loan_percent_income'")
 print(classification_report(y_test, gbt_preds, target_names=target_names), **sp)
-
 
 # Print the classification report of the second model
 print("Model with 'loan_int_rate','person_emp_length'")
