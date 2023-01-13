@@ -79,7 +79,6 @@ print(f'LR expected loss: {np.sum(portfolio["lr_expected_loss"])}', **sp)
 # Print the sum of the expected loss for gbt
 print(f'GBT expected loss: {np.sum(portfolio["gbt_expected_loss"])}', **sp)
 
-
 # Predict the labels for loan status
 gbt_preds = clf_gbt.predict(X_test)
 
