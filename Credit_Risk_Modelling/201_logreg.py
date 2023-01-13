@@ -59,7 +59,6 @@ clf_logistic_multi = LogisticRegression(solver='lbfgs').fit(X_multi, np.ravel(y)
 print(clf_logistic_multi.intercept_, **sp)
 
 
-
 # Create the X and y data sets
 Xraw = credit[['loan_int_rate','person_emp_length','person_income']]
 y = credit[['loan_status']]
