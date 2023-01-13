@@ -8,7 +8,7 @@ import xgboost as xgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
-from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support
+from sklearn.metrics import classification_report
 
 from mmodules.load_Data import _loadAnalysis, _loadClean
 
