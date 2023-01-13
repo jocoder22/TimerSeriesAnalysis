@@ -81,6 +81,7 @@ target_names = ['Non-Default', 'Default']
 print("Model with 'person_emp_length','loan_int_rate','loan_percent_income'")
 print(classification_report(y_test, gbt_preds, target_names=target_names), **sp)
 
+
 # Print the classification report of the second model
 print("Model with 'loan_int_rate','person_emp_length'")
 print(classification_report(y_test, gbt2_preds, target_names=target_names), **sp)
