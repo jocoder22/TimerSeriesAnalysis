@@ -5,13 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import xgboost as xgb
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.model_selection import train_test_split
-
-from sklearn.metrics import roc_auc_score, accuracy_score, mean_squared_error as MSE
-from sklearn.metrics import roc_curve
-from sklearn.metrics import confusion_matrix, classification_report, precision_recall_fscore_support
 
 from mmodules.load_Data import _loadAnalysis2, _loadClean
 
