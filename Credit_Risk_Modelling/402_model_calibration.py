@@ -40,6 +40,7 @@ for i, model in enumerate([gbt, clf_logistic]):
     # Predict with a model
     preds_ = clf.predict_proba(X_test)[:,1]
 
+    # get calibration frac and mean prediction for 20 bins
     frac, mean_ = calibration_curve(y_test, preds_, n_bins=20)
     preds_cali[f"{names[i]}_frac_of_pos"] = frac
     preds_cali[f"{names[i]}_Mean_pred"] = mean_
