@@ -8,7 +8,8 @@ import xgboost as xgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
-from sklearn.metrics import classification_report, precision_recall_fscore_support,roc_curve
+from sklearn.metrics import classification_report, precision_recall_fscore_support
+from sklearn.metrics import roc_auc_score, roc_curve
 
 from mmodules.load_Data import _loadAnalysis, _loadClean
 
@@ -67,3 +68,9 @@ plt.xlabel('Fall-out')
 plt.ylabel('Sensitivity')
 plt.legend()
 plt.show()
+
+# Print the logistic regression AUC with formatting
+print("Logistic Regression AUC Score: %0.2f" % roc_auc_score(y_test, preds_proba["logmodel"]))
+
+# Print the gradient boosted tree AUC with formatting
+print("Gradient Boosted Tree AUC Score: %0.2f" % roc_auc_score(y_test, preds_proba["Xboost"]))
