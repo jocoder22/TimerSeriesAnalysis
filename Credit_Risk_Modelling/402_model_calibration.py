@@ -44,7 +44,6 @@ for i, model in enumerate([gbt, clf_logistic]):
     preds_cali[f"{names[i]}_frac_of_pos"] = frac
     preds_cali[f"{names[i]}_Mean_pred"] = mean_
 
-
 # Create the calibration curve plot with the guideline
 plt.plot([0, 1], [0, 1], 'k:', label='Perfectly calibrated')
 plt.plot(preds_cali["logmodel_Mean_pred"], preds_cali["logmodel_frac_of_pos"], 's-', label='Logistic Regression', color="g")
