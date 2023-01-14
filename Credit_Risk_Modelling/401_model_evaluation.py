@@ -73,4 +73,4 @@ plt.show()
 print("Logistic Regression AUC Score: %0.2f" % roc_auc_score(y_test, preds_proba["logmodel"]))
 
 # Print the gradient boosted tree AUC with formatting
-print("Gradient Boosted Tree AUC Score: %0.2f" % roc_auc_score(y_test, preds_proba["Xboost"]))
+print("Gradient Boosted Tree AUC Score: %0.2f" % roc_auc_score(y_test, preds_proba["Xboost"]), **sp)
