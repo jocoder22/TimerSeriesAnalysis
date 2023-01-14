@@ -67,11 +67,11 @@ Xall2 = pd.concat([XX, cred_str_onehot2], axis=1)
 
 # Combine all data and save for analysis
 ###########################################
-alldata = pd.concat([y, Xall], axis=1)
-alldata2 = pd.concat([y, Xall2], axis=1)
-with changepath(datapath):
-    alldata.to_csv("AnalysisData.csv", index=False)
-    alldata2.to_csv("AnalysisData2.csv", index=False)
+# alldata = pd.concat([y, Xall], axis=1)
+# alldata2 = pd.concat([y, Xall2], axis=1)
+# with changepath(datapath):
+#     alldata.to_csv("AnalysisData.csv", index=False)
+#     alldata2.to_csv("AnalysisData2.csv", index=False)
 ########################################################
 
 
