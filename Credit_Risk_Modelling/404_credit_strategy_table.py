@@ -126,3 +126,4 @@ for i in range(2):
     print(strategyTable.loc[dd, :])
     dd = strategyTable[[f"{names[i]}_Expected Value2"]].idxmax()
     print(strategyTable.loc[dd, :], **sp)
+    
