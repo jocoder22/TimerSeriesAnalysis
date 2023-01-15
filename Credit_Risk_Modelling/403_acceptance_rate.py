@@ -38,7 +38,6 @@ credit = _loadAnalysis()
 # load clean data
 credit2 = _loadClean()
 
-
 # Create the X and y data sets
 y = credit["loan_status"]
 X = credit.drop(columns=["loan_status"])
