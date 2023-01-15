@@ -65,6 +65,7 @@ portfolio = true_pred_all.merge(credit2['loan_amnt'],
                 left_index=True, right_index=True )
 
 portfolio["lgd"] = 0.20
+portfolio["lgd2"] = 1.0
 
 # Print the first five rows of the portfolio data frame
 print(portfolio.head(), **sp)
@@ -73,11 +74,18 @@ print(portfolio.head(), **sp)
 portfolio["gbt_expected_loss"] = portfolio["gbt_prob_default"] * portfolio["lgd"] * portfolio["loan_amnt"]
 portfolio["lr_expected_loss"] = portfolio["lr_prob_default"] * portfolio["lgd"] * portfolio["loan_amnt"]
 
+# Create expected loss columns for each model using the formula
+portfolio["gbt_expected_loss2"] = portfolio["gbt_prob_default"] * portfolio["lgd2"] * portfolio["loan_amnt"]
+portfolio["lr_expected_loss2"] = portfolio["lr_prob_default"] * portfolio["lgd2"] * portfolio["loan_amnt"]
+ 
 # Print the sum of the expected loss for lr
-print(f'LR expected loss: {np.sum(portfolio["lr_expected_loss"])}', **sp)
+print("#########################################################")
+print(f'LR expected loss: ${np.sum(portfolio["lr_expected_loss"]):,.2f}')
+print(f'LR expected loss 2: ${np.sum(portfolio["lr_expected_loss2"]):,.2f}', **sp)
 
 # Print the sum of the expected loss for gbt
-print(f'GBT expected loss: {np.sum(portfolio["gbt_expected_loss"])}', **sp)
+print(f'GBT expected loss: ${np.sum(portfolio["gbt_expected_loss"]):,.2f}')
+print(f'GBT expected loss 2: ${np.sum(portfolio["gbt_expected_loss2"]):,.2f}', **sp)
 
 # Predict the labels for loan status
 gbt_preds = clf_gbt.predict(X_test)
