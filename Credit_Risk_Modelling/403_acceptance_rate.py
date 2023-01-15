@@ -111,7 +111,8 @@ for i, name in enumerate(["Xboost_rate","logmodel_rate"]):
 
     losstable2 = pd.crosstab(preds_proba['Actual'].map(datamap),
                     preds_proba[name].map(datamap), values = preds_proba["loan_amnt"] * 1.0,
-                          aggfunc=sum)          
+                          aggfunc=sum)
+                                    
     print(f"This is for {names[i]}")
     for b in [losstable, losstable2]:
         print(b,"\n", f"Total loss: ${b.iloc[1,0] + b.iloc[0, 1]:,.2f}",\
