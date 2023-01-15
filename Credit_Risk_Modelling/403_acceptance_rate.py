@@ -8,15 +8,10 @@ import xgboost as xgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
-# from sklearn.metrics import classification_report, precision_recall_fscore_support
-# from sklearn.metrics import roc_auc_score, roc_curve
-# from sklearn.calibration import calibration_curve
-
 from mmodules.load_Data import _loadAnalysis, _loadClean
 
 sns.set_style("darkgrid", {"grid.color": ".6", "grid.linestyle": ":"})
 sp = {"end":"\n\n\n", "sep":"\n\n"}
-
 
 # Acceptance rate: This is a percentage of new loans that we accept with the goal 
 # of keeping the number of defaults in a portfolio below a certain number.
