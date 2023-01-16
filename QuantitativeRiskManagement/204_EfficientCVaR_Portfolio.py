@@ -8,6 +8,8 @@ from collections import defaultdict
 # Import the EfficientCVaR class
 from pypfopt.efficient_frontier import EfficientCVaR, EfficientFrontier
 from pypfopt.risk_models import CovarianceShrinkage
+from pypfopt import risk_models, expected_returns
+
 
 from scipy.stats import gaussian_kde
 
