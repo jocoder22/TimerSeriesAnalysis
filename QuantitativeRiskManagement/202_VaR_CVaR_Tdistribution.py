@@ -69,3 +69,15 @@ plt.axvline(x = CVaR_95, c='r', label = "CVaR, worst 5% of outcomes")
 plt.legend()
 plt.show()
 
+# Create rolling window parameter list
+mu = portfolio_losses.rolling(30).mean()
+sigma = portfolio_losses.rolling(30).std()
+rolling_parameters = [(29, mu[i], s) for i,s in enumerate(sigma)]
+
+# Compute the 99% VaR array using the rolling window parameters
+VaR_99 = np.array( [ t.ppf(0.99, *params) 
+                    for params in rolling_parameters ] )
+
+# Plot the minimum risk exposure over the 2005-2010 time period
+plt.plot(portfolio_losses.index, 0.01 * VaR_99 * 100000)
+plt.show()
