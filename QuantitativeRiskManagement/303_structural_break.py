@@ -2,8 +2,13 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+from datetime import timedelta
+
+import statsmodels.api as sm
 
 from HelperFunctions.getPortReturns import _loadPortReturns
+from HelperFunctions.cleaners import _getCleanedData
 from HelperFunctions.loadData import _loadAssets
 
 sns.set_style("darkgrid", {"grid.color": ".6", "grid.linestyle": ":"})
@@ -16,6 +21,7 @@ sp = {"end":"\n\n\n", "sep":"\n\n\n"}
 
 # load the asset data
 asset = _loadAssets("assetsData.csv", index="Date")
+monthly_, quarterly_ = _getCleanedData()
 
 # load asset and portfolio returns
 portfolio_returns, asset_returns, _, _ = _loadPortReturns()
@@ -32,7 +38,8 @@ volatility_series = returns_windowed.std()
 vol_Q_mean = volatility_series.resample('Q').mean()
 
 # Now convert daily returns to quarterly minimum returns
-returns_Q_min = losses.resample('Q').min()
+returns_Q_min = losses.resample('Q', closed="left", label="left", convention="end").min().dropna()
+returns_Q_min.index = returns_Q_min.index + timedelta(days = 1)
 
 # Now convert daily returns to quarterly max returns
 returns_Q_max = losses.resample('Q').max()
@@ -55,4 +62,17 @@ for i, measure in enumerate(measurelist):
 plt.legend()
 plt.show()
 
+# Build OLS model to check for structural breaks
+data = pd.concat([returns_Q_min, quarterly_], axis=1, sort=False).dropna()
+data.columns = ["QReturnmin", "del_rate", "mort_income_per"]
+
+# Add a constant to the regression
+mort_del = sm.add_constant(data["del_rate"])
+
+# Regress quarterly minimum portfolio returns against mortgage delinquencies
+result = sm.OLS(data["QReturnmin"], mort_del).fit()
+
+# Retrieve the sum-of-squared residuals
+ssr_total = result.ssr
+print(f"Sum-of-squared residuals, 2005-2010: {ssr_total}", **sp)
 
