@@ -16,7 +16,6 @@ from HelperFunctions.getPortReturns import _loadPortReturns
 from HelperFunctions.loadData import _loadAssets
 
 sns.set_style("darkgrid", {"grid.color": ".6", "grid.linestyle": ":"})
-
 sp = {"end":"\n\n\n", "sep":"\n\n\n"}
 
 # load the asset data
