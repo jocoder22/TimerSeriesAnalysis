@@ -20,7 +20,6 @@ sns.set_style("darkgrid", {"grid.color": ".6", "grid.linestyle": ":"})
 sp = {"end":"\n\n\n", "sep":"\n\n\n"}
 print(**sp)
 
-
 def ecdf(a):
     x, counts = np.unique(a, return_counts=True)
     cusum = np.cumsum(counts)
