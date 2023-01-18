@@ -115,7 +115,6 @@ pvalue = f.cdf(chow_stats, numerator, denominator)
 # Chow test statistic follows F-distribution
 print(f"Chow test statistic: {chow_stats:.3}, P-value {pvalue:.3}", **sp)
 
-
 ########################## using breakpoint as categorical variables #################
 breakpoint_2 = datetime(2009, 6, 30)
 data.reset_index(inplace = True)
